@@ -1,0 +1,8 @@
+{
+  "name": "dimpay",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react",
+  "id": "bd916c55"
+}
