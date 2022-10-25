@@ -1,0 +1,13 @@
+.custom{
+    font-size:42px !important;
+    background: transparent;
+    border: none;
+    font-weight: 700;
+}
+.custom input {
+    
+    outline:none
+}
+.image-center{
+    margin:0 auto;
+}

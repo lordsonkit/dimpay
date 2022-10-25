@@ -1,0 +1,18 @@
+.stackCards{
+    display:inline-block;
+    width:60px;
+    height:150px;
+    overflow-x:visible ;
+    z-index:999
+}
+.stackCards img{
+    width:250px;
+    height:150px;
+    max-width: none;
+    box-shadow:0 2px 4px #AAA;
+    border-radius: 10px;
+}
+.card_content{
+    padding:0 20px;
+    margin:20px 0;
+}
