@@ -37,6 +37,7 @@ import Homepage from './pages/Homepage';
 import FindMerchantPage from './pages/FindMerchant';
 import RewardResultsPage from './pages/RewardResults';
 import Welcome from './pages/Welcome';
+import RewardBreakdown from './pages/RewardBreakdown';
 
 setupIonicReact();
 
@@ -52,6 +53,9 @@ const App: React.FC = () => (
           </Route>
           <Route path="/rewardResults/:id">
             <RewardResultsPage />
+          </Route>
+          <Route path="/rewardBreakdown/:id/:cardid">
+            <RewardBreakdown />
           </Route>
           <Route exact path="/spendOptimizer">
             <Welcome />
