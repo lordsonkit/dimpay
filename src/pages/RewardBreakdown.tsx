@@ -38,7 +38,7 @@ const RewardBreakdown: React.FC = () => {
               <IonListHeader>
                   優惠分項
               </IonListHeader>
-              <IonItem routerLink={'/reward/'+8502} routerDirection='forward'>
+              <IonItem routerLink={'/rewardItem/'+8502} routerDirection='forward'>
                   <IonLabel>
                     <h2>基本消費回贈</h2>
                     <IonBadge color="medium" className='condition-badge'><IonText>需登記</IonText></IonBadge>
@@ -51,7 +51,7 @@ const RewardBreakdown: React.FC = () => {
                       <IonBadge className='bold'><h3><b>$2 / A</b></h3></IonBadge>
                   </IonLabel>
               </IonItem>
-              <IonItem routerLink={'/reward/'+8502} routerDirection='forward'>
+              <IonItem routerLink={'/rewardItem/'+8502} routerDirection='forward'>
                   <IonLabel>
                     <h2>最紅夏日消費</h2>
                     <IonBadge color="medium" className='condition-badge'><IonText>需登記</IonText></IonBadge>
