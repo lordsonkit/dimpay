@@ -1,4 +1,4 @@
-import { IonButton, IonCol, IonContent, IonFab, IonFabButton, IonGrid, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonPage, IonRow, IonSlide, IonSlides, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonCol, IonContent, IonFab, IonFabButton, IonGrid, IonHeader, IonIcon, IonItem, IonLabel, IonList, IonListHeader, IonPage, IonRow, IonSearchbar, IonSlide, IonSlides, IonTitle, IonToolbar } from '@ionic/react';
 import { add, cog, pencil, search } from 'ionicons/icons';
 import ExploreContainer from '../components/ExploreContainer';
 import MyCards from '../components/MyCards';
@@ -11,7 +11,7 @@ const Tab1: React.FC = () => {
     <IonPage>
       <IonHeader>
           <IonToolbar>
-            <IonTitle size="large">最岩數 app</IonTitle>
+            <IonSearchbar className='home_searchbar'></IonSearchbar>
           </IonToolbar>
       </IonHeader>
       <IonContent>
@@ -41,7 +41,7 @@ const Tab1: React.FC = () => {
                 </IonButton>                
               </IonCol>
               <IonCol>
-                <IonButton expand='block' routerDirection='forward' routerLink='/findMerchant' color="light" >
+                <IonButton expand='block' routerDirection='forward' routerLink='/addCard' color="light" >
                   <IonLabel><IonIcon icon={cog}></IonIcon> 管理我的信用卡</IonLabel>
                 </IonButton>                
               </IonCol>

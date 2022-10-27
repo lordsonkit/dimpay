@@ -39,6 +39,7 @@ import RewardResultsPage from './pages/RewardResults';
 import Welcome from './pages/Welcome';
 import RewardBreakdown from './pages/RewardBreakdown';
 import RewardItem from './pages/RewardItem';
+import AddCardPage from './pages/AddCardPage';
 
 setupIonicReact();
 
@@ -46,6 +47,7 @@ const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
+          <Redirect exact path="/homepage" to="/tabs" />
           <Route exact path="/welcome">
             <Welcome />
           </Route>
@@ -63,6 +65,9 @@ const App: React.FC = () => (
           </Route>
           <Route exact path="/spendOptimizer">
             <Welcome />
+          </Route>
+          <Route exact path="/addCard">
+            <AddCardPage />
           </Route>
           <Route path="/tabs">
             <Homepage />
