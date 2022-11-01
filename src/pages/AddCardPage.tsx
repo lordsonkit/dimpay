@@ -1,19 +1,28 @@
 import { IonBackButton, IonBadge, IonButtons, IonCheckbox, IonContent, IonHeader, IonImg, IonItem, IonLabel, IonList, IonListHeader, IonPage, IonText, IonThumbnail, IonTitle, IonToolbar } from '@ionic/react';
 import { useContext } from 'react';
-import { CardContext , UserContext } from '../App';
+import { CardContext } from '../App';
+import { UserContext } from "../reducer/UserDataReducer";
 import ExploreContainer from '../components/ExploreContainer';
 
 const AddCardPage: React.FC = () => {
   function cardCheckbox(cardID){
     try{
-      console.log(cardID.target)
+      console.log(cardID.target.value)
+      console.log()
+      if(cardID.target.checked){
+        //Add Card
+        addCard(cardID.target.value)
+      }else{
+        //Remove Card
+        removeCard(cardID.target.value)
+      }
     }catch (e){}    
   }
   function userOwnsCard(card_id:number){
     return userData.card_owned.indexOf(card_id)>=0?true:false;
   }
   const {cardData,setCardData}=useContext(CardContext);
-  const {userData,setUserData}=useContext(UserContext);
+  const {userData,setUserData,removeCard,addCard}=useContext(UserContext);
 
   return (
     <IonPage>

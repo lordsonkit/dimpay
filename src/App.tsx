@@ -47,16 +47,12 @@ import cards_json from './app_data/card_data.json';
 import rewards_json from './app_data/rewards.json';
 import userdata_template_json from './app_data/user_data.json';
 import React, { useEffect, useState, useMemo, useReducer } from 'react';
+import UserDataReducerProvider from './reducer/UserDataReducer';
 
 
 setupIonicReact();
 
-//Detect Userdata, setup user if first time
-if(!localStorage.getItem("userdata")){
-  //User data not set, user is here for the first time
-  localStorage.setItem("userdata",JSON.stringify(userdata_template_json))
-  console.log("Initialize local storage")
-}
+
 
 //const [userdata,setUserdata]=useState(userdata_template_json)
 
@@ -71,28 +67,6 @@ export const RewardsContext = React.createContext({
   rewardData:rewards_json,
   setRewardData:null
 });
-export const UserContext = React.createContext({
-  userData:userdata_template_json,
-  setUserData:null
-});
-//export const UserContext = React.createContext({userdata,setUserdata});
-
-const userDataReducer = (state, action) => {
-  // 判斷指令
-  switch (action.type) {
-      case 'ADD_CARD':
-        let new_card_owned=state.card_owned;
-        if(new_card_owned.indexOf(action.payload)==-1){
-          new_card_owned.push(action.payload);
-        }
-          return {
-            ...state,
-            card_owned:new_card_owned
-          }
-      default:
-          return state
-  }
-}
 
 const App: React.FC = () => {
   const [rewardData,setRewardData]=useState(rewards_json);
@@ -107,27 +81,23 @@ const App: React.FC = () => {
     return ({cardData,setCardData})
   }, [cardData,setCardData])
   
-  
+  /*
   const [userData,setUserData] = useState(userdata_template_json);
   const userDataProvider = useMemo( () => {
     console.log('userdata update')
     return ({userData, setUserData})
   }, [userData, setUserData])
+*/
 
-  const userDataReducer = (state, action) =>{
-    if(action.type === "ACTION"){
-      
-    }
-  }
+  
 
  return (
+  <CardContext.Provider value={cardDataProvider}>
+  <RewardsContext.Provider value={rewardDataProvider}>
+    <UserDataReducerProvider>
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <CardContext.Provider value={cardDataProvider}>
-          <RewardsContext.Provider value={rewardDataProvider}>
-            <UserContext.Provider value={userDataProvider}>
-              <Redirect exact path="/tabs" to="/tabs/tab1" />
               <Route exact path="/welcome">
                 <Welcome />
               </Route>
@@ -155,13 +125,15 @@ const App: React.FC = () => {
               <Route exact path="/">
                 <Redirect to="/welcome" />
               </Route>
+              
 
-            </UserContext.Provider>
-          </RewardsContext.Provider>
-        </CardContext.Provider>
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
+
+  </UserDataReducerProvider>
+          </RewardsContext.Provider>
+        </CardContext.Provider>
 );
  
 }

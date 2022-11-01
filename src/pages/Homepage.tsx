@@ -12,6 +12,9 @@ const Homepage: React.FC = () => {
     <IonTabs>
       <IonRouterOutlet>
         
+        <Route exact path="/tabs">
+          <Redirect  to="/tabs/tab1" />
+        </Route>
         <Route exact path="/tabs/tab1">
           <Tab1 />
         </Route>
