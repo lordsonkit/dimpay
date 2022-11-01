@@ -1,0 +1,58 @@
+{
+                "username": "Casper",
+                "card_owned": [
+                    0,0,0,0,0
+                ],
+                "milelage_value": [
+                    [0,0.8]
+                ],
+                "has_premium_baking": [
+                    [0,true]
+                ],
+                "has_private_banking": [
+                    [0,false]
+                ],
+                "custom_rewards": {
+                    "data": [
+                        {
+                            "reward_name": "Visa Signature自選類別3x獎賞",
+                            "reward_type": "cash",
+                            "reward_id": 0,
+                            "target_cards": [
+                                0
+                            ],
+                            "reward_ratio": 83.3333333,
+                            "charge_currency_requirement": "any",
+                            "charge_category_requirement": [
+                                0
+                            ],
+                            "payment_method": [
+                                0
+                            ],
+                            "card_age_bonus": [
+                                [
+                                    0,
+                                    0
+                                ]
+                            ],
+                            "day_of_week": null,
+                            "day_of_month": null,
+                            "online_only": false,
+                            "bill_payment": false,
+                            "offer_time": [
+                                [
+                                    0,
+                                    999999999999999999
+                                ]
+                            ],
+                            "minimum_bill_size": 0,
+                            "maximum_bill_size": 0,
+                            "minimum_qualification_spend": 0,
+                            "maximum_qualifacation_spend": 0
+                        }
+                    ]
+                }
+            
+        
+    
+}

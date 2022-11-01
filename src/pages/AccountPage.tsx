@@ -20,7 +20,7 @@ const AccountPage: React.FC = () => {
             <IonLabel></IonLabel>
           </IonListHeader>
           <IonItem>
-            <IonAvatar slot='start'><img src="https://ionic-docs-demo.herokuapp.com/assets/avatar.svg"></img></IonAvatar>
+            <IonAvatar slot='start'><img src="/assets/images/avatar.svg"></img></IonAvatar>
             <IonLabel>
               <h3>Name</h3>
               <p>Email:</p>

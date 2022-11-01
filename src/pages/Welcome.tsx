@@ -17,7 +17,7 @@ const Welcome: React.FC = () => {
                         <IonText><IonIcon icon={bag}></IonIcon> 為你建議最適合你消費習慣嘅信用卡</IonText>
                     </div>
                 </div>
-        <IonButton className="bottom-button" routerDirection='root' routerLink='/homepage'>開始使用</IonButton>
+        <IonButton className="bottom-button" routerDirection='root' routerLink='/tabs'>開始使用</IonButton>
       </IonContent>
     </IonPage>
   );

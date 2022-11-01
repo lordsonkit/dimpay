@@ -15,4 +15,13 @@
 .card_content{
     padding:0 20px;
     margin:20px 0;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+.card_content::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+.mirrored{transform:scaleX(-1)}
+.fit_wrapper{
+    display:inline-block;
 }

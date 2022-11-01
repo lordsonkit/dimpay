@@ -1,0 +1,117 @@
+{
+    "cards":{
+
+        "data":[
+            {
+                "card_name": "Visa Signature卡",
+                "issuer": 0,
+                "card_id":0,
+                "earn_miles":false,
+                "base_reward_miles":0,
+                "earn_cash": true,
+                "base_reward_cash": 250,
+                "has_mileage_programme": true,
+                "mileage_programme":{
+                    "data":{
+                        "asiamiles":10,
+                        "avios":15
+                    }
+                },
+                "annual_fee":2800,
+                "can_waive_fee":true,
+                "annual_salary":360000,
+                "fx_fee":1.95,
+                "reg_liink":"https://google.com",
+                "icon":"/assets/images/hsbcvs.webp",
+                "image":"/assets/images/hsbcvs.webp"
+            },{
+                "card_name": "白金簽帳卡",
+                "issuer": 1,
+                "card_id":1,
+                "earn_miles":false,
+                "base_reward_miles":0,
+                "earn_cash": true,
+                "base_reward_cash": 200,
+                "has_mileage_programme": true,
+                "mileage_programme":{
+                    "data":{
+                        "asiamiles":10,
+                        "avios":10
+                    }
+                },
+                "annual_fee":7800,
+                "can_waive_fee":true,
+                "annual_salary":600000,
+                "fx_fee":1.95,
+                "reg_liink":"https://google.com",
+                "icon":"/assets/images/amex_platcharge.png",
+                "image":"/assets/images/amex_platcharge.png"
+            }
+        ],
+        "keys":[
+            
+        ]
+    },
+    "issuers":{
+        "data":[
+            {
+                "name":"匯豐銀行",
+                "image":"/assets/images/issuer/hsbc.png"
+            } ,{
+                "name":"美國運通",
+                "image":"/assets/images/issuer/amex.png"
+            } 
+        ]
+    },
+    "mileages":{
+        "data":[
+            {
+                "name":"AsiaMiles",
+                "abbv":"AM",
+                "logo":"/assets/images/mileage/am_logo.png",
+                "icon":"/assets/images/mileage/am_icon.png",
+                "unit":"A"
+            },{
+                "name":"Avios",
+                "abbv":"AV",
+                "logo":"/assets/images/mileage/av_logo.png",
+                "icon":"/assets/images/mileage/av_icon.png",
+                "unit":"av"
+            }
+        ],
+        "keys":[
+
+        ]
+    },
+    "adverts":{
+        "data":[
+            {
+                "card":0,
+                "advert_text":"",
+                "advert_link":"",
+                "priority":"",
+                "label":[]
+            }
+        ]
+    },
+    "labels":{
+        "data":[
+            {
+                "label":"免年費",
+                "type":"benefit"
+            }
+        ],
+        "key":[
+
+        ]
+    },
+    "spend_categories":{
+        "data":[
+            {
+                "id":0,
+                "name":"超級市場"
+            }
+        ]
+    }
+
+}
