@@ -1,0 +1,149 @@
+{
+    "merchants":{
+        "data":[
+            {
+                "name":"交稅",
+                "description":"香港政府",
+                "search_keywords":"tax 繳費 繳稅 稅金",
+                "id":0,
+                "mcc":["NCCC"],
+                "payment_channel":[],
+                "locations":[],
+                "image":"/assets/images/merchants/hongkong.png",
+                "is_category":true,
+                "importance":2
+            },{
+                "name":"交租",
+                "description":"透過信用卡交租予業主",
+                "search_keywords":"rent property",
+                "id":1,
+                "mcc":["NCCC"],
+                "payment_channel":[],
+                "locations":[],
+                "image":"/assets/images/merchants/rent.png",
+                "is_category":true,
+                "importance":2
+            },{
+                "name":"繳費",
+                "description":"繳交各種費用，如管理費學費等",
+                "search_keywords":"bill payment",
+                "id":2,
+                "mcc":["NCCC"],
+                "payment_channel":[],
+                "locations":[],
+                "image":"/assets/images/merchants/bill.png",
+                "is_category":true,
+                "importance":2
+            },{
+                "name":"網購（港幣）",
+                "description":"以港幣於網上商戶購物",
+                "search_keywords":"hktvmall ztore big big shop taobao 淘寶天貓士多 zalora donki",
+                "id":3,
+                "mcc":["NCCC"],
+                "payment_channel":["online"],
+                "locations":[],
+                "image":"/assets/images/merchants/online.png",
+                "is_category":true,
+                "importance":2
+            },{
+                "name":"網購（人民幣）",
+                "description":"以人民幣於網上商戶購物",
+                "search_keywords":"hktvmall ztore big big shop nike",
+                "id":4,
+                "mcc":["NCCC"],
+                "payment_channel":["online"],
+                "locations":[],
+                "image":"/assets/images/merchants/online.png",
+                "is_category":true,
+                "importance":2
+            },{
+                "name":"網購（外幣）",
+                "description":"以外幣於網上商戶購物",
+                "search_keywords":"mrporter netaporter zalora",
+                "id":5,
+                "mcc":["NCCC"],
+                "payment_channel":["online"],
+                "locations":[],
+                "image":"/assets/images/merchants/online.png",
+                "is_category":true,
+                "importance":2
+            },{
+                "name":"Don Don Donki 唐吉訶德",
+                "description":"唐吉訶德是一間知名的日本零售連鎖店",
+                "search_keywords":"ドンキ　donki",
+                "id":6,
+                "mcc":["5331"],
+                "payment_channel":["swipe","contactless"],
+                "locations":[[22.2833505,114.1548718]],
+                "image":"/assets/images/merchants/donki.png",
+                "is_category":true,
+                "importance":7
+            },{
+                "name":"Yata　一田百貨",
+                "description":"日式百貨公司",
+                "search_keywords":"",
+                "id":7,
+                "mcc":["5331"],
+                "payment_channel":["swipe","contactless"],
+                "locations":[[22.3138757,114.2244482],[22.3332930944216, 114.19666802808379]],
+                "image":"/assets/images/merchants/yata.png",
+                "is_category":false,
+                "importance":7
+            },{
+                "name":"Mannings　萬寧",
+                "description":"藥房",
+                "search_keywords":"",
+                "id":8,
+                "mcc":["5912"],
+                "payment_channel":["swipe","contactless"],
+                "locations":[[22.2833505,114.1548718]],
+                "image":"/assets/images/merchants/mannings.png",
+                "is_category":false,
+                "importance":7
+            },{
+                "name":"餐飲食肆",
+                "description":"",
+                "search_keywords":"食飯飲野餐廳扒房openrice food breverage drink beer wine eat canteen catering breakfast dinner lunch buffet",
+                "id":8,
+                "mcc":["5811","5812","5813","5814"],
+                "payment_channel":["swipe","contactless"],
+                "locations":[[22.2833505,114.1548718]],
+                "image":"/assets/images/merchants/eatery.png",
+                "is_category":true,
+                "importance":10
+            }
+        ]
+    },
+    "merchant_code":{
+        "5912":{
+            "name":"藥房",
+            "description":"Pharmacy",
+            "image":"/assets/images/merchant_type/pharmacy.png"
+        },
+        "5331":{
+            "name":"百貨公司",
+            "description":"Department Store",
+            "image":"/assets/images/merchant_type/mall.png"
+        },
+        "5811":{
+            "name":"餐飲服務",
+            "description":"Food and Breverage",
+            "image":"/assets/images/merchant_type/eatery.png"
+        },
+        "5812":{
+            "name":"餐飲食肆",
+            "description":"Restaurant",
+            "image":"/assets/images/merchant_type/eatery.png"
+        },
+        "5813":{
+            "name":"酒吧",
+            "description":"Bar & Lounges",
+            "image":"/assets/images/merchant_type/beer.png"
+        },
+        "5814":{
+            "name":"快餐",
+            "description":"Fast food",
+            "image":"/assets/images/merchant_type/fastfood.png"
+        }
+    }
+}

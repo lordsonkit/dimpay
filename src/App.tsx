@@ -48,7 +48,7 @@ import rewards_json from './app_data/rewards.json';
 import userdata_template_json from './app_data/user_data.json';
 import React, { useEffect, useState, useMemo, useReducer } from 'react';
 import UserDataReducerProvider from './reducer/UserDataReducer';
-
+import merchants_json from './app_data/merchants.json';
 
 setupIonicReact();
 
@@ -67,6 +67,10 @@ export const RewardsContext = React.createContext({
   rewardData:rewards_json,
   setRewardData:null
 });
+export const MerchantListContext = React.createContext({
+  merchantData:merchants_json,
+  setMerchantData:null
+});
 
 const App: React.FC = () => {
   const [rewardData,setRewardData]=useState(rewards_json);
@@ -80,6 +84,12 @@ const App: React.FC = () => {
     console.log('cardData update')
     return ({cardData,setCardData})
   }, [cardData,setCardData])
+
+  const [merchantData,setMerchantData]=useState(merchants_json);
+  const merchantDataProvider = useMemo( () => {
+    console.log('merchantData update')
+    return ({merchantData,setMerchantData})
+  }, [merchantData,setMerchantData])
   
   /*
   const [userData,setUserData] = useState(userdata_template_json);
@@ -94,7 +104,8 @@ const App: React.FC = () => {
  return (
   <CardContext.Provider value={cardDataProvider}>
   <RewardsContext.Provider value={rewardDataProvider}>
-    <UserDataReducerProvider>
+  <MerchantListContext.Provider value={merchantDataProvider}>
+  <UserDataReducerProvider>
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
@@ -132,8 +143,9 @@ const App: React.FC = () => {
   </IonApp>
 
   </UserDataReducerProvider>
-          </RewardsContext.Provider>
-        </CardContext.Provider>
+  </MerchantListContext.Provider>
+  </RewardsContext.Provider>
+  </CardContext.Provider>
 );
  
 }
