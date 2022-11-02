@@ -1,7 +1,10 @@
-import { IonAvatar, IonBackButton, IonBadge, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonInput, IonItem, IonItemGroup, IonLabel, IonList, IonListHeader, IonPage, IonRow, IonSearchbar, IonText, IonThumbnail, IonTitle, IonToolbar } from '@ionic/react';
-import { add, pin } from 'ionicons/icons';
-import { useEffect, useRef, useState } from 'react';
-import ExploreContainer from '../components/ExploreContainer';
+import { IonAvatar, IonBackButton, IonBadge, IonButtons, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonInput, IonItem, IonLabel, IonList, IonListHeader, IonPage, IonRow, IonText, IonThumbnail, IonTitle, IonToolbar } from '@ionic/react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router';
+import { CardContext, MerchantListContext } from '../App';
+import CardAd from '../components/CardAd';
+import MyCards from '../components/MyCards';
+import { UserContext } from '../reducer/UserDataReducer';
 import './RewardResults.css';
 
 
@@ -12,14 +15,47 @@ const RewardResultsPage: React.FC = () => {
   }  
 
   const valueRef = useRef(null);
-
+  const params = useParams<{id?:string}>();
+  const mcc_query=params.id.indexOf('mcc')===0
+  const query_id=params.id.replace("mcc","")
   useEffect(() => {
     console.log(valueRef.current)
     setTimeout(function(){
       valueRef.current.setFocus()
+      valueRef.current.children[0].select()
     },500)
   },[])
+  
+  const {cardData}=useContext(CardContext)
+  const {merchantData}=useContext(MerchantListContext)
+  const {userData,removeCard,addCard}=useContext(UserContext);
+  const userOwnsCard = (card_id) => {
+    console.log(userData.card_owned)
+    return userData.card_owned.indexOf(card_id)>-1
+  }
+  const renderCardResults = () => {
+    let ownedCards = [],
+    notOwnedCards =[];
 
+    for(var i=0;i< cardData.cards.data.length;i++){
+      let item=cardData.cards.data[i];
+      let manupulation_results={
+        "best_return_ratio":0.08,
+        "best_return_choice":"points",
+        "cash_reward_incontext":0.06,
+        "miles_reward_incontext":1
+      }
+      item={...item,...manupulation_results}
+      if(userOwnsCard(cardData.cards.data[i].card_id)){
+        ownedCards.push(item)
+      }else{
+        notOwnedCards.push(item)
+      }
+    }
+
+    return {ownedCards, notOwnedCards};
+  }
+  const {ownedCards, notOwnedCards}=renderCardResults();
   return (
     <IonPage>
       <IonHeader>
@@ -31,11 +67,24 @@ const RewardResultsPage: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-          <div className="ion-padding-start ion-padding-end ion-text-center">
+          <div className="ion-padding-start ion-margin-top ion-padding-end ion-text-center">
             <IonAvatar className='image-center'>
-                <img src='/assets/images/merchants/donki.png' ></img>
+                <img src={
+              mcc_query ? (
+                merchantData.merchant_code[query_id].image
+              ):(
+                merchantData.merchants.data[query_id].image
+              )
+            } alt="logo"></img>
             </IonAvatar>
-            <IonLabel>Donki Central</IonLabel>
+            <br></br>
+            <IonLabel className=" ion-margin-top ion-margin-bottom"><h1>{
+              mcc_query ? (
+                merchantData.merchant_code[query_id].name
+              ):(
+                merchantData.merchants.data[query_id].name
+              )
+            }</h1></IonLabel>
             <IonGrid>
                 <IonRow>
                     <IonCol size='2'></IonCol>
@@ -50,67 +99,58 @@ const RewardResultsPage: React.FC = () => {
             
             
           </div>
-          <IonCard color="light">
-                <IonCardContent className="adcontent">
-                    <IonItem>
-                        <IonThumbnail slot='start' className="float-left"><IonImg  className='fit-thumbnail' src="/assets/images/hsbcvs.webp"></IonImg></IonThumbnail>
-                        
-                        <IonLabel className='ion-text-end float-right' slot='end'> 
-                            <IonBadge className='bold' color="success"><h3><b>$2 / A</b></h3></IonBadge><br/>
-                            <div className='ion-text-center'><IonText color="success">+50A</IonText></div>
-                        </IonLabel>
-                        <div>
-                            <IonText className='fontsize-80'>國泰渣打Mastercard</IonText><br/>
-                            <IonBadge color="medium" className='issuer-badge'><IonText>贊助</IonText></IonBadge>
-                        </div>
-                        
-                    </IonItem>
-                    
-                    
-                    <IonLabel slot='end'>
-                        <div className=''>
-                            <IonText>使用此卡進行本交易比你現有最佳的信用卡<b>多賺 {parseInt(spendAmount)/2||0}A</b></IonText>
-                        </div>
-                        <div>
-                            <IonText>由2022年7月1日起，全新信用卡客戶於每個信用卡年度，可尊享10張可共享的國泰航空商務貴賓室使用券、於商務客艙專櫃辦理登機手續及享用優先登機服務</IonText>
-                        </div>
+          <CardAd mcc={mcc_query} spend_amount={spendAmount} code={query_id}></CardAd>
 
-                    </IonLabel>
-                    
-                </IonCardContent>
-            </IonCard>
           <IonList>
               <IonListHeader>
-                  我持有的信用卡
-                  
+                  我持有的信用卡 
               </IonListHeader>
-              <IonItem routerLink={'/rewardBreakdown/'+15123+'/'+1} routerDirection='forward'>
-                  <IonThumbnail slot='start'><IonImg  className='fit-thumbnail' src="/assets/images/hsbcvs.webp"></IonImg></IonThumbnail>
+              {ownedCards.length === 0 && <MyCards></MyCards>} 
+              {ownedCards.map(({card_name,image,issuer}) => (
+                <IonItem routerLink={'/rewardBreakdown/'+(mcc_query?"mcc":"")+query_id+'/'+1} routerDirection='forward'>
+                  <IonThumbnail slot='start'><IonImg  className='fit-thumbnail' src={image}></IonImg></IonThumbnail>
                   <IonLabel>
-                    <IonBadge color="medium" className='issuer-badge'><IonText>匯豐</IonText></IonBadge>
-                    <h3>Visa Signature卡</h3>
+                    <IonBadge color="medium" className='issuer-badge'><IonText>{cardData.issuers.data[issuer].name}</IonText></IonBadge>
+                    <h3>{card_name}</h3>
                   </IonLabel>
                   <IonLabel slot='end' className='ion-text-end'>
-                      <IonBadge className='bold' color="success"><h1><b>$2 / A</b></h1></IonBadge>
-                      <p>A {parseInt(spendAmount)/2||0} / ${parseInt(spendAmount)/2*0.08||0}</p>
-                      <p>{100/2*0.08}%</p>
+                      {(issuer===0) ? <>
+                        <IonBadge className='bold' color="success"><h1><b>$2 / A</b></h1></IonBadge>
+                        <p>A {parseInt(spendAmount)/2||0} / ${parseInt(spendAmount)/2*0.08||0}</p>
+                        <p>{100/2*0.08}%</p>
+                      </> : <>
+                        <IonText className='bold'><h1><b>3.6%</b></h1></IonText>
+                        <p>$7.2</p>
+                      </>
+                      }
                   </IonLabel>
               </IonItem>
+              ))}
+              
           </IonList>
 
           <IonList>
               <IonListHeader>未持有的信用卡</IonListHeader>
-              <IonItem>
-                  <IonThumbnail className='thumbnail' slot='start'><IonImg className='fit-thumbnail'  src="/assets/images/hsbcvs.webp"></IonImg></IonThumbnail>
+              {notOwnedCards.map(({card_name,image,issuer}) => (
+                <IonItem routerLink={'/rewardBreakdown/'+(mcc_query?"mcc":"")+query_id+'/'+1} routerDirection='forward'>
+                  <IonThumbnail slot='start'><IonImg  className='fit-thumbnail' src={image}></IonImg></IonThumbnail>
                   <IonLabel>
-                    <IonBadge color="medium" className='issuer-badge'><IonText>匯豐</IonText></IonBadge>
-                    <h3>Visa Signature卡</h3>
+                    <IonBadge color="medium" className='issuer-badge'><IonText>{cardData.issuers.data[issuer].name}</IonText></IonBadge>
+                    <h3>{card_name}</h3>
                   </IonLabel>
                   <IonLabel slot='end' className='ion-text-end'>
-                      <IonText className='bold'><h1><b>3.6%</b></h1></IonText>
-                      <p>$7.2</p>
+                      {(issuer===0) ? <>
+                        <IonBadge className='bold' color="success"><h1><b>$2 / A</b></h1></IonBadge>
+                        <p>A {parseInt(spendAmount)/2||0} / ${parseInt(spendAmount)/2*0.08||0}</p>
+                        <p>{100/2*0.08}%</p>
+                      </> : <>
+                        <IonText className='bold'><h1><b>3.6%</b></h1></IonText>
+                        <p>$7.2</p>
+                      </>
+                      }
                   </IonLabel>
               </IonItem>
+              ))}
           </IonList>
           
       </IonContent>

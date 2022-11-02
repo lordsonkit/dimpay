@@ -1,7 +1,6 @@
-import { IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonLabel, IonPage, IonRouterOutlet, IonTab, IonTabBar, IonTabButton, IonTabs, IonTitle, IonToolbar } from '@ionic/react';
-import { triangle, ellipse, square, wallet, add, person, star } from 'ionicons/icons';
+import { IonIcon, IonLabel, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
+import { square, wallet, person, star } from 'ionicons/icons';
 import { Redirect, Route } from 'react-router';
-import ExploreContainer from '../components/ExploreContainer';
 import Tab1 from './Tab1';
 import Tab2 from './Tab2';
 import Tab3 from './Tab3';

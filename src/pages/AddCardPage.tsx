@@ -21,8 +21,8 @@ const AddCardPage: React.FC = () => {
   function userOwnsCard(card_id:number){
     return userData.card_owned.indexOf(card_id)>=0?true:false;
   }
-  const {cardData,setCardData}=useContext(CardContext);
-  const {userData,setUserData,removeCard,addCard}=useContext(UserContext);
+  const {cardData}=useContext(CardContext);
+  const {userData,removeCard,addCard}=useContext(UserContext);
 
   return (
     <IonPage>

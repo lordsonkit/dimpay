@@ -3,11 +3,7 @@ import {
   IonBackButton,
   IonButton,
   IonButtons,
-  IonCard,
-  IonCardHeader,
-  IonCol,
   IonContent,
-  IonGrid,
   IonHeader,
   IonIcon,
   IonItem,
@@ -15,14 +11,13 @@ import {
   IonList,
   IonListHeader,
   IonPage,
-  IonRow,
   IonSearchbar,
   IonSpinner,
   IonTitle,
   IonToolbar,
   useIonAlert,
 } from "@ionic/react";
-import { add, navigateOutline, pin } from "ionicons/icons";
+import { navigateOutline } from "ionicons/icons";
 import { useContext, useEffect, useRef, useState } from "react";
 import { MerchantListContext } from "../App";
 

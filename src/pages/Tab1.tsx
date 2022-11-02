@@ -30,7 +30,7 @@ const Tab1: React.FC = () => {
             < IonLabel>我的信用卡</IonLabel>
           </IonListHeader>
           </IonList>
-          <MyCards cardsArray={cards}></MyCards>
+          <MyCards></MyCards>
           <IonGrid>
             <IonRow>
               <IonCol>

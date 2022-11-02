@@ -13,7 +13,7 @@ interface UserOwnedCard {
 interface UserOwnedCards extends Array<UserOwnedCard>{}
 
 interface ContainerProps {
-  cardsArray: UserOwnedCards
+  
 }
 
 

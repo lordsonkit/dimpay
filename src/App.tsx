@@ -1,19 +1,10 @@
 import { Redirect, Route } from 'react-router-dom';
 import {
   IonApp,
-  IonIcon,
-  IonLabel,
   IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, triangle } from 'ionicons/icons';
-import Tab1 from './pages/Tab1';
-import Tab2 from './pages/Tab2';
-import Tab3 from './pages/Tab3';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -45,8 +36,7 @@ import AddCardPage from './pages/AddCardPage';
 /* App Data */
 import cards_json from './app_data/card_data.json';
 import rewards_json from './app_data/rewards.json';
-import userdata_template_json from './app_data/user_data.json';
-import React, { useEffect, useState, useMemo, useReducer } from 'react';
+import React, { useState, useMemo } from 'react';
 import UserDataReducerProvider from './reducer/UserDataReducer';
 import merchants_json from './app_data/merchants.json';
 
