@@ -1,6 +1,6 @@
 import { IonAvatar, IonBackButton, IonBadge, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonInput, IonItem, IonItemGroup, IonLabel, IonList, IonListHeader, IonPage, IonRow, IonSearchbar, IonText, IonThumbnail, IonTitle, IonToolbar } from '@ionic/react';
 import { add, pin } from 'ionicons/icons';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ExploreContainer from '../components/ExploreContainer';
 import './RewardResults.css';
 
@@ -10,6 +10,16 @@ const RewardResultsPage: React.FC = () => {
   function spendValueUpdate(newSpendValue:any){
     setSpendAmount(newSpendValue);
   }  
+
+  const valueRef = useRef(null);
+
+  useEffect(() => {
+    console.log(valueRef.current)
+    setTimeout(function(){
+      valueRef.current.setFocus()
+    },500)
+  },[])
+
   return (
     <IonPage>
       <IonHeader>
@@ -31,7 +41,7 @@ const RewardResultsPage: React.FC = () => {
                     <IonCol size='2'></IonCol>
                     <IonCol size='8'>
                         <IonItem className="custom">
-                            $<IonInput type='number' placeholder='100' value={spendAmount} className='ion-text-center' onIonFocus={e => spendValueUpdate(e.target.value)} onIonBlur={e => spendValueUpdate(e.target.value)}  onIonInput={e => spendValueUpdate(e.target.value)}></IonInput>
+                            $<IonInput type='number' ref={valueRef} placeholder='100' value={spendAmount} className='ion-text-center' onIonFocus={e => spendValueUpdate(e.target.value)} onIonBlur={e => spendValueUpdate(e.target.value)}  onIonInput={e => spendValueUpdate(e.target.value)}></IonInput>
                         </IonItem>
                     </IonCol>
                     <IonCol size='2'></IonCol>
