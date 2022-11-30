@@ -26,11 +26,18 @@
 
     export interface Userdata {
         username: string;
-        card_owned: number[];
+        card_owned: UserCardOptions;
         milelage_value: number[][];
         has_premium_baking: any[][];
         has_private_banking: any[][];
         custom_rewards: CustomRewards;
+    }
+
+    export interface UserCardOptions {
+        expiry:number,
+        user_has_premium_banking:boolean,
+        user_has_private_banking:false,
+        billing_date:number       
     }
 
 

@@ -1,15 +1,14 @@
 import { IonAvatar, IonBackButton, IonBadge, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonInput, IonItem, IonItemGroup, IonLabel, IonList, IonListHeader, IonPage, IonProgressBar, IonRow, IonSearchbar, IonText, IonThumbnail, IonTitle, IonToolbar } from '@ionic/react';
 import { add, pin, pulse } from 'ionicons/icons';
 import { useState } from 'react';
+import { useLocation } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
 import './RewardResults.css';
 
 
 const RewardBreakdown: React.FC = () => {
-    const [spendAmount,setSpendAmount] = useState('100');  
-  function spendValueUpdate(newSpendValue:any){
-    setSpendAmount(newSpendValue);
-  }  
+  const loc=useLocation();
+  console.log(loc.state)
   return (
     <IonPage>
       <IonHeader>
@@ -23,7 +22,7 @@ const RewardBreakdown: React.FC = () => {
       <IonContent fullscreen>
           <div className="ion-padding-start ion-padding-end ion-text-center">
             <IonAvatar className='image-center'>
-                <img src='/assets/images/hsbcvs.png' ></img>
+                <img src='/assets/images/cards/hsbcvs.png' ></img>
             </IonAvatar>
             <IonAvatar className='image-center'>
                 <img src='/assets/images/merchants/donki.png' ></img>

@@ -5,47 +5,70 @@
             {
                 "card_name": "Visa Signature卡",
                 "issuer": 0,
-                "card_id":0,
+                "card_id":"0",
                 "earn_miles":false,
                 "base_reward_miles":0,
                 "earn_cash": true,
-                "base_reward_cash": 250,
+                "base_reward_cash": 0.4,
                 "has_mileage_programme": true,
+                "has_premium_banking_offer":true,
+                "has_private_banking_offer":true,
                 "mileage_programme":{
-                    "data":{
                         "asiamiles":10,
                         "avios":15
-                    }
                 },
                 "annual_fee":2800,
                 "can_waive_fee":true,
                 "annual_salary":360000,
                 "fx_fee":1.95,
-                "reg_liink":"https://google.com",
+                "reg_link":"https://google.com",
                 "icon":"/assets/images/hsbcvs.webp",
-                "image":"/assets/images/hsbcvs.webp"
+                "image":"/assets/images/hsbcvs.webp",
+                "miles_card_currency":""
             },{
                 "card_name": "白金簽帳卡",
                 "issuer": 1,
-                "card_id":1,
+                "card_id":"1",
                 "earn_miles":false,
                 "base_reward_miles":0,
                 "earn_cash": true,
-                "base_reward_cash": 200,
+                "base_reward_cash": 0.5,
                 "has_mileage_programme": true,
+                "has_premium_banking_offer":true,
+                "has_private_banking_offer":true,
                 "mileage_programme":{
-                    "data":{
                         "asiamiles":10,
-                        "avios":10
-                    }
+                        "avios":15
                 },
                 "annual_fee":7800,
                 "can_waive_fee":true,
                 "annual_salary":600000,
                 "fx_fee":1.95,
-                "reg_liink":"https://google.com",
+                "reg_link":"https://google.com",
                 "icon":"/assets/images/amex_platcharge.png",
-                "image":"/assets/images/amex_platcharge.png"
+                "image":"/assets/images/amex_platcharge.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "SC_CX",
+                "issuer": 1,
+                "card_id":"2",
+                "earn_miles":true,
+                "base_reward_miles":0,
+                "earn_cash": false,
+                "base_reward_cash": 0,
+                "has_mileage_programme": false,
+                "has_premium_banking_offer":true,
+                "has_private_banking_offer":true,
+                "mileage_programme":{
+                },
+                "annual_fee":7800,
+                "can_waive_fee":true,
+                "annual_salary":600000,
+                "fx_fee":1.95,
+                "reg_link":"https://google.com",
+                "icon":"/assets/images/amex_platcharge.png",
+                "image":"/assets/images/amex_platcharge.png",
+                "miles_card_currency":"asiamiles"
             }
         ],
         "keys":[
@@ -64,24 +87,21 @@
         ]
     },
     "mileages":{
-        "data":[
-            {
-                "name":"AsiaMiles",
-                "abbv":"AM",
-                "logo":"/assets/images/mileage/am_logo.png",
-                "icon":"/assets/images/mileage/am_icon.png",
-                "unit":"A"
-            },{
-                "name":"Avios",
-                "abbv":"AV",
-                "logo":"/assets/images/mileage/av_logo.png",
-                "icon":"/assets/images/mileage/av_icon.png",
-                "unit":"av"
-            }
-        ],
-        "keys":[
-
-        ]
+        "avios":{
+            "name":"Avios",
+            "abbv":"AV",
+            "logo":"/assets/images/mileage/av_logo.png",
+            "icon":"/assets/images/mileage/av_icon.png",
+            "unit":"av"
+        },
+        "asiamiles":{
+            "name":"Asiamiles",
+            "abbv":"AM",
+            "logo":"/assets/images/mileage/am_logo.png",
+            "icon":"/assets/images/mileage/am_icon.png",
+            "unit":"A"
+        }
+        
     },
     "adverts":{
         "data":[

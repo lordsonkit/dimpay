@@ -1,25 +1,17 @@
-import { IonBackButton, IonBadge, IonButtons, IonCheckbox, IonContent, IonHeader, IonImg, IonItem, IonLabel, IonList, IonListHeader, IonPage, IonText, IonThumbnail, IonTitle, IonToolbar } from '@ionic/react';
+import { IonBackButton, IonBadge, IonButton, IonButtons, IonCheckbox, IonContent, IonHeader, IonIcon, IonImg, IonItem, IonLabel, IonList, IonListHeader, IonPage, IonText, IonThumbnail, IonTitle, IonToolbar, useIonAlert } from '@ionic/react';
 import { useContext } from 'react';
 import { CardContext } from '../App';
 import { UserContext } from "../reducer/UserDataReducer";
 import ExploreContainer from '../components/ExploreContainer';
+import { useHistory } from 'react-router';
+import { add, pencil, trashBin } from 'ionicons/icons';
+import { trace } from 'console';
 
 const AddCardPage: React.FC = () => {
-  function cardCheckbox(cardID){
-    try{
-      console.log(cardID.target.value)
-      console.log()
-      if(cardID.target.checked){
-        //Add Card
-        addCard(cardID.target.value)
-      }else{
-        //Remove Card
-        removeCard(cardID.target.value)
-      }
-    }catch (e){}    
-  }
-  function userOwnsCard(card_id:number){
-    return userData.card_owned.indexOf(card_id)>=0?true:false;
+  const history=useHistory();
+  function userOwnsCard(card_id){
+    console.log(userData.card_owned)
+    return Object.keys(userData.card_owned).indexOf(card_id)>=0?true:false;
   }
   const {cardData}=useContext(CardContext);
   const {userData,removeCard,addCard}=useContext(UserContext);
@@ -38,7 +30,7 @@ const AddCardPage: React.FC = () => {
             <IonList>
               
               {cardData.cards.data.map(({card_name,issuer,card_id,image})=>(
-                <IonItem>
+                <IonItem key={card_id}>
                   <IonThumbnail className='thumbnail' slot='start'>
                     <IonImg className='fit-thumbnail'  src={image}></IonImg>
                   </IonThumbnail>
@@ -47,7 +39,15 @@ const AddCardPage: React.FC = () => {
                     <h3>{card_name}</h3>
                   </IonLabel>
                   <IonLabel slot='end' className='ion-text-end'>
-                      <IonCheckbox checked={userOwnsCard(card_id)} value={card_id} onIonChange={cardCheckbox}></IonCheckbox>
+                    {userOwnsCard(card_id)?<>
+                      <IonButton color="medium" fill="clear" onClick={e=>removeCard(card_id)}><IonIcon icon={trashBin}></IonIcon></IonButton>
+                      <IonButton color="success" fill="outline" routerLink={'/cardDetails/'+card_id} routerDirection="forward"><IonIcon icon={pencil}></IonIcon></IonButton>
+                      
+                    </>:<>
+                      <IonButton color="success" fill="outline" onClick={e=>addCard(card_id)} routerLink={'/cardDetails/'+card_id} routerDirection="forward"><IonIcon icon={add}></IonIcon></IonButton>
+                    </>}
+                      
+                      
                   </IonLabel>
               </IonItem>
               ))}

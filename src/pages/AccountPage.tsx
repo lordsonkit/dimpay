@@ -1,4 +1,4 @@
-import { IonAvatar, IonContent, IonHeader, IonItem, IonItemGroup, IonLabel, IonList, IonListHeader, IonPage, IonText, IonTitle, IonToolbar } from '@ionic/react';
+import { IonAvatar, IonButton, IonContent, IonHeader, IonItem, IonItemGroup, IonLabel, IonList, IonListHeader, IonPage, IonText, IonTitle, IonToolbar } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
 
 const AccountPage: React.FC = () => {
@@ -28,12 +28,14 @@ const AccountPage: React.FC = () => {
             </IonLabel>
           </IonItem>
           <IonItem>text</IonItem>
-        </IonList>
-        <IonList>
-          <IonItem>
-            <IonText color='danger'>Delete All Data</IonText>
+          <IonItem detail={true} href='#' routerLink="/settings/miles_value" routerDirection='forward'>
+            <IonLabel>調整里數現金價值</IonLabel>
           </IonItem>
         </IonList>
+        <br></br>
+        <IonButton expand='full' color="danger" onClick={e=>{localStorage.clear();window.location.href="/"}}>
+          Reset app data
+        </IonButton>
       </IonContent>
     </IonPage>
   );

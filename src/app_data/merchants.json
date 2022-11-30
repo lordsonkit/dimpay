@@ -7,7 +7,7 @@
                 "search_keywords":"tax 繳費 繳稅 稅金",
                 "id":0,
                 "mcc":["NCCC"],
-                "payment_channel":[],
+                "payment_channel":[0],
                 "locations":[],
                 "image":"/assets/images/merchants/hongkong.png",
                 "is_category":true,

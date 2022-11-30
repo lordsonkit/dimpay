@@ -2,14 +2,17 @@ import { IonAvatar, IonBackButton, IonBadge, IonButtons, IonCard, IonCardContent
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import { CardContext, MerchantListContext } from '../App';
+import { CalculateCardRewardInContext } from '../components/CalculateCardRewardInContext';
 import CardAd from '../components/CardAd';
 import MyCards from '../components/MyCards';
+import RewardResultList from '../components/RewardResultList';
 import { UserContext } from '../reducer/UserDataReducer';
 import './RewardResults.css';
 
 
 const RewardResultsPage: React.FC = () => {
-    const [spendAmount,setSpendAmount] = useState('100');  
+  const [spendAmount,setSpendAmount] = useState('100');  
+  const [spendCurrency,setSpendCurrency] = useState('HKD');  
   function spendValueUpdate(newSpendValue:any){
     setSpendAmount(newSpendValue);
   }  
@@ -19,7 +22,7 @@ const RewardResultsPage: React.FC = () => {
   const mcc_query=params.id.indexOf('mcc')===0
   const query_id=params.id.replace("mcc","")
   useEffect(() => {
-    console.log(valueRef.current)
+    //console.log(valueRef.current)
     setTimeout(function(){
       valueRef.current.setFocus()
       valueRef.current.children[0].select()
@@ -30,8 +33,7 @@ const RewardResultsPage: React.FC = () => {
   const {merchantData}=useContext(MerchantListContext)
   const {userData,removeCard,addCard}=useContext(UserContext);
   const userOwnsCard = (card_id) => {
-    console.log(userData.card_owned)
-    return userData.card_owned.indexOf(card_id)>-1
+    return Object.keys(userData.card_owned).indexOf(card_id)>-1
   }
   const renderCardResults = () => {
     let ownedCards = [],
@@ -40,11 +42,18 @@ const RewardResultsPage: React.FC = () => {
     for(var i=0;i< cardData.cards.data.length;i++){
       let item=cardData.cards.data[i];
       let manupulation_results={
-        "best_return_ratio":0.08,
-        "best_return_choice":"points",
-        "cash_reward_incontext":0.06,
-        "miles_reward_incontext":1
+        "best_return_ratio":0,
+        "best_return_ratio_miles":0,
+        "best_return_choice":"cash",
+        "cash_reward_incontext":0,
+        "miles_reward_incontext":0,
+        "reward_breakdown":[],
+        "payment_method_limit":[],
+        "miles_currency_in_context":"",
+        "best_item":false
       }
+      
+      manupulation_results=CalculateCardRewardInContext(i,mcc_query,query_id,spendAmount)
       item={...item,...manupulation_results}
       if(userOwnsCard(cardData.cards.data[i].card_id)){
         ownedCards.push(item)
@@ -52,7 +61,15 @@ const RewardResultsPage: React.FC = () => {
         notOwnedCards.push(item)
       }
     }
-
+    
+    if(ownedCards.length>0){
+      ownedCards.sort(dynamicSort("-best_return_ratio"));
+      ownedCards[0].best_item=true;
+    }
+    if(notOwnedCards.length>0){
+      notOwnedCards.sort(dynamicSort("-best_return_ratio"));
+      notOwnedCards[0].best_item=true;
+    }
     return {ownedCards, notOwnedCards};
   }
   const {ownedCards, notOwnedCards}=renderCardResults();
@@ -106,56 +123,40 @@ const RewardResultsPage: React.FC = () => {
                   我持有的信用卡 
               </IonListHeader>
               {ownedCards.length === 0 && <MyCards></MyCards>} 
-              {ownedCards.map(({card_name,image,issuer}) => (
-                <IonItem routerLink={'/rewardBreakdown/'+(mcc_query?"mcc":"")+query_id+'/'+1} routerDirection='forward'>
-                  <IonThumbnail slot='start'><IonImg  className='fit-thumbnail' src={image}></IonImg></IonThumbnail>
-                  <IonLabel>
-                    <IonBadge color="medium" className='issuer-badge'><IonText>{cardData.issuers.data[issuer].name}</IonText></IonBadge>
-                    <h3>{card_name}</h3>
-                  </IonLabel>
-                  <IonLabel slot='end' className='ion-text-end'>
-                      {(issuer===0) ? <>
-                        <IonBadge className='bold' color="success"><h1><b>$2 / A</b></h1></IonBadge>
-                        <p>A {parseInt(spendAmount)/2||0} / ${parseInt(spendAmount)/2*0.08||0}</p>
-                        <p>{100/2*0.08}%</p>
-                      </> : <>
-                        <IonText className='bold'><h1><b>3.6%</b></h1></IonText>
-                        <p>$7.2</p>
-                      </>
-                      }
-                  </IonLabel>
-              </IonItem>
-              ))}
+              <RewardResultList cardData={cardData} mcc_query={mcc_query} query_id={query_id} cardlist={ownedCards} spend_amount={parseFloat(spendAmount)} spend_currency={spendCurrency}></RewardResultList>
+              
               
           </IonList>
 
           <IonList>
               <IonListHeader>未持有的信用卡</IonListHeader>
-              {notOwnedCards.map(({card_name,image,issuer}) => (
-                <IonItem routerLink={'/rewardBreakdown/'+(mcc_query?"mcc":"")+query_id+'/'+1} routerDirection='forward'>
-                  <IonThumbnail slot='start'><IonImg  className='fit-thumbnail' src={image}></IonImg></IonThumbnail>
-                  <IonLabel>
-                    <IonBadge color="medium" className='issuer-badge'><IonText>{cardData.issuers.data[issuer].name}</IonText></IonBadge>
-                    <h3>{card_name}</h3>
-                  </IonLabel>
-                  <IonLabel slot='end' className='ion-text-end'>
-                      {(issuer===0) ? <>
-                        <IonBadge className='bold' color="success"><h1><b>$2 / A</b></h1></IonBadge>
-                        <p>A {parseInt(spendAmount)/2||0} / ${parseInt(spendAmount)/2*0.08||0}</p>
-                        <p>{100/2*0.08}%</p>
-                      </> : <>
-                        <IonText className='bold'><h1><b>3.6%</b></h1></IonText>
-                        <p>$7.2</p>
-                      </>
-                      }
-                  </IonLabel>
-              </IonItem>
-              ))}
+              <RewardResultList cardData={cardData} mcc_query={mcc_query} query_id={query_id} cardlist={notOwnedCards} spend_amount={parseFloat(spendAmount)} spend_currency={spendCurrency}></RewardResultList>
+              
           </IonList>
           
       </IonContent>
     </IonPage>
   );
 };
+const ConditionalWrapper = ({ condition, wrapper, children }) => 
+  condition ? wrapper(children) : children;
 
+function humanize(x,d=2){
+  return x.toFixed(d).replace(/\.?0*$/,'');
+}
+
+function dynamicSort(property) {
+  var sortOrder = 1;
+  if(property[0] === "-") {
+      sortOrder = -1;
+      property = property.substr(1);
+  }
+  return function (a,b) {
+      /* next line works with strings and numbers, 
+       * and you may want to customize it to your needs
+       */
+      var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
+      return result * sortOrder;
+  }
+}
 export default RewardResultsPage;

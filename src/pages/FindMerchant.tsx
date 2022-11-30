@@ -158,7 +158,6 @@ const FindMerchantPage: React.FC = () => {
   function gpsLocated(position){
     setWaitingGPS(false)
     setGPSSearchMode(true)
-    console.log(position)
     setGPSTarget([position.coords.latitude,position.coords.longitude])
   }
   function gpsFailed(){
@@ -211,7 +210,7 @@ const FindMerchantPage: React.FC = () => {
           </IonItem>}
 
           { (searchTerm && !gpsSearchMode) && searchResults.map(({ name, description, id, image }) => (
-            <IonItem routerDirection="forward" routerLink={"/rewardResults/"+id}>
+            <IonItem routerDirection="forward" routerLink={"/rewardResults/"+id} key={id}>
               <IonAvatar slot="start">
                 <img src={image} alt="logo" />
               </IonAvatar>
@@ -223,7 +222,7 @@ const FindMerchantPage: React.FC = () => {
           ))}
 
           { (gpsSearchMode) && gpsResults.map(({ name, description, id, image, distance }) => (
-            <IonItem routerDirection="forward" routerLink={"/rewardResults/"+id}>
+            <IonItem routerDirection="forward" routerLink={"/rewardResults/"+id} key={id}>
               <IonAvatar slot="start">
                 <img src={image} alt="logo" />
               </IonAvatar>
@@ -245,7 +244,7 @@ const FindMerchantPage: React.FC = () => {
             <IonLabel>綜合消費</IonLabel>
           </IonListHeader>
           {merchantTypeResults.map(({name,description,mcc,image}) => (
-            <IonItem routerDirection="forward" routerLink={"/rewardResults/mcc"+mcc}>
+            <IonItem routerDirection="forward" routerLink={"/rewardResults/mcc"+mcc} key={"mcc"+mcc}>
             <IonAvatar slot="start">
               <img src={image} alt="logo" />
             </IonAvatar>

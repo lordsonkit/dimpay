@@ -39,6 +39,8 @@ import rewards_json from './app_data/rewards.json';
 import React, { useState, useMemo } from 'react';
 import UserDataReducerProvider from './reducer/UserDataReducer';
 import merchants_json from './app_data/merchants.json';
+import CardDetailPage from './pages/CardDetail';
+import MilesValueSetting from './pages/MilesValueSetting';
 
 setupIonicReact();
 
@@ -108,9 +110,6 @@ const App: React.FC = () => {
               <Route path="/rewardResults/:id">
                 <RewardResultsPage />
               </Route>
-              <Route path="/rewardBreakdown/:id/:cardid">
-                <RewardBreakdown />
-              </Route>
               <Route path="/rewardItem/:id">
                 <RewardItem />
               </Route>
@@ -120,14 +119,21 @@ const App: React.FC = () => {
               <Route exact path="/addCard">
                 <AddCardPage />
               </Route>
+              <Route exact path="/settings/miles_value">
+                <MilesValueSetting />
+              </Route>
+              <Route exact path="/cardDetails/:id">
+                <CardDetailPage />
+              </Route>
               <Route path="/tabs">
                 <Homepage />
               </Route>
               <Route exact path="/">
                 <Redirect to="/welcome" />
               </Route>
-              
-
+              <Route exact path="/rewardBreakdown">
+                <RewardBreakdown />
+              </Route>
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
