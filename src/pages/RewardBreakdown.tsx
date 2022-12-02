@@ -1,78 +1,102 @@
 import { IonAvatar, IonBackButton, IonBadge, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonCol, IonContent, IonGrid, IonHeader, IonIcon, IonImg, IonInput, IonItem, IonItemGroup, IonLabel, IonList, IonListHeader, IonPage, IonProgressBar, IonRow, IonSearchbar, IonText, IonThumbnail, IonTitle, IonToolbar } from '@ionic/react';
 import { add, pin, pulse } from 'ionicons/icons';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useLocation } from 'react-router';
+import { CardContext, MerchantListContext, RewardsContext } from '../App';
+import { CalculateCardRewardInContext } from '../components/CalculateCardRewardInContext';
 import ExploreContainer from '../components/ExploreContainer';
-import './RewardResults.css';
+import { humanize } from '../components/humanize';
+import RewardBreakdownList from '../components/RewardBreakdownList';
+import { UserContext } from '../reducer/UserDataReducer';
+import './RewardBreakdown.css';
 
 
 const RewardBreakdown: React.FC = () => {
-  const loc=useLocation();
-  console.log(loc.state)
+  console.log("RewardBreakdown Page Render")
+  const location = useLocation<{ card_id: number, mcc_query: boolean, query_id: string, spend_amount: number, spend_currency: string }>();
+  const { cardData } = useContext(CardContext)
+  const { merchantData } = useContext(MerchantListContext)
+  const { rewardData } = useContext(RewardsContext);
+  const { userData, removeCard, addCard } = useContext(UserContext);
+  const [ useNotional, setUseNotional ] = useState(false);
+
+  //Catch unload error
+  if (!location.state) {
+    return (<IonPage>
+      <IonHeader>
+        <IonToolbar>
+          <IonButtons slot='start'>
+            <IonBackButton />
+          </IonButtons>
+          <IonTitle>優惠分項明細</IonTitle>
+        </IonToolbar>
+      </IonHeader></IonPage>)
+  }
+  const { card_id, mcc_query, query_id, spend_amount, spend_currency } = location.state
+
+  let result = {
+    "best_return_ratio": 0,
+    "best_return_ratio_miles": 0,
+    "best_return_choice": "cash",
+    "cash_reward_incontext": 0,
+    "miles_reward_incontext": 0,
+    "reward_breakdown": [],
+    "payment_method_limit": [],
+    "miles_currency_in_context": "",
+    "ineligible_rewards":[],
+    "best_item": false,
+    "bill_size":0,
+    "spend_currency":"hkd",
+    "spend_method":"default"
+}
+
+  result=CalculateCardRewardInContext(card_id, mcc_query, query_id, spend_amount,spend_currency);
+  //warp 
+  console.log(result)
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonButtons slot='start'>
-            <IonBackButton/>
+            <IonBackButton />
           </IonButtons>
           <IonTitle>優惠分項明細</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-          <div className="ion-padding-start ion-padding-end ion-text-center">
-            <IonAvatar className='image-center'>
-                <img src='/assets/images/cards/hsbcvs.png' ></img>
+        <div className="ion-padding-start ion-padding-end ion-margin-top ion-padding-top ion-text-center">
+          <div style={{ marginTop: "50px", backgroundImage: "url(" + cardData.cards.data?.[card_id].image + ")", backgroundPosition: "center", backgroundSize: "contain", backgroundRepeat: "no-repeat" }} className="card_hero">
+            <IonAvatar className='image-center breakdown-avatar' style={{width: "100px", height:"100px", position: "relative", bottom: "50px"}}>
+              <img src={mcc_query?merchantData.merchant_code?.[query_id].image:merchantData.merchants.data?.[query_id].image} ></img>
             </IonAvatar>
-            <IonAvatar className='image-center'>
-                <img src='/assets/images/merchants/donki.png' ></img>
-            </IonAvatar>
-            <IonLabel>Donki Central</IonLabel><br/>
-            <IonText className="custom">$123</IonText>
-            <IonButton size='large' expand='block' routerLink='/' routerDirection='root'><IonIcon icon={add}></IonIcon> 紀錄我的消費</IonButton>
-            
           </div>
+          <div>
+            <IonText>
+              <h2>{ mcc_query ? merchantData.merchant_code?.[query_id].name : merchantData.merchants.data[query_id].name }</h2>
+            </IonText>
+            <IonText className="custom">${spend_amount}</IonText>
+            <div className='ion-padding' onClick={e=>setUseNotional(!useNotional)}>
+              {useNotional ? <>
+                <IonBadge color="success">${humanize(result.best_return_ratio_miles)} / A</IonBadge> {cardData.cards.data[card_id].earn_cash==true && <IonBadge color="light">現金回贈 {humanize(result.cash_reward_incontext/spend_amount*100)}%</IonBadge>}
+              </>:<>
+              <IonBadge color="success">{humanize(result.miles_reward_incontext)} A</IonBadge> {cardData.cards.data[card_id].earn_cash==true &&<IonBadge color="light">現金 ${humanize(result.cash_reward_incontext)}</IonBadge>}
+              </>}
+              
+              <br />
+              <IonBadge color="success">等值回贈 {humanize(result.best_return_ratio)}%</IonBadge>
+            </div>
+          </div>
+        </div>
 
-          <IonList>
-              <IonListHeader>
-                  優惠分項
-              </IonListHeader>
-              <IonItem routerLink={'/rewardItem/'+8502} routerDirection='forward'>
-                  <IonLabel>
-                    <h2>基本消費回贈</h2>
-                    <IonBadge color="medium" className='condition-badge'><IonText>需登記</IonText></IonBadge>
-                    <IonBadge color="medium" className='condition-badge'><IonText>流動支付</IonText></IonBadge>
-                    <IonBadge color="medium" className='condition-badge'><IonText>最低簽帳</IonText></IonBadge>
-                    <IonBadge color="medium" className='condition-badge'><IonText>低額度</IonText></IonBadge>
-                    <IonBadge color="medium" className='condition-badge'><IonText>拍卡支付</IonText></IonBadge>
-                  </IonLabel>
-                  <IonLabel slot='end' className='ion-text-end'>
-                      <IonBadge className='bold'><h3><b>$2 / A</b></h3></IonBadge>
-                  </IonLabel>
-              </IonItem>
-              <IonItem routerLink={'/rewardItem/'+8502} routerDirection='forward'>
-                  <IonLabel>
-                    <h2>最紅夏日消費</h2>
-                    <IonBadge color="medium" className='condition-badge'><IonText>需登記</IonText></IonBadge>
-                    <IonBadge color="medium" className='condition-badge'><IonText>流動支付</IonText></IonBadge>
-                    <IonBadge color="medium" className='condition-badge'><IonText>最低簽帳</IonText></IonBadge>
-                    <IonBadge color="medium" className='condition-badge'><IonText>低額度</IonText></IonBadge>
-                    <IonBadge color="medium" className='condition-badge'><IonText>拍卡支付</IonText></IonBadge>
-                    <h3>簽帳進度（最低簽帳額）</h3>
-                    <IonProgressBar value={1}></IonProgressBar>
-                    <h3>簽帳進度（最多可賺取回贈）</h3>
-                    <IonProgressBar value={0.8}></IonProgressBar>
-                  </IonLabel>
-                  <IonLabel slot='end' className='ion-text-end'>
-                      <IonBadge className='bold'><h3><b>$2 / A</b></h3></IonBadge>
-                  </IonLabel>
-              </IonItem>
-          </IonList>
+        <RewardBreakdownList eligible_list={true} list_items={result.reward_breakdown} context={result} ></RewardBreakdownList>
+        <br/>
+        <RewardBreakdownList eligible_list={false} list_items={result.ineligible_rewards}  context={result} ></RewardBreakdownList>
 
-          
+
       </IonContent>
     </IonPage>
   );
 };
 
 export default RewardBreakdown;
+

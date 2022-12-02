@@ -1,6 +1,7 @@
 import { IonItem, IonThumbnail, IonImg, IonLabel, IonBadge, IonText } from "@ionic/react";
 import { useHistory } from "react-router";
 import { ConditionalWrapper } from "./ConditionalWrapper";
+import { humanize } from "./humanize";
 
 interface ContainerProps {
   cardlist: any,
@@ -10,20 +11,21 @@ interface ContainerProps {
   spend_amount: number,
   spend_currency: string
 }
+interface RewardBreakdownProps{card_id:string, mcc_query:boolean, query_id:string, spend_amount:number, spend_currency:string}
 
 
 const RewardResultList: React.FC<ContainerProps> = ({ cardlist,mcc_query,query_id,cardData,spend_amount,spend_currency }) => {
     const history=useHistory();
 
-    function viewRewardBreakdown(card_id,mcc_query,query_id,spend_amount,spend_currency=""){
+    function viewRewardBreakdown(card_id:string,mcc_query:boolean,query_id:string,spend_amount:number,spend_currency:string=""){
         history.push({
             pathname:"/rewardBreakdown",
             state:{
-                card_id,
-                mcc_query,
-                query_id,
-                spend_amount,
-                spend_currency
+                card_id:card_id,
+                mcc_query:mcc_query,
+                query_id:query_id,
+                spend_amount:spend_amount,
+                spend_currency:spend_currency
             }
         })
     }
@@ -37,7 +39,7 @@ const RewardResultList: React.FC<ContainerProps> = ({ cardlist,mcc_query,query_i
                     <h3>{card_name}</h3>
                   </IonLabel>
                   <IonLabel slot='end' className='ion-text-end'>
-                      {(earn_miles||has_mileage_programme) ? <>
+                      {((earn_miles||has_mileage_programme) && best_return_choice=="miles") ? <>
                         <ConditionalWrapper condition={best_item} wrapper={children=><IonBadge className='bold' color="success">{children}</IonBadge>}>
                           <h1><b>$ {humanize(best_return_ratio_miles)} / {cardData.mileages?.[miles_currency_in_context].unit||"(?)"}</b></h1>
                         </ConditionalWrapper>
@@ -55,8 +57,6 @@ const RewardResultList: React.FC<ContainerProps> = ({ cardlist,mcc_query,query_i
     </>
   );
 };
-function humanize(x,d=2){
-    return x.toFixed(d).replace(/\.?0*$/,'');
-  }
+
   
 export default RewardResultList;

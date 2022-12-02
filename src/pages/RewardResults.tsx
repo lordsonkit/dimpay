@@ -1,4 +1,4 @@
-import { IonAvatar, IonBackButton, IonBadge, IonButtons, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonInput, IonItem, IonLabel, IonList, IonListHeader, IonPage, IonRow, IonText, IonThumbnail, IonTitle, IonToolbar } from '@ionic/react';
+import { IonAvatar, IonBackButton, IonBadge, IonButtons, IonCard, IonCardContent, IonCol, IonContent, IonGrid, IonHeader, IonImg, IonInput, IonItem, IonLabel, IonList, IonListHeader, IonPage, IonRow, IonSelect, IonSelectOption, IonText, IonThumbnail, IonTitle, IonToolbar } from '@ionic/react';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
 import { CardContext, MerchantListContext } from '../App';
@@ -12,7 +12,8 @@ import './RewardResults.css';
 
 const RewardResultsPage: React.FC = () => {
   const [spendAmount,setSpendAmount] = useState('100');  
-  const [spendCurrency,setSpendCurrency] = useState('HKD');  
+  const [spendCurrency,setSpendCurrency] = useState('hkd');  
+  const [paymentMethod,setPaymentMethod] = useState('swipe');  
   function spendValueUpdate(newSpendValue:any){
     setSpendAmount(newSpendValue);
   }  
@@ -41,7 +42,7 @@ const RewardResultsPage: React.FC = () => {
 
     for(var i=0;i< cardData.cards.data.length;i++){
       let item=cardData.cards.data[i];
-      let manupulation_results={
+      let manipulation_results={
         "best_return_ratio":0,
         "best_return_ratio_miles":0,
         "best_return_choice":"cash",
@@ -53,8 +54,8 @@ const RewardResultsPage: React.FC = () => {
         "best_item":false
       }
       
-      manupulation_results=CalculateCardRewardInContext(i,mcc_query,query_id,spendAmount)
-      item={...item,...manupulation_results}
+      manipulation_results=CalculateCardRewardInContext(i,mcc_query,query_id,parseInt(spendAmount))
+      item={...item,...manipulation_results}
       if(userOwnsCard(cardData.cards.data[i].card_id)){
         ownedCards.push(item)
       }else{
@@ -104,13 +105,25 @@ const RewardResultsPage: React.FC = () => {
             }</h1></IonLabel>
             <IonGrid>
                 <IonRow>
-                    <IonCol size='2'></IonCol>
-                    <IonCol size='8'>
+                    <IonCol size='0' sizeSm='2'></IonCol>
+                    <IonCol size='12' sizeSm='8'>
                         <IonItem className="custom">
                             $<IonInput type='number' ref={valueRef} placeholder='100' value={spendAmount} className='ion-text-center' onIonFocus={e => spendValueUpdate(e.target.value)} onIonBlur={e => spendValueUpdate(e.target.value)}  onIonInput={e => spendValueUpdate(e.target.value)}></IonInput>
                         </IonItem>
+                        <IonItem className='ion-text-end'>
+                          <IonSelect interface='action-sheet'  value={spendCurrency}>
+                            {Object.keys(cardData.currencies).map((ccy) => (
+                              <IonSelectOption value={ccy}>{cardData.currencies[ccy].name}</IonSelectOption>
+                            ))}
+                          </IonSelect>
+                          <IonSelect interface='action-sheet' slot="end" value={paymentMethod}>
+                          {Object.keys(cardData.payment_method).map((method) => (
+                              <IonSelectOption value={method}>{cardData.payment_method[method]}</IonSelectOption>
+                            ))}
+                          </IonSelect>
+                        </IonItem>
                     </IonCol>
-                    <IonCol size='2'></IonCol>
+                    <IonCol size='0' sizeSm='2'></IonCol>
                 </IonRow>
             </IonGrid>
             
@@ -141,9 +154,7 @@ const RewardResultsPage: React.FC = () => {
 const ConditionalWrapper = ({ condition, wrapper, children }) => 
   condition ? wrapper(children) : children;
 
-function humanize(x,d=2){
-  return x.toFixed(d).replace(/\.?0*$/,'');
-}
+
 
 function dynamicSort(property) {
   var sortOrder = 1;

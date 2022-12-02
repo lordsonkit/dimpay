@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { CardContext, MerchantListContext, RewardsContext } from "../App";
 import { UserContext } from "../reducer/UserDataReducer";
+import { INELIGIBLE_REASON } from "./IneligibleReason";
 
-interface CardRewardResultDigest { best_return_ratio: number; best_return_choice: string; cash_reward_incontext: number; miles_reward_incontext: number; }
 
-export const CalculateCardRewardInContext = (card_id,mcc_query,query_id,spend_amount,spend_currency=null) => {
 
+export const CalculateCardRewardInContext = (card_id:number,mcc_query,query_id:string,spend_amount:number,spend_currency:string=null) => {
+    //Hack to a bug that idk why string would sneak through
+    card_id=parseInt(String(card_id))
     const {cardData}=useContext(CardContext)
     const {merchantData}=useContext(MerchantListContext)
     const {rewardData}=useContext(RewardsContext);
@@ -13,6 +15,7 @@ export const CalculateCardRewardInContext = (card_id,mcc_query,query_id,spend_am
     let card=cardData.cards[card_id];
     let rewards=rewardData.rewards.data;
     let eligible_rewards=[];
+    let ineligble_rewards=[];
     let reward_breakdown=[];
     let payment_method=[]
     if(spend_amount<=0){
@@ -21,7 +24,7 @@ export const CalculateCardRewardInContext = (card_id,mcc_query,query_id,spend_am
 
     for(var i=0; i< rewards.length; i++){
         var qualified = true;
-        var target_merchant_id=0;
+        var target_merchant_id="0";
         var target_mcc=query_id;
         var caution_message=""
         
@@ -39,11 +42,31 @@ export const CalculateCardRewardInContext = (card_id,mcc_query,query_id,spend_am
             // For merchant query, if the merchant is not in list of qualifying merchants, and the list is not empty
             qualified=false;
             //console.log("Merchant not in list")
+            ineligble_rewards.push({
+                reward_id:i,
+                reason:INELIGIBLE_REASON.MERCHANT_NOT_IN_LIST,
+                limits:-1
+            })
+            continue;
+        }
+        if(rewards[i].disqualified_merchants.indexOf(target_merchant_id)!=-1 && rewards[i].disqualified_merchants.length >0) {
+            // For merchant query, if the merchant is not in list of qualifying merchants, and the list is not empty
+            qualified=false;
+            //console.log("Merchant not in list")
+            ineligble_rewards.push({
+                reward_id:i,
+                reason:INELIGIBLE_REASON.DISQUALIFIED_MERCHANT
+            })
             continue;
         }
 
         if(mcc_query && ["tax","bill"].indexOf(target_mcc)>-1 && rewards[i].bill_payment==false ){
             //tax and bill unqualify reward
+            ineligble_rewards.push({
+                reward_id:i,
+                reason:INELIGIBLE_REASON.BILL_PAYMENT
+            })
+            continue;
         }
 
         if(rewards[i].qualify_mcc.indexOf(target_mcc)==-1 && rewards[i].qualify_mcc.length>0){
@@ -51,6 +74,10 @@ export const CalculateCardRewardInContext = (card_id,mcc_query,query_id,spend_am
             //if the merchant code list is not empty
             qualified=false;
             //console.log("Merchant code not in list")
+            ineligble_rewards.push({
+                reward_id:i,
+                reason:INELIGIBLE_REASON.MCC_NOT_IN_LIST
+            })
             continue;
         }
         
@@ -74,6 +101,10 @@ export const CalculateCardRewardInContext = (card_id,mcc_query,query_id,spend_am
                 //matching both array, there are no payment method crossover
                 qualified=false
                 //console.log("Payment method not in list")
+                ineligble_rewards.push({
+                    reward_id:i,
+                    reason:INELIGIBLE_REASON.PAYMENT_METHOD
+                })
                 continue;
             }
         }
@@ -82,22 +113,37 @@ export const CalculateCardRewardInContext = (card_id,mcc_query,query_id,spend_am
             //Not qulified due to bill too small
             qualified=false;
             //console.log("Bill size small")
+            ineligble_rewards.push({
+                reward_id:i,
+                reason:INELIGIBLE_REASON.BILL_SIZE_SMALL
+            })
             continue;
         }
-        if(spend_amount>rewards[i].maximum_qualifacation_spend && rewards[i].maximum_qualifacation_spend>0){
+        let bill_limit=-1;
+        if(spend_amount>rewards[i].maximum_bill_size && rewards[i].maximum_bill_size>0){
             //Bill size over
-            qualified=false;
+            //qualified=false;
             //console.log("Bill size over")
-            continue;
+            /*ineligble_rewards.push({
+                reward_id:i,
+                reason:INELIGIBLE_REASON.BILL_SIZE_LARGE
+            })*/
+            bill_limit=rewards[i].maximum_bill_size
+            //continue;
         }
         if(rewards[i].charge_currency_requirement.length>0 && rewards[i].charge_currency_requirement.indexOf(spend_currency)>-1){
             //Currency Requirement
             qualified=false;
+            ineligble_rewards.push({
+                reward_id:i,
+                reason:INELIGIBLE_REASON.BILL_CURRENCY
+            })
             continue;
         }
-        if(spend_amount>rewards[i].maximum_qualifacation_spend && rewards[i].maximum_bill_size>0){
+        if(spend_amount>rewards[i].maximum_qualifacation_spend && rewards[i].maximum_qualifacation_spend>0){
             //Can only earn partial
             caution_message="Spending amount: "+spend_amount+" is larger than the maximum for this award "+rewards[i].maximum_qualifacation_spend
+            bill_limit=rewards[i].maximum_qualifacation_spend
 
         }
         if(rewards[i].day_of_week.length>0 && rewards[i].day_of_week.indexOf(new Date().getDay()) > -1){
@@ -105,6 +151,10 @@ export const CalculateCardRewardInContext = (card_id,mcc_query,query_id,spend_am
             //today is not the day
             qualified=false;
             //console.log("Not day of week")
+            ineligble_rewards.push({
+                reward_id:i,
+                reason:INELIGIBLE_REASON.DAY_OF_WEEK
+            })
             continue;
         }
         if(rewards[i].day_of_month.length>0 && rewards[i].day_of_month.indexOf(new Date().getDate()) > -1){
@@ -112,10 +162,29 @@ export const CalculateCardRewardInContext = (card_id,mcc_query,query_id,spend_am
             // today is not the day
             qualified=false;
             //console.log("Not day of month")
+            ineligble_rewards.push({
+                reward_id:i,
+                reason:INELIGIBLE_REASON.DAY_OF_MONTH
+            })
+            continue;
+        }
+        if(userData.opt_out_offers.indexOf(String(i))>-1){
+            //Reward only available at certain day of month
+            // today is not the day
+            qualified=false;
+            //console.log("Not day of month")
+            ineligble_rewards.push({
+                reward_id:i,
+                reason:INELIGIBLE_REASON.USER_OPT_OUT
+            })
             continue;
         }
         if(qualified){
-            eligible_rewards.push(i)
+            eligible_rewards.push({
+                reward_id:i,
+                reason:-1,
+                limits:bill_limit
+            })
         }
     }
 
@@ -128,11 +197,12 @@ export const CalculateCardRewardInContext = (card_id,mcc_query,query_id,spend_am
     best_return_ratio=0;
     // if card only earn miles, then cards[].earn_miles == true
     if(cardData.cards.data[card_id].earn_miles==true){
+        best_return_choice="miles";
         //miles only card, derive miles earned
         for(let i=0;i<eligible_rewards.length;i++){
             let applicable_reward_amount=spend_amount;
-            applicable_reward_amount=(rewards[eligible_rewards[i]].maximum_bill_size>0?Math.min(rewards[eligible_rewards[i]].maximum_bill_size,spend_amount):spend_amount)
-            miles_reward_incontext+=applicable_reward_amount/rewards[eligible_rewards[i]].reward_ratio
+            applicable_reward_amount=(rewards[eligible_rewards[i].reward_id].maximum_bill_size>0?Math.min(rewards[eligible_rewards[i].reward_id].maximum_bill_size,spend_amount):spend_amount)
+            miles_reward_incontext+=applicable_reward_amount/rewards[eligible_rewards[i].reward_id].reward_ratio
         }
         //Convert miles to cash value
         let miles_value=0;
@@ -148,14 +218,14 @@ export const CalculateCardRewardInContext = (card_id,mcc_query,query_id,spend_am
         //point or cash based card, derive cash value
         for(let i=0;i<eligible_rewards.length;i++){
             let applicable_reward_amount=spend_amount;
-            applicable_reward_amount=(rewards[eligible_rewards[i]].maximum_bill_size>0?Math.min(rewards[eligible_rewards[i]].maximum_bill_size,spend_amount):spend_amount)
-            cash_reward_incontext+=applicable_reward_amount*rewards[eligible_rewards[i]].reward_ratio
+            applicable_reward_amount=(rewards[eligible_rewards[i].reward_id].maximum_bill_size>0?Math.min(rewards[eligible_rewards[i].reward_id].maximum_bill_size,spend_amount):spend_amount)
+            cash_reward_incontext+=applicable_reward_amount*rewards[eligible_rewards[i].reward_id].reward_ratio
         }
         
         //check card milage program 
         if(cardData.cards.data[card_id].has_mileage_programme){
             let milage=cardData.cards.data[card_id].mileage_programme
-            if(Object.keys(userData.card_owned[card_id]?.mileage_program_override).length){
+            if(Object.keys(userData.card_owned[card_id]?.mileage_program_override||{}).length){
                 //override values for milage program
                 for(var k in userData.card_owned[card_id]?.mileage_program_override){
                     milage[k]=userData.card_owned[card_id]?.mileage_program_override[k]
@@ -173,12 +243,13 @@ export const CalculateCardRewardInContext = (card_id,mcc_query,query_id,spend_am
             }
 
             miles_reward_incontext=cash_reward_incontext * milage[miles_currency_incontext];
-            if((userData.miles_value[miles_currency_incontext]||0.1)*miles_reward_incontext*0.9999 > cash_reward_incontext){ // *.9999 to prioritize cash over miles
+            if((userData.miles_value[miles_currency_incontext]||0.1)*miles_reward_incontext*0.9999 > cash_reward_incontext || cardData.cards.data[card_id].earn_miles==true){ // *.9999 to prioritize cash over miles
                 best_return_choice="miles"
                 best_return_ratio=(userData.miles_value[miles_currency_incontext]||0.1)*miles_reward_incontext/spend_amount*100
             }else{
                 best_return_ratio=cash_reward_incontext/spend_amount*100
             }
+            
         }
         
     }
@@ -191,7 +262,8 @@ export const CalculateCardRewardInContext = (card_id,mcc_query,query_id,spend_am
         miles_reward_incontext=user_defined_multiplier;
     }
 
-    let manupulation_results={
+
+    let manipulation_results={
         "best_return_ratio":best_return_ratio,
         "best_return_ratio_miles":spend_amount/miles_reward_incontext,
         "best_return_choice":best_return_choice,
@@ -200,11 +272,13 @@ export const CalculateCardRewardInContext = (card_id,mcc_query,query_id,spend_am
         "reward_breakdown":eligible_rewards,
         "payment_method_limit":payment_method,
         "miles_currency_in_context":miles_currency_incontext,
-        "best_item":false
+        "ineligible_rewards":ineligble_rewards,
+        "best_item":false,
+        "bill_size":spend_amount,
+        "spend_currency":spend_currency,
+        "spend_method":"swipe"
     }
-    console.log(card_id,mcc_query,query_id,spend_amount)
-    console.log(manupulation_results)
-    return manupulation_results;
+    return manipulation_results;
 };
 
 var findOne = function (haystack, arr) {

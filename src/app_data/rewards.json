@@ -3,6 +3,9 @@
         "data": [
             {
                 "reward_name": "Visa Signature自選類別3x獎賞",
+                "reward_description": "asdf\nasdf",
+                "reward_banners":["https://www.flyasia.co/wp-content/uploads/2021/08/hsbc-rewards-of-your-choice-min-800x373.jpeg"],
+                "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
                 "reward_type": "cash", 
                 "reward_id": 0,
                 "target_cards": [0],
@@ -16,14 +19,20 @@
                 "bill_payment": false,
                 "qualify_mcc":[],
                 "qualify_merchant":[],
+                "disqualified_merchants":[],
                 "offer_time": [[0,1],[1669661233,9669669234]],
                 "minimum_bill_size":0,
                 "maximum_bill_size":0,
                 "minimum_qualification_spend":0,
-                "maximum_qualifacation_spend":0
+                "maximum_qualifacation_spend":0,
+                "client_remarks":[],
+                "admin_remark":""
             },
             {
                 "reward_name": "HSBC Visa Basic Reward",
+                "reward_description": "asdf\nasdf",
+                "reward_banners":[],
+                "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
                 "reward_type": "cash", 
                 "reward_id": 1,
                 "target_cards": [0],
@@ -37,14 +46,20 @@
                 "bill_payment": true,
                 "qualify_mcc":[],
                 "qualify_merchant":[],
+                "disqualified_merchants":[],
                 "offer_time": [[0,999999999999999999]],
                 "minimum_bill_size":0,
-                "maximum_bill_size":0,
+                "maximum_bill_size":99,
                 "minimum_qualification_spend":0,
-                "maximum_qualifacation_spend":0
+                "maximum_qualifacation_spend":0,
+                "client_remarks":[],
+                "admin_remark":""
             },
             {
                 "reward_name": "AmEx Platinum Charge Card Basic Reward",
+                "reward_description": "asdf\nasdf",
+                "reward_banners":[],
+                "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
                 "reward_type": "cash", 
                 "reward_id": 2,
                 "target_cards": [1],
@@ -58,14 +73,20 @@
                 "bill_payment": true,
                 "qualify_mcc":[],
                 "qualify_merchant":[],
+                "disqualified_merchants":[],
                 "offer_time": [[0,999999999999999999]],
                 "minimum_bill_size":0,
                 "maximum_bill_size":0,
                 "minimum_qualification_spend":0,
-                "maximum_qualifacation_spend":0
+                "maximum_qualifacation_spend":0,
+                "client_remarks":[],
+                "admin_remark":""
             },
             {
                 "reward_name": "SC_CX Basic Reward",
+                "reward_description": "asdf\nasdf",
+                "reward_banners":[],
+                "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
                 "reward_type": "miles", 
                 "reward_id": 3,
                 "target_cards": [2],
@@ -79,14 +100,20 @@
                 "bill_payment": true,
                 "qualify_mcc":[],
                 "qualify_merchant":[],
+                "disqualified_merchants":[],
                 "offer_time": [[0,999999999999999999]],
                 "minimum_bill_size":0,
                 "maximum_bill_size":0,
                 "minimum_qualification_spend":0,
-                "maximum_qualifacation_spend":0
+                "maximum_qualifacation_spend":0,
+                "client_remarks":[],
+                "admin_remark":""
             },
             {
                 "reward_name": "HSBC Supermarket Reward Above 500 - 10%",
+                "reward_description": "asdf\nasdf",
+                "reward_banners":[],
+                "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
                 "reward_type": "cash", 
                 "reward_id": 4,
                 "target_cards": [0],
@@ -100,11 +127,14 @@
                 "bill_payment": true,
                 "qualify_mcc":["5331"],
                 "qualify_merchant":[],
+                "disqualified_merchants":[],
                 "offer_time": [[0,999999999999999999]],
                 "minimum_bill_size":500,
                 "maximum_bill_size":1000,
                 "minimum_qualification_spend":0,
-                "maximum_qualifacation_spend":0
+                "maximum_qualifacation_spend":0,
+                "client_remarks":[],
+                "admin_remark":""
             }
         ]
     }

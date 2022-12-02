@@ -203,14 +203,14 @@ const FindMerchantPage: React.FC = () => {
             <IonLabel>搜尋結果</IonLabel>
           </IonListHeader>
 
-          { (!searchTerm&&!gpsSearchMode) && <IonItem>
+          { (!searchTerm&&!gpsSearchMode) && <IonItem key="requestGPS">
             <IonLabel className="ion-text-center">
               <h3>請輸入商家名稱或開啟定位功能</h3>
             </IonLabel>
           </IonItem>}
 
           { (searchTerm && !gpsSearchMode) && searchResults.map(({ name, description, id, image }) => (
-            <IonItem routerDirection="forward" routerLink={"/rewardResults/"+id} key={id}>
+            <IonItem routerDirection="forward" routerLink={"/rewardResults/"+id} key={"search"+id}>
               <IonAvatar slot="start">
                 <img src={image} alt="logo" />
               </IonAvatar>
@@ -222,7 +222,7 @@ const FindMerchantPage: React.FC = () => {
           ))}
 
           { (gpsSearchMode) && gpsResults.map(({ name, description, id, image, distance }) => (
-            <IonItem routerDirection="forward" routerLink={"/rewardResults/"+id} key={id}>
+            <IonItem routerDirection="forward" routerLink={"/rewardResults/"+id} key={"gps"+id}>
               <IonAvatar slot="start">
                 <img src={image} alt="logo" />
               </IonAvatar>

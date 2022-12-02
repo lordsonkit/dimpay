@@ -16,7 +16,7 @@ const Tab2: React.FC = () => {
             <IonTitle size="large">Tab 2</IonTitle>
           </IonToolbar>
         </IonHeader>
-        {rewards.map((itemTitle) => (<IonCard>
+        {rewards.map((itemTitle) => (<IonCard key={itemTitle}>
           <img className='headerImage' src='https://ionic-docs-demo.herokuapp.com/assets/card-top-img.png' />
           <IonCardHeader>
             <IonCardSubtitle>Subtitle</IonCardSubtitle>

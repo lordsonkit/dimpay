@@ -8,7 +8,8 @@ export const UserContext = React.createContext({
     removeCard:null,
     setUserData:null,
     setUserCardOptions:null,
-    setUserOptions:null
+    setUserOptions:null,
+    toggleUserRewardExemption:null
   });
 
 const userDataReducer = (state:Userdata, action) => {
@@ -87,6 +88,21 @@ const userDataReducer = (state:Userdata, action) => {
           }
             break;
         }
+        case "TOGGLE_REWARD_EXEMPTION":{
+          temp= {
+            ...state,
+          }
+          if(!action.add_drop){
+            temp.opt_out_offers=temp.opt_out_offers.splice(temp.opt_out_offers.indexOf(action.payload),1)
+          }else{
+            if(temp.opt_out_offers.indexOf(action.payload)==-1){
+              temp.opt_out_offers.push(action.payload)
+            }
+            
+          }
+          
+            break;
+        }
         default:{
             temp=state
         }
@@ -124,6 +140,9 @@ const UserDataReducerProvider = ({ children }) => {
       },
       setUserOptions: ( field, payload) => {
         dispatch({type: "SET_USER_OPTIONS", field:field, payload: payload })
+      },
+      toggleUserRewardExemption: ( payload,add_drop) => {
+        dispatch({type: "TOGGLE_REWARD_EXEMPTION",  payload: payload, add_drop:add_drop })
       }
     };
     return (

@@ -67,19 +67,16 @@ export const MerchantListContext = React.createContext({
 const App: React.FC = () => {
   const [rewardData,setRewardData]=useState(rewards_json);
   const rewardDataProvider = useMemo( () => {
-    console.log('rewardData update')
     return ({rewardData,setRewardData})
   }, [rewardData,setRewardData])
 
   const [cardData,setCardData]=useState(cards_json);
   const cardDataProvider = useMemo( () => {
-    console.log('cardData update')
     return ({cardData,setCardData})
   }, [cardData,setCardData])
 
   const [merchantData,setMerchantData]=useState(merchants_json);
   const merchantDataProvider = useMemo( () => {
-    console.log('merchantData update')
     return ({merchantData,setMerchantData})
   }, [merchantData,setMerchantData])
   

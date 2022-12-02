@@ -37,8 +37,8 @@
                 "has_premium_banking_offer":true,
                 "has_private_banking_offer":true,
                 "mileage_programme":{
-                        "asiamiles":10,
-                        "avios":15
+                        "asiamiles":16.667,
+                        "avios":16.667
                 },
                 "annual_fee":7800,
                 "can_waive_fee":true,
@@ -132,6 +132,60 @@
                 "name":"超級市場"
             }
         ]
+    },
+    "currencies":{
+        "hkd":{
+            "name":"港幣（HKD）",
+            "rate":1
+        },
+        "cny":{
+            "name":"人民幣（CNY）",
+            "rate":1.11
+        },
+        "mop":{
+            "name":"澳門幣（MOP）",
+            "rate":0.97
+        },
+        "usd":{
+            "name":"美金（USD）",
+            "rate":7.85
+        },
+        "jpy":{
+            "name":"日圓（JPY）",
+            "rate":0.057
+        },
+        "ntd":{
+            "name":"新台幣（NTD）",
+            "rate":0.25
+        },
+        "gbp":{
+            "name":"英鎊（GBP）",
+            "rate":9.5
+        },
+        "eur":{
+            "name":"歐羅（EUR）",
+            "rate":8.2
+        },
+        "krw":{
+            "name":"韓圜（KRW）",
+            "rate":0.006
+        },
+        "other":{
+            "name":"其他",
+            "rate":1
+        }
+    },
+    "payment_method":{
+        "swipe":"刷卡/插卡支付",
+        "contactless":"拍卡支付",
+        "online":"網上支付",
+        "preauth":"預授權支付",
+        "google":"Google Pay",
+        "apple":"Apple Pay",
+        "samsung":"Samsung Pay",
+        "alipay":"Alipay",
+        "wechat":"Wechat Pay",
+        "upayqr":"銀聯雲閃付"
     }
 
 }

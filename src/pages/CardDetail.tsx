@@ -35,7 +35,10 @@ const CardDetailPage: React.FC = () => {
     setUserCardOptions(param.id,['user_has_private_banking'],e.detail.checked)
   }
   function setUserCardCustomMiles(e,miles_currency){
-    setUserCardOptions(param.id,['mileage_program_override',miles_currency],e.target.value)
+    setUserCardOptions(param.id,['mileage_program_override',miles_currency],parseFloat(e.target.value))
+  }
+  function setCardBoostValue(e){
+    setUserCardOptions(param.id,['card_reward_multiplier'],parseFloat(e.target.value))
   }
   let active_card_id=param.id;
 
@@ -64,7 +67,7 @@ const CardDetailPage: React.FC = () => {
                   </IonLabel>
                   <IonDatetimeButton slot="end" datetime='datetime_cardexp'></IonDatetimeButton>
                   <IonModal keepContentsMounted={true}  trigger='open-modal'>
-                    <IonDatetime id='datetime_cardexp' presentation='date' value={new Date(userData.card_owned[active_card_id].expiry*1000).toISOString()}   size="cover"  onIonChange={(e)=>setUserCardExpDate(e)} showDefaultButtons={true} preferWheel={true}></IonDatetime>
+                    <IonDatetime id='datetime_cardexp' presentation='date' value={new Date((userData.card_owned[active_card_id]?.expiry||0)*1000).toISOString()}   size="cover"  onIonChange={(e)=>setUserCardExpDate(e)} showDefaultButtons={true} preferWheel={true}></IonDatetime>
                   </IonModal>
               </IonItem>
               </> }
@@ -75,7 +78,7 @@ const CardDetailPage: React.FC = () => {
                     <p className='muted'>每月獎賞消費額度</p>
                   </IonLabel>
                   <IonLabel slot='end' className='ion-text-end'>
-                    <IonInput type={'number'} min={1} max={30} value={userData.card_owned[active_card_id].billing_date} onIonInput={(e)=>setUserBillingDate(e)} ></IonInput>
+                    <IonInput type={'number'} min={1} max={30} value={userData.card_owned[active_card_id]?.billing_date} onIonInput={(e)=>setUserBillingDate(e)} ></IonInput>
                     
                       
                   </IonLabel>
@@ -85,9 +88,9 @@ const CardDetailPage: React.FC = () => {
                   
                   <IonLabel>
                     <h3>持有發卡行優越帳戶</h3>
-                    <p className="muted">部分特選優惠使用</p>
+                    <p className="muted">部分特選優惠適用</p>
                   </IonLabel>
-                  <IonCheckbox slot="end" checked={userData.card_owned[active_card_id].user_has_premium_banking} onIonChange={(e)=>setUserCardPremiumBanking(e)}></IonCheckbox>
+                  <IonCheckbox slot="end" checked={userData.card_owned[active_card_id]?.user_has_premium_banking} onIonChange={(e)=>setUserCardPremiumBanking(e)}></IonCheckbox>
                   
               </IonItem> }
 
@@ -95,26 +98,12 @@ const CardDetailPage: React.FC = () => {
                   
                   <IonLabel>
                     <h3>持有發卡行私人銀行帳戶</h3>
-                    <p className="muted">部分特選優惠使用</p>
+                    <p className="muted">部分特選優惠適用</p>
                   </IonLabel>
-                  <IonCheckbox slot="end" checked={userData.card_owned[active_card_id].user_has_private_banking} onIonChange={(e)=>setUserCardPrivateBanking(e)}></IonCheckbox>
+                  <IonCheckbox slot="end" checked={userData.card_owned[active_card_id]?.user_has_private_banking} onIonChange={(e)=>setUserCardPrivateBanking(e)}></IonCheckbox>
 
               </IonItem> }
 
-              { cardData.cards.data[active_card_id].base_reward_cash&& false && <IonItem>
-                  
-                  <IonLabel>
-                    <h3>Basic Reward (Cash)</h3>
-                  </IonLabel>
-                  <IonLabel slot='end' className='ion-text-end'>{cardData.cards.data[active_card_id].base_reward_cash}%</IonLabel>
-              </IonItem> }
-              { cardData.cards.data[active_card_id].base_reward_mile&& false && <IonItem>
-                  
-                  <IonLabel>
-                    <h3>Basic Reward (Miles)</h3>
-                  </IonLabel>
-                  <IonLabel slot='end' className='ion-text-end'>{cardData.cards.data[active_card_id].base_reward_mile}%</IonLabel>
-              </IonItem> }
               
           </IonList>
           <br></br>
@@ -126,7 +115,7 @@ const CardDetailPage: React.FC = () => {
               <p color='muted'>調整獎賞的價值</p>
               <p color='muted'>基準獎賞為100%</p>
             </IonLabel>
-            <IonInput slot="end" className='ion-text-end' value={100} onIonChange={event => void(event)}></IonInput>
+            <IonInput slot="end" className='ion-text-end' value={parseInt(userData.card_owned[active_card_id]?.card_reward_multiplier)} onIonChange={event => setCardBoostValue(event)}></IonInput>
           </IonItem>
           </IonList>
           <br></br>
@@ -146,7 +135,7 @@ const CardDetailPage: React.FC = () => {
                   <IonLabel slot="start">
                     <h3>每 $1 獎賞 {cardData.mileages?.[item].name} 兌換比率</h3>
                   </IonLabel>
-                  <IonInput className='ion-text-end' type='number' min="0" slot='end' value={userData.card_owned[active_card_id].mileage_program_override?.[item]||cardData.cards.data[active_card_id].mileage_programme[item]} onIonChange={(e)=>setUserCardCustomMiles(e,item)}></IonInput>
+                  <IonInput className='ion-text-end' type='number' min="0" slot='end' value={(!userData.card_owned[active_card_id].mileage_program_override?.[item]&&userData.card_owned[active_card_id].mileage_program_override?.[item]!==0)?cardData.cards.data[active_card_id].mileage_programme[item]:userData.card_owned[active_card_id].mileage_program_override?.[item]} onIonChange={(e)=>setUserCardCustomMiles(e,item)}></IonInput>
                   
               </IonItem>))}
             

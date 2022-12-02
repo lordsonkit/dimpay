@@ -17,8 +17,8 @@ const MilesValueSetting: React.FC = () => {
   const {cardData,setCardData}=useContext(CardContext)
 
   function setMilesValue(e,item){
-      console.log(e)
-    setUserOptions(["miles_value",item],e.detail.value)
+    console.log(e)
+    setUserOptions(["miles_value",item],parseFloat(e.target.value))
   }
 
 
@@ -41,7 +41,7 @@ const MilesValueSetting: React.FC = () => {
                   <IonLabel slot="start">
                     <h3>{item}</h3>
                   </IonLabel>
-                    <IonInput className='ion-text-end' type='number' min="0" step="0.001" slot='end' value={userData.miles_value?.[item]||0.1} onIonChange={(e)=>setMilesValue(e,item)}></IonInput>
+                    <IonInput className='ion-text-end' type='number' min="0" step="0.001" slot='end' value={( (!userData.miles_value?.[item]&&userData.miles_value?.[item]!==0)?0.1:userData.miles_value?.[item])} onIonBlur={(e)=>setMilesValue(e,item)}></IonInput>
               </IonItem>))}
             
           </IonList>
