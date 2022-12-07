@@ -9,15 +9,16 @@ interface ContainerProps {
   query_id: string,
   cardData: any,
   spend_amount: number,
-  spend_currency: string
+  spend_currency: string,
+  payment_method: string
 }
-interface RewardBreakdownProps{card_id:string, mcc_query:boolean, query_id:string, spend_amount:number, spend_currency:string}
+interface RewardBreakdownProps{card_id:string, mcc_query:boolean, query_id:string, spend_amount:number, spend_currency:string, payment_method:string }
 
 
-const RewardResultList: React.FC<ContainerProps> = ({ cardlist,mcc_query,query_id,cardData,spend_amount,spend_currency }) => {
+const RewardResultList: React.FC<ContainerProps> = ({ cardlist,mcc_query,query_id,cardData,spend_amount,spend_currency,payment_method }) => {
     const history=useHistory();
 
-    function viewRewardBreakdown(card_id:string,mcc_query:boolean,query_id:string,spend_amount:number,spend_currency:string=""){
+    function viewRewardBreakdown(card_id:string,mcc_query:boolean,query_id:string,spend_amount:number,spend_currency:string="hkd", payment_method:string="swipe"){
         history.push({
             pathname:"/rewardBreakdown",
             state:{
@@ -25,14 +26,15 @@ const RewardResultList: React.FC<ContainerProps> = ({ cardlist,mcc_query,query_i
                 mcc_query:mcc_query,
                 query_id:query_id,
                 spend_amount:spend_amount,
-                spend_currency:spend_currency
+                spend_currency:spend_currency,
+                user_payment_method:payment_method
             }
         })
     }
   return (
     <>
     {cardlist.map(({card_name,earn_miles,has_mileage_programme,miles_currency_in_context,image,issuer,card_id,best_return_choice,miles_reward_incontext,cash_reward_incontext,best_return_ratio,best_return_ratio_miles,best_item}) => (
-                <IonItem key={(mcc_query?"mcc":"")+query_id+"_"+card_id} onClick={e=>viewRewardBreakdown(card_id,mcc_query,query_id,spend_amount,spend_currency)}>
+                <IonItem key={(mcc_query?"mcc":"")+query_id+"_"+card_id} onClick={e=>viewRewardBreakdown(card_id,mcc_query,query_id,spend_amount,spend_currency,payment_method)}>
                   <IonThumbnail slot='start'><IonImg  className='fit-thumbnail' src={image}></IonImg></IonThumbnail>
                   <IonLabel>
                     <IonBadge color="medium" className='issuer-badge'><IonText>{cardData.issuers.data[issuer].name}</IonText></IonBadge>

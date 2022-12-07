@@ -54,7 +54,7 @@ const RewardResultsPage: React.FC = () => {
         "best_item":false
       }
       
-      manipulation_results=CalculateCardRewardInContext(i,mcc_query,query_id,parseInt(spendAmount))
+      manipulation_results=CalculateCardRewardInContext(i,mcc_query,query_id,parseInt(spendAmount),spendCurrency,paymentMethod)
       item={...item,...manipulation_results}
       if(userOwnsCard(cardData.cards.data[i].card_id)){
         ownedCards.push(item)
@@ -111,14 +111,14 @@ const RewardResultsPage: React.FC = () => {
                             $<IonInput type='number' ref={valueRef} placeholder='100' value={spendAmount} className='ion-text-center' onIonFocus={e => spendValueUpdate(e.target.value)} onIonBlur={e => spendValueUpdate(e.target.value)}  onIonInput={e => spendValueUpdate(e.target.value)}></IonInput>
                         </IonItem>
                         <IonItem className='ion-text-end'>
-                          <IonSelect interface='action-sheet'  value={spendCurrency}>
+                          <IonSelect key="spend_currency_select" id="spend_currency_select" interface='action-sheet'  value={spendCurrency} onIonChange={e=>setSpendCurrency(e.detail.value)}>
                             {Object.keys(cardData.currencies).map((ccy) => (
-                              <IonSelectOption value={ccy}>{cardData.currencies[ccy].name}</IonSelectOption>
+                              <IonSelectOption value={ccy} key={"ccy"+ccy}>{cardData.currencies[ccy].name}</IonSelectOption>
                             ))}
                           </IonSelect>
-                          <IonSelect interface='action-sheet' slot="end" value={paymentMethod}>
+                          <IonSelect slot="end" key="payment_method_select" id="payment_method_select" interface='action-sheet' value={paymentMethod} onIonChange={e=>setPaymentMethod(e.detail.value)}>
                           {Object.keys(cardData.payment_method).map((method) => (
-                              <IonSelectOption value={method}>{cardData.payment_method[method]}</IonSelectOption>
+                              <IonSelectOption value={method} key={"payment"+method}>{cardData.payment_method[method]}</IonSelectOption>
                             ))}
                           </IonSelect>
                         </IonItem>
@@ -136,14 +136,14 @@ const RewardResultsPage: React.FC = () => {
                   我持有的信用卡 
               </IonListHeader>
               {ownedCards.length === 0 && <MyCards></MyCards>} 
-              <RewardResultList cardData={cardData} mcc_query={mcc_query} query_id={query_id} cardlist={ownedCards} spend_amount={parseFloat(spendAmount)} spend_currency={spendCurrency}></RewardResultList>
+              <RewardResultList cardData={cardData} mcc_query={mcc_query} query_id={query_id} cardlist={ownedCards} spend_amount={parseFloat(spendAmount)} spend_currency={spendCurrency} payment_method={paymentMethod}></RewardResultList>
               
               
           </IonList>
 
           <IonList>
               <IonListHeader>未持有的信用卡</IonListHeader>
-              <RewardResultList cardData={cardData} mcc_query={mcc_query} query_id={query_id} cardlist={notOwnedCards} spend_amount={parseFloat(spendAmount)} spend_currency={spendCurrency}></RewardResultList>
+              <RewardResultList cardData={cardData} mcc_query={mcc_query} query_id={query_id} cardlist={notOwnedCards} spend_amount={parseFloat(spendAmount)} spend_currency={spendCurrency} payment_method={paymentMethod}></RewardResultList>
               
           </IonList>
           

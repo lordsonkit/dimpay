@@ -11,7 +11,7 @@
                 "target_cards": [0],
                 "reward_ratio": 0.012,
                 "charge_currency_requirement": [],
-                "payment_method": [0],
+                "payment_method": [],
                 "card_age_bonus": [[0,0]],
                 "day_of_week": [],
                 "day_of_month": [],
@@ -79,7 +79,7 @@
                 "maximum_bill_size":0,
                 "minimum_qualification_spend":0,
                 "maximum_qualifacation_spend":0,
-                "client_remarks":[],
+                "client_remarks":[0],
                 "admin_remark":""
             },
             {
@@ -106,7 +106,7 @@
                 "maximum_bill_size":0,
                 "minimum_qualification_spend":0,
                 "maximum_qualifacation_spend":0,
-                "client_remarks":[],
+                "client_remarks":[0],
                 "admin_remark":""
             },
             {
@@ -131,9 +131,36 @@
                 "offer_time": [[0,999999999999999999]],
                 "minimum_bill_size":500,
                 "maximum_bill_size":1000,
-                "minimum_qualification_spend":0,
-                "maximum_qualifacation_spend":0,
-                "client_remarks":[],
+                "minimum_qualification_spend":5000,
+                "maximum_qualifacation_spend":10000,
+                "client_remarks":[0],
+                "admin_remark":""
+            },
+            {
+                "reward_name": "HSBC Paywave",
+                "reward_description": "asdf\nasdf",
+                "reward_banners":[],
+                "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
+                "reward_type": "cash", 
+                "reward_id": 5,
+                "target_cards": [0],
+                "reward_ratio": 0.15,
+                "charge_currency_requirement": [],
+                "payment_method": ["contactless"],
+                "card_age_bonus": [],
+                "day_of_week": [],
+                "day_of_month": [],
+                "online_only": false,
+                "bill_payment": false,
+                "qualify_mcc":[],
+                "qualify_merchant":[],
+                "disqualified_merchants":[],
+                "offer_time": [[0,999999999999999999]],
+                "minimum_bill_size":0,
+                "maximum_bill_size":0,
+                "minimum_qualification_spend":500,
+                "maximum_qualifacation_spend":2500,
+                "client_remarks":[0],
                 "admin_remark":""
             }
         ]

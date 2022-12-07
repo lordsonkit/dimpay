@@ -16,5 +16,10 @@
                 "custom_rewards": {
                     "data": []
                 },
-                "opt_out_offers":[]
+                "opt_out_offers":[
+                    
+                ],
+                "spending_history":[
+
+                ]
 }

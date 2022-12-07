@@ -135,39 +135,39 @@
     },
     "currencies":{
         "hkd":{
-            "name":"港幣（HKD）",
+            "name":"港幣(HKD)",
             "rate":1
         },
         "cny":{
-            "name":"人民幣（CNY）",
+            "name":"人民幣(CNY)",
             "rate":1.11
         },
         "mop":{
-            "name":"澳門幣（MOP）",
+            "name":"澳門幣(MOP)",
             "rate":0.97
         },
         "usd":{
-            "name":"美金（USD）",
+            "name":"美金(USD)",
             "rate":7.85
         },
         "jpy":{
-            "name":"日圓（JPY）",
+            "name":"日圓(JPY)",
             "rate":0.057
         },
         "ntd":{
-            "name":"新台幣（NTD）",
+            "name":"新台幣(NTD)",
             "rate":0.25
         },
         "gbp":{
-            "name":"英鎊（GBP）",
+            "name":"英鎊(GBP)",
             "rate":9.5
         },
         "eur":{
-            "name":"歐羅（EUR）",
+            "name":"歐羅(EUR)",
             "rate":8.2
         },
         "krw":{
-            "name":"韓圜（KRW）",
+            "name":"韓圜(KRW)",
             "rate":0.006
         },
         "other":{

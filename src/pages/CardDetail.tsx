@@ -115,7 +115,7 @@ const CardDetailPage: React.FC = () => {
               <p color='muted'>調整獎賞的價值</p>
               <p color='muted'>基準獎賞為100%</p>
             </IonLabel>
-            <IonInput slot="end" className='ion-text-end' value={parseInt(userData.card_owned[active_card_id]?.card_reward_multiplier)} onIonChange={event => setCardBoostValue(event)}></IonInput>
+            <IonInput slot="end" className='ion-text-end' value={parseInt(userData.card_owned[active_card_id]?.card_reward_multiplier)} onIonBlur={event => setCardBoostValue(event)}></IonInput>
           </IonItem>
           </IonList>
           <br></br>
@@ -135,7 +135,7 @@ const CardDetailPage: React.FC = () => {
                   <IonLabel slot="start">
                     <h3>每 $1 獎賞 {cardData.mileages?.[item].name} 兌換比率</h3>
                   </IonLabel>
-                  <IonInput className='ion-text-end' type='number' min="0" slot='end' value={(!userData.card_owned[active_card_id].mileage_program_override?.[item]&&userData.card_owned[active_card_id].mileage_program_override?.[item]!==0)?cardData.cards.data[active_card_id].mileage_programme[item]:userData.card_owned[active_card_id].mileage_program_override?.[item]} onIonChange={(e)=>setUserCardCustomMiles(e,item)}></IonInput>
+                  <IonInput className='ion-text-end' type='number' min="0" slot='end' value={(!userData.card_owned[active_card_id].mileage_program_override?.[item]&&userData.card_owned[active_card_id].mileage_program_override?.[item]!==0)?cardData.cards.data[active_card_id].mileage_programme[item]:userData.card_owned[active_card_id].mileage_program_override?.[item]} onIonBlur={(e)=>setUserCardCustomMiles(e,item)}></IonInput>
                   
               </IonItem>))}
             

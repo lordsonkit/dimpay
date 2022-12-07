@@ -9,9 +9,11 @@ export const UserContext = React.createContext({
     setUserData:null,
     setUserCardOptions:null,
     setUserOptions:null,
-    toggleUserRewardExemption:null
+    toggleUserRewardExemption:null,
+    addTransactionHistory:null
   });
-
+  
+  
 const userDataReducer = (state:Userdata, action) => {
     // 判斷指令
     let temp=null
@@ -75,17 +77,21 @@ const userDataReducer = (state:Userdata, action) => {
           temp= {
             ...state,
           }
-          if(action.field.length==3){
-            //layer3
-            temp[action.field[0]][action.field[1]][action.field[2]]=action.payload
+          if(action.payload){
+            //Prevent updating empty data
+            if(action.field.length==3){
+              //layer3
+              temp[action.field[0]][action.field[1]][action.field[2]]=action.payload
+            }
+            if(action.field.length==2){
+              temp[action.field[0]][action.field[1]]=action.payload
+            }
+            if(action.field.length==1){
+              temp[action.field[0]]=action.payload
+            
+            }
           }
-          if(action.field.length==2){
-            temp[action.field[0]][action.field[1]]=action.payload
-          }
-          if(action.field.length==1){
-            temp[action.field[0]]=action.payload
           
-          }
             break;
         }
         case "TOGGLE_REWARD_EXEMPTION":{
@@ -102,6 +108,18 @@ const userDataReducer = (state:Userdata, action) => {
           }
           
             break;
+        }
+        case "ADD_TRANSACTION_HISTORY":{
+          temp= {
+            ...state,
+          }
+          temp.spending_history.push(action.payload);
+          console.log('Add user transaction history')
+          
+            break;
+        }
+        case "GET_TRANSACTION_HISTORY":{
+          return temp.spending_history
         }
         default:{
             temp=state
@@ -143,6 +161,12 @@ const UserDataReducerProvider = ({ children }) => {
       },
       toggleUserRewardExemption: ( payload,add_drop) => {
         dispatch({type: "TOGGLE_REWARD_EXEMPTION",  payload: payload, add_drop:add_drop })
+      },
+      addTransactionHistory: ( payload) => {
+        dispatch({type: "ADD_TRANSACTION_HISTORY",  payload: payload })
+      },
+      getSpendingHistory:() => {
+        dispatch({type:"GET_SPENDING_HISTORY"})
       }
     };
     return (
