@@ -14,7 +14,7 @@ interface ContainerProps {
     context: any
 }
 interface RewardReason {
-    reward_id: number,
+    reward_id: string,
     reason: INELIGIBLE_REASON,
     limits: number,
     eligible: boolean,
@@ -36,7 +36,9 @@ let disqualification_reason = [
     "部分日子",
     "除外商戶",
     "用戶剔除項目",
-    "已超過優惠額度"
+    "已超過優惠額度",
+    "優越客戶",
+    "私銀客戶"
 ]
 
 let reward_remarks_text = [

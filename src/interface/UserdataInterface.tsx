@@ -2,7 +2,7 @@
     export interface Reward {
         reward_name: string;
         reward_type: string;
-        reward_id: number;
+        reward_id: string;
         target_cards: number[];
         reward_ratio: number;
         charge_currency_requirement: string;
@@ -30,7 +30,9 @@
         milelage_value: number[][];
         has_premium_baking: any[][];
         has_private_banking: any[][];
-        custom_rewards: CustomRewards;
+        custom_rewards: {
+            [key:string] : Reward
+        };
     }
 
     export interface UserCardOptions {

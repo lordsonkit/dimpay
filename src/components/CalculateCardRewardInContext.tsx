@@ -21,7 +21,7 @@ export const CalculateCardRewardInContext = (card_id:number,mcc_query,query_id:s
         spend_amount=100
     }
 
-    for(var i=0; i< rewards.length; i++){
+    for(var i in rewards){
         let eligibility_result=EligibilityCalc(i,card_id,mcc_query,query_id,spend_amount,spend_currency,user_payment_method,new Date().getTime()/1000,true)
         if(eligibility_result){
             if(eligibility_result.eligible){

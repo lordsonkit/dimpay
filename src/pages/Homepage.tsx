@@ -31,19 +31,19 @@ const Homepage: React.FC = () => {
       <IonTabBar slot="bottom">
         <IonTabButton tab="tab1" href="/tabs/tab1">
           <IonIcon icon={wallet} />
-          <IonLabel>My Wallet</IonLabel>
+          <IonLabel>我的錢包</IonLabel>
         </IonTabButton>
         <IonTabButton tab="tab2" href="/tabs/tab2">
           <IonIcon icon={star} />
-          <IonLabel>Rewards</IonLabel>
+          <IonLabel>獎賞</IonLabel>
         </IonTabButton>
         <IonTabButton tab="tab3" href="/tabs/tab3">
           <IonIcon icon={square} />
-          <IonLabel>Discover</IonLabel>
+          <IonLabel>我的消費</IonLabel>
         </IonTabButton>
         <IonTabButton tab="tab4" href="/tabs/account">
           <IonIcon icon={person} />
-          <IonLabel>Account</IonLabel>
+          <IonLabel>設定</IonLabel>
         </IonTabButton>
         
       </IonTabBar>

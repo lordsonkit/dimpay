@@ -5,13 +5,15 @@ import { useHistory } from "react-router";
 import { CardContext } from "../App";
 import { UserContext } from "../reducer/UserDataReducer";
 import { ConditionalWrapper } from "./ConditionalWrapper";
+import "./CardAddDrop.css";
 
 interface ContainerProps {
-  userHoldsCard: boolean
+  userHoldsCard: boolean, 
+  searchTerm:string
 }
 
 
-const CardAddDropList: React.FC<ContainerProps> = ({ userHoldsCard }) => {
+const CardAddDropList: React.FC<ContainerProps> = ({ userHoldsCard, searchTerm }) => {
   const history = useHistory();
   function userOwnsCard(card_id) {
     return Object.keys(userData.card_owned).indexOf(card_id) >= 0 ? true : false;
@@ -21,12 +23,12 @@ const CardAddDropList: React.FC<ContainerProps> = ({ userHoldsCard }) => {
   return (
     <>
       {cardData.cards.data.map(({ card_name, issuer, card_id, image }) => (
-        userOwnsCard(card_id)==userHoldsCard && <IonItem key={card_id}>
-          <IonThumbnail className='thumbnail' slot='start'>
-            <IonImg className='fit-thumbnail' src={image}></IonImg>
+        userOwnsCard(card_id)==userHoldsCard && (cardData.issuers[issuer].name+card_name).toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase())>-1 && <IonItem key={card_id}>
+          <IonThumbnail className='thumbnail card-round-border' slot='start'>
+            <IonImg className='fit-thumbnail ' src={image}></IonImg>
           </IonThumbnail>
           <IonLabel>
-            <IonBadge color="medium" className='issuer-badge'><IonText>{cardData.issuers.data[issuer].name}</IonText></IonBadge>
+            <IonBadge color="medium" className='issuer-badge'><IonText>{cardData.issuers[issuer].name}</IonText></IonBadge>
             <h3>{card_name}</h3>
           </IonLabel>
           <IonLabel slot='end' className='ion-text-end'>

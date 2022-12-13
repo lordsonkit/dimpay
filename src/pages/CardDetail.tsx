@@ -9,6 +9,12 @@ import UserDataReducerProvider, { UserContext } from '../reducer/UserDataReducer
 import './RewardResults.css';
 
 
+const banking_level=[
+  "沒有銀行帳戶",
+  "持有銀行帳戶",
+  "優越銀行客戶",
+  "私人銀行客戶"
+]
 
 const CardDetailPage: React.FC = () => {
   const param=useParams<{id?:string}>()
@@ -28,11 +34,8 @@ const CardDetailPage: React.FC = () => {
   function setUserBillingDate(e){
     setUserCardOptions(param.id,["billing_date"],e.target.value)
   }
-  function setUserCardPremiumBanking(e){
-    setUserCardOptions(param.id,['user_has_premium_banking'],e.detail.checked)
-  }
-  function setUserCardPrivateBanking(e){
-    setUserCardOptions(param.id,['user_has_private_banking'],e.detail.checked)
+  function setUserCardBanking(e){
+    setUserCardOptions(param.id,['banking_level'],parseInt(e.detail.value))
   }
   function setUserCardCustomMiles(e,miles_currency){
     setUserCardOptions(param.id,['mileage_program_override',miles_currency],parseFloat(e.target.value))
@@ -63,7 +66,7 @@ const CardDetailPage: React.FC = () => {
               { true && <><IonItem id="open-modal">
                   <IonLabel slot='start'>
                     <h3>信用卡到期月份</h3>
-                    <p className='muted'>提醒要求免年費或取消</p>
+                    <p className='muted'>提醒免年費或取消</p>
                   </IonLabel>
                   <IonDatetimeButton slot="end" datetime='datetime_cardexp'></IonDatetimeButton>
                   <IonModal keepContentsMounted={true}  trigger='open-modal'>
@@ -84,25 +87,21 @@ const CardDetailPage: React.FC = () => {
                   </IonLabel>
               </IonItem> }
               
-              { cardData.cards.data[active_card_id].has_premium_banking_offer && <IonItem>
+              <IonItem>
                   
                   <IonLabel>
-                    <h3>持有發卡行優越帳戶</h3>
+                    <h3>持有發卡行銀行帳戶</h3>
                     <p className="muted">部分特選優惠適用</p>
                   </IonLabel>
-                  <IonCheckbox slot="end" checked={userData.card_owned[active_card_id]?.user_has_premium_banking} onIonChange={(e)=>setUserCardPremiumBanking(e)}></IonCheckbox>
                   
-              </IonItem> }
+                  <IonSelect value={userData.card_owned[active_card_id]?.user_banking_level} slot={"end"} onIonChange={(e)=>setUserCardBanking(e)}>
+                            {[...Array(banking_level.length).keys()].map((item) => (
+                                    <IonSelectOption value={item}>{banking_level[item]}</IonSelectOption>
+                                ))}
+                            </IonSelect>
 
-              { cardData.cards.data[active_card_id].has_private_banking_offer && <IonItem>
-                  
-                  <IonLabel>
-                    <h3>持有發卡行私人銀行帳戶</h3>
-                    <p className="muted">部分特選優惠適用</p>
-                  </IonLabel>
-                  <IonCheckbox slot="end" checked={userData.card_owned[active_card_id]?.user_has_private_banking} onIonChange={(e)=>setUserCardPrivateBanking(e)}></IonCheckbox>
+              </IonItem>
 
-              </IonItem> }
 
               
           </IonList>

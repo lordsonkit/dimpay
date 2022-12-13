@@ -7,17 +7,11 @@
                     "avios":0.1,
                     "ana":0.1
                 },
-                "has_premium_baking": [
-                    [0,true]
-                ],
-                "has_private_banking": [
-                    [0,false]
-                ],
                 "custom_rewards": {
-                    "data": []
+                   
                 },
                 "opt_out_offers":[
-                    
+
                 ],
                 "spending_history":[
 

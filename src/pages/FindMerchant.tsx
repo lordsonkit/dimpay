@@ -48,12 +48,20 @@ const FindMerchantPage: React.FC = () => {
       setGPSSearchMode(false)
     }
     let processedTerm=searchTerm.toLocaleLowerCase().replace(/[&\/\\#^+()$~%.'":*?<>{}!@ ]/g, '');
-    let tempSearchResult = merchantData.merchants.data.filter(
-      (ele) =>
-        ele.name.toLocaleLowerCase().replace(/[&\/\\#^+()$~%.'":*?<>{}!@] /g, '').includes(processedTerm) ||
-        ele.description.toLocaleLowerCase().replace(/[&\/\\#^+()$~%.'":*?<>{}!@ ]/g, '').includes(processedTerm) ||
-        ele.search_keywords.toLocaleLowerCase().replace(/[&\/\\#^+()$~%.'":*?<>{}!@ ]/g, '').includes(processedTerm)
-    ).slice(0, 30);
+    
+    let tempSearchResult = []
+    for (let key in merchantData.merchants.data) {
+      if (
+          merchantData.merchants.data[key].name.toLocaleLowerCase().replace(/[&\/\\#^+()$~%.'":*?<>{}!@] /g, '').includes(processedTerm) ||
+          merchantData.merchants.data[key].search_keywords.toLocaleLowerCase().replace(/[&\/\\#^+()$~%.'":*?<>{}!@] /g, '').includes(processedTerm) ||
+          merchantData.merchants.data[key].description.toLocaleLowerCase().replace(/[&\/\\#^+()$~%.'":*?<>{}!@] /g, '').includes(processedTerm)
+      ) {
+          tempSearchResult.push({
+              ...merchantData.merchants.data[key],
+              mcc: key
+          })
+      }
+  }
     setSearchResults([...tempSearchResult]);
   }, [searchTerm, merchantData]);
 
@@ -101,7 +109,7 @@ const FindMerchantPage: React.FC = () => {
     }
 
     let tempSearchResult = []
-    for(var i=0;i<merchantData.merchants.data.length;i++){
+    for(var i in merchantData.merchants.data){
       if(merchantData.merchants.data[i].locations.length>0){
         tempSearchResult.push(
           {

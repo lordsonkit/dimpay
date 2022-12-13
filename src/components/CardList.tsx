@@ -42,7 +42,7 @@ interface MileageProgramme {
 
 interface Issuer {
     name: string;
-    issuer_id: number;
+    issuer_id: string;
 }
 
 interface CardAdvert {
@@ -54,7 +54,7 @@ interface CardAdvert {
 interface Reward {
     reward_name: string,
     reward_type: "cash"|"discount"|"miles"|"credit", 
-    reward_id: number,
+    reward_id: string,
     target_cards: Card[],
     reward_ratio: number,
     charge_currency_requirement: "hkd"|"cny"|"fx"|"any",

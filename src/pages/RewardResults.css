@@ -19,6 +19,9 @@
 .issuer-badge{
     font-size:10px
 }
+.badge-margin{
+    margin:3px
+}
 .adcontent{
     margin:0px;
     padding:5px;
@@ -41,5 +44,18 @@
     float:right
 }
 .card_hero{
-   height: 100px;;
+   height: 100px;
+   width:159px;
+   border-radius:10px;
+   display:inline-block;
+}
+.bottom-button {
+    position: fixed;
+    left: 15px;
+    bottom: 10px;
+    right: 15px;
+}
+
+.alert-wrapper{
+    min-width:80% !important;
 }

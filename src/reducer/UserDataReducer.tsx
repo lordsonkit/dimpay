@@ -1,4 +1,5 @@
-import React  from "react";
+import React, { useContext, useMemo, useState }  from "react";
+import { CardContext, RewardsContext } from "../App";
 import userdata_template_json from '../app_data/user_data.json';
 import { Userdata } from "../interface/UserdataInterface";
 
@@ -10,11 +11,14 @@ export const UserContext = React.createContext({
     setUserCardOptions:null,
     setUserOptions:null,
     toggleUserRewardExemption:null,
-    addTransactionHistory:null
+    addTransactionHistory:null,
+    addCustomReward:null
   });
-  
+
   
 const userDataReducer = (state:Userdata, action) => {
+
+
     // 判斷指令
     let temp=null
     switch (action.type) {
@@ -22,8 +26,7 @@ const userDataReducer = (state:Userdata, action) => {
             let new_cardlist=(state.card_owned);
             new_cardlist[action.payload]={
               "expiry":0,
-              "user_has_premium_banking":false,
-              "user_has_private_banking":false,
+              "user_banking_level":0,
               "billing_date":1,
               "card_reward_multiplier":100,
               "mileage_program_override":{
@@ -118,6 +121,15 @@ const userDataReducer = (state:Userdata, action) => {
           
             break;
         }
+        case "ADD_CUSTOM_REWARD":{
+          temp= {
+            ...state,
+          }
+          temp.custom_rewards[action.payload.reward_id]=(action.payload);
+          console.log('Add user custom reward ')
+          
+            break;
+        }
         case "GET_TRANSACTION_HISTORY":{
           return temp.spending_history
         }
@@ -133,14 +145,24 @@ const userDataReducer = (state:Userdata, action) => {
 
 const UserDataReducerProvider = ({ children }) => {
 
+    const {rewardData,setRewardData} = useContext(RewardsContext);
+    const rewardDataMemo = useMemo( () => {
+      return ({rewardData})
+    }, [rewardData])
     //Detect Userdata, setup user if first time
     if(!localStorage.getItem("userdata")){
         //User data not set, user is here for the first time
         localStorage.setItem("userdata",JSON.stringify(userdata_template_json))
         console.log("Initialize local storage")
     }
-    
     const temp =  JSON.parse(localStorage.getItem("userdata")) as Userdata;
+    let new_rewards=rewardDataMemo.rewardData
+
+    new_rewards.rewards.data={...new_rewards.rewards.data,...temp.custom_rewards}
+
+    setRewardData(new_rewards)
+
+
     const [state, dispatch] = React.useReducer(userDataReducer, temp||userdata_template_json);
     const value = {
       userData:state,
@@ -164,6 +186,9 @@ const UserDataReducerProvider = ({ children }) => {
       },
       addTransactionHistory: ( payload) => {
         dispatch({type: "ADD_TRANSACTION_HISTORY",  payload: payload })
+      },
+      addCustomReward: ( payload) => {
+        dispatch({type: "ADD_CUSTOM_REWARD",  payload: payload })
       },
       getSpendingHistory:() => {
         dispatch({type:"GET_SPENDING_HISTORY"})

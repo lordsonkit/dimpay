@@ -63,7 +63,7 @@ const RewardBreakdown: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen>
         <div className="ion-padding-start ion-padding-end ion-margin-top ion-padding-top ion-text-center">
-          <div style={{ marginTop: "50px", backgroundImage: "url(" + cardData.cards.data?.[card_id].image + ")", backgroundPosition: "center", backgroundSize: "contain", backgroundRepeat: "no-repeat" }} className="card_hero">
+          <div style={{ marginTop: "50px", backgroundImage: "url(" + cardData.cards.data?.[card_id].image + ")", backgroundPosition: "center", backgroundSize: "contain", backgroundRepeat: "no-repeat" }} className="card_hero ion-text-center">
             <IonAvatar className='image-center breakdown-avatar' style={{width: "100px", height:"100px", position: "relative", bottom: "50px"}}>
               <img src={mcc_query?merchantData.merchant_code?.[query_id].image:merchantData.merchants.data?.[query_id].image} ></img>
             </IonAvatar>
@@ -103,7 +103,7 @@ const RewardBreakdown: React.FC = () => {
             spend_amount,
             spend_currency,
             user_payment_method
-            })}><IonIcon icon={addCircleOutline} slot="start"></IonIcon>紀錄消費</IonButton>
+            })} routerLink={"/tabs/tab3"} routerDirection="root"><IonIcon icon={addCircleOutline} slot="start"></IonIcon>紀錄消費</IonButton>
         </div>
       </IonContent>
     </IonPage>

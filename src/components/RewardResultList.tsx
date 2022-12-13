@@ -37,9 +37,10 @@ const RewardResultList: React.FC<ContainerProps> = ({ cardlist,mcc_query,query_i
                 <IonItem key={(mcc_query?"mcc":"")+query_id+"_"+card_id} onClick={e=>viewRewardBreakdown(card_id,mcc_query,query_id,spend_amount,spend_currency,payment_method)}>
                   <IonThumbnail slot='start'><IonImg  className='fit-thumbnail' src={image}></IonImg></IonThumbnail>
                   <IonLabel>
-                    <IonBadge color="medium" className='issuer-badge'><IonText>{cardData.issuers.data[issuer].name}</IonText></IonBadge>
+                    <IonBadge color="medium" className='issuer-badge'><IonText>{cardData.issuers[issuer].name}</IonText></IonBadge>
                     <h3>{card_name}</h3>
                   </IonLabel>
+                  
                   <IonLabel slot='end' className='ion-text-end'>
                       {((earn_miles||has_mileage_programme) && best_return_choice=="miles") ? <>
                         <ConditionalWrapper condition={best_item} wrapper={children=><IonBadge className='bold' color="success">{children}</IonBadge>}>

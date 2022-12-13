@@ -3,72 +3,1109 @@
 
         "data":[
             {
-                "card_name": "Visa Signature卡",
-                "issuer": 0,
+                "card_name": "滙豐 Visa Signature 卡",
+                "issuer": "hsbc",
                 "card_id":"0",
                 "earn_miles":false,
-                "base_reward_miles":0,
                 "earn_cash": true,
-                "base_reward_cash": 0.4,
                 "has_mileage_programme": true,
-                "has_premium_banking_offer":true,
-                "has_private_banking_offer":true,
+                
+                
                 "mileage_programme":{
-                        "asiamiles":10,
-                        "avios":15
+                    "asiamiles":10,
+                    "avios":15,
+                    "krisflyer":15
                 },
-                "annual_fee":2800,
+                "annual_fee":1500,
                 "can_waive_fee":true,
                 "annual_salary":360000,
                 "fx_fee":1.95,
-                "reg_link":"https://google.com",
-                "icon":"/assets/images/hsbcvs.webp",
-                "image":"/assets/images/hsbcvs.webp",
+                "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/products/visa-signature/",
+                
+                "image":"/assets/images/cards/hsbc_vs.jpeg",
                 "miles_card_currency":""
             },{
                 "card_name": "白金簽帳卡",
-                "issuer": 1,
+                "issuer": "amex",
                 "card_id":"1",
                 "earn_miles":false,
-                "base_reward_miles":0,
                 "earn_cash": true,
-                "base_reward_cash": 0.5,
                 "has_mileage_programme": true,
-                "has_premium_banking_offer":true,
-                "has_private_banking_offer":true,
+                
+                
                 "mileage_programme":{
                         "asiamiles":16.667,
                         "avios":16.667
                 },
                 "annual_fee":7800,
-                "can_waive_fee":true,
+                "can_waive_fee":false,
                 "annual_salary":600000,
-                "fx_fee":1.95,
-                "reg_link":"https://google.com",
-                "icon":"/assets/images/amex_platcharge.png",
-                "image":"/assets/images/amex_platcharge.png",
+                "fx_fee":2,
+                "reg_link":"https://www.americanexpress.com/hk/en/credit-cards/platinum-card/",
+                
+                "image":"/assets/images/cards/amex_platcharge.png",
                 "miles_card_currency":""
             },{
-                "card_name": "SC_CX",
-                "issuer": 1,
+                "card_name": "渣打Smart信用卡",
+                "issuer": "sc",
                 "card_id":"2",
                 "earn_miles":true,
-                "base_reward_miles":0,
                 "earn_cash": false,
-                "base_reward_cash": 0,
                 "has_mileage_programme": false,
-                "has_premium_banking_offer":true,
-                "has_private_banking_offer":true,
+                
+                
                 "mileage_programme":{
                 },
-                "annual_fee":7800,
+                "annual_fee":2000,
+                "can_waive_fee":true,
+                "annual_salary":96000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.sc.com/hk/zh/credit-cards/cathay/",
+                
+                "image":"/assets/images/cards/sc_cxam_horizontal.webp",
+                "miles_card_currency":"asiamiles"
+            },{
+                "card_name": "Blue Cash®信用卡",
+                "issuer": "amex",
+                "card_id":"3",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                },
+                "annual_fee":980,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":2,
+                "reg_link":"https://www.americanexpress.com/hk/ch/credit-cards/blue-cash-credit-card/",
+                
+                "image":"/assets/images/cards/amex_blue.webp",
+                "miles_card_currency":""
+            },{
+                "card_name": "Essential® 信用卡",
+                "issuer": "amex",
+                "card_id":"4",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": true,
+                
+                
+                "mileage_programme":{
+                },
+                "annual_fee":0,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":2,
+                "reg_link":"https://www.americanexpress.com/hk/ch/credit-cards/essential-credit-card/",
+                
+                "image":"/assets/images/cards/amex_essential.webp",
+                "miles_card_currency":""
+            },{
+                "card_name": "Explorer® 信用卡",
+                "issuer": "amex",
+                "card_id":"5",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": true,
+                
+                
+                "mileage_programme":{
+                    "asiamiles":16.667,
+                    "avios":16.667
+                },
+                "annual_fee":1800,
+                "can_waive_fee":true,
+                "annual_salary":300000,
+                "fx_fee":2,
+                "reg_link":"https://www.americanexpress.com/hk/ch/credit-cards/explorer-credit-card/",
+                
+                "image":"/assets/images/cards/amex_explorer.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "I.T Cashback卡",
+                "issuer": "amex",
+                "card_id":"6",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                },
+                "annual_fee":980,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":2,
+                "reg_link":"https://www.americanexpress.com/hk/ch/credit-cards/it-cashback-card/",
+                
+                "image":"/assets/images/cards/amex_it.webp",
+                "miles_card_currency":""
+            },{
+                "card_name": "白金信用卡",
+                "issuer": "amex",
+                "card_id":"7",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": true,
+                
+                
+                "mileage_programme":{
+                    "asiamiles":16.667,
+                    "avios":16.667
+                },
+                "annual_fee":2200,
+                "can_waive_fee":true,
+                "annual_salary":300000,
+                "fx_fee":2,
+                "reg_link":"https://www.americanexpress.com/hk/ch/credit-cards/platinum-credit-card/",
+                
+                "image":"/assets/images/cards/amex_platcredit.jpeg",
+                "miles_card_currency":""
+            },{
+                "card_name": "BEA GOAL 信用卡",
+                "issuer": "bea",
+                "card_id":"8",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{},
+                "annual_fee":600,
+                "can_waive_fee":true,
+                "annual_salary":40000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.hkbea.com/html/tc/bea-credit-card-welcome-offer-bea-goal-card.html",
+                
+                "image":"/assets/images/cards/bea_goal.jpeg",
+                "miles_card_currency":""
+            },{
+                "card_name": "iTitanium 信用卡",
+                "issuer": "bea",
+                "card_id":"9",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{},
+                "annual_fee":600,
+                "can_waive_fee":true,
+                "annual_salary":40000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.hkbea.com/html/tc/bea-i-titanium-card.html",
+                
+                "image":"/assets/images/cards/bea_titanium.jpeg",
+                "miles_card_currency":""
+            },{
+                "card_name": "東亞銀行World Mastercard卡",
+                "issuer": "bea",
+                "card_id":"10",
+                "earn_miles":true,
+                "earn_cash": false,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{},
+                "annual_fee":1800,
+                "can_waive_fee":true,
+                "annual_salary":120000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.hkbea.com/html/tc/bea-credit-card-world-mc.html",
+                
+                "image":"/assets/images/cards/bea_world.jpeg",
+                "miles_card_currency":"asiamiles"
+            },{
+                "card_name": "建行(亞洲)京東信用卡",
+                "issuer": "ccb",
+                "card_id":"11",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{},
+                "annual_fee":0,
+                "can_waive_fee":true,
+                "annual_salary":150000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.asia.ccb.com/hongkong_tc/personal/credit_cards/jd_credit_card.html",
+                
+                "image":"/assets/images/cards/ccb_jd.jpeg",
+                "miles_card_currency":""
+            },{
+                "card_name": "eye信用卡",
+                "issuer": "ccb",
+                "card_id":"12",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{},
+                "annual_fee":0,
+                "can_waive_fee":true,
+                "annual_salary":150000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.asia.ccb.com/hongkong_tc/personal/credit_cards/eye_credit_card.html",
+                
+                "image":"/assets/images/cards/ccb_eye.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "Citi Cash Back信用卡",
+                "issuer": "citi",
+                "card_id":"13",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{},
+                "annual_fee":1800,
+                "can_waive_fee":true,
+                "annual_salary":120000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.citibank.com.hk/chinese/credit-cards/cash-back-card",
+                
+                "image":"/assets/images/cards/citi_cashback.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "Citi Clear Card",
+                "issuer": "citi",
+                "card_id":"14",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{},
+                "annual_fee":300,
+                "can_waive_fee":true,
+                "annual_salary":60000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.citibank.com.hk/chinese/credit-cards/clear",
+                
+                "image":"/assets/images/cards/citi_clear.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "Citi HKTVmall 信用卡",
+                "issuer": "citi",
+                "card_id":"15",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{},
+                "annual_fee":180000,
+                "can_waive_fee":true,
+                "annual_salary":120000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.citibank.com.hk/chinese/credit-cards/hktvmall-card/",
+                
+                "image":"/assets/images/cards/citi_hktv.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "Citi 八達通白金卡",
+                "issuer": "citi",
+                "card_id":"16",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{},
+                "annual_fee":1800,
+                "can_waive_fee":true,
+                "annual_salary":120000,
+                "fx_fee":1.95,
+                "reg_link":"https://www1.citibank.com.hk/chinese/credit-cards/octopus-cards",
+                
+                "image":"/assets/images/cards/citi_octopus.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "Citi Plus信用卡",
+                "issuer": "citi",
+                "card_id":"17",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{},
+                "annual_fee":0,
+                "can_waive_fee":true,
+                "annual_salary":120000,
+                "fx_fee":1.95,
+                "reg_link":"https://www1.citibank.com.hk/chinese/credit-cards/citi-plus-card",
+                
+                "image":"/assets/images/cards/citi_plus.webp",
+                "miles_card_currency":""
+            },{
+                "card_name": "Citi PremierMiles信用卡",
+                "issuer": "citi",
+                "card_id":"18",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": true,
+                
+                
+                "mileage_programme":{
+                    "asiamiles":20.833,
+                    "avios":20.833
+                },
+                "annual_fee":0,
+                "can_waive_fee":true,
+                "annual_salary":120000,
+                "fx_fee":1.95,
+                "reg_link":"https://www1.citibank.com.hk/chinese/credit-cards/premiermiles-cards",
+                
+                "image":"/assets/images/cards/citi_pm.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "Citi Prestige信用卡",
+                "issuer": "citi",
+                "card_id":"19",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": true,
+                
+                
+                "mileage_programme":{
+                    "asiamiles":20.833,
+                    "avios":20.833
+                },
+                "annual_fee":3800,
+                "can_waive_fee":false,
+                "annual_salary":600000,
+                "fx_fee":1.95,
+                "reg_link":"https://www1.citibank.com.hk/chinese/credit-cards/prestige-card",
+                
+                "image":"/assets/images/cards/citi_prestige.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "Citi Rewards Mastercard",
+                "issuer": "citi",
+                "card_id":"20",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": true,
+                
+                
+                "mileage_programme":{
+                    "asiamiles":16.667,
+                    "avios":16.667
+                },
+                "annual_fee":1800,
+                "can_waive_fee":true,
+                "annual_salary":120000,
+                "fx_fee":1.95,
+                "reg_link":"https://www1.citibank.com.hk/chinese/credit-cards/rewards-card",
+                
+                "image":"/assets/images/cards/citi_rewards.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "Citi Rewards 銀聯信用卡",
+                "issuer": "citi",
+                "card_id":"21",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": true,
+                
+                
+                "mileage_programme":{
+                    "asiamiles":16.667,
+                    "avios":16.667
+                },
+                "annual_fee":1800,
+                "can_waive_fee":true,
+                "annual_salary":120000,
+                "fx_fee":1.95,
+                "reg_link":"https://www1.citibank.com.hk/chinese/credit-cards/rewards-card",
+                
+                "image":"/assets/images/cards/citi_rewards.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "Citi The Club 信用卡",
+                "issuer": "citi",
+                "card_id":"22",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                    
+                },
+                "annual_fee":1800,
+                "can_waive_fee":true,
+                "annual_salary":120000,
+                "fx_fee":1.95,
+                "reg_link":"https://www1.citibank.com.hk/chinese/credit-cards/citi-the-club-card/",
+                
+                "image":"/assets/images/cards/citi_rewards.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "信銀國際Motion信用卡",
+                "issuer": "citic",
+                "card_id":"23",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{},
+                "annual_fee":250,
+                "can_waive_fee":true,
+                "annual_salary":150000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.cncbinternational.com/personal/promotions/motion_credit_card/tc/index.html",
+                
+                "image":"/assets/images/cards/citic_motion.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "DBS Black World Mastercard®",
+                "issuer": "dbs",
+                "card_id":"24",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": true,
+                
+                
+                "mileage_programme":{
+                    "asiamiles":20.333,
+                    "avios":20.333,
+                    "phoenix":20.333
+                },
+                "annual_fee":2800,
+                "can_waive_fee":true,
+                "annual_salary":240000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.dbs.com.hk/personal-zh/credit-cards/credit-cards/black-mc",
+                
+                "image":"/assets/images/cards/dbs_black.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "DBS Eminent Card",
+                "issuer": "dbs",
+                "card_id":"25",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                    
+                },
+                "annual_fee":1800,
+                "can_waive_fee":true,
+                "annual_salary":150000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.dbs.com.hk/personal-zh/credit-cards/credit-cards/eminent-card",
+                
+                "image":"/assets/images/cards/dbs_eminent.jpeg",
+                "miles_card_currency":""
+            },{
+                "card_name": "DBS Live Fresh 信用卡",
+                "issuer": "dbs",
+                "card_id":"26",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                    
+                },
+                "annual_fee":1800,
+                "can_waive_fee":true,
+                "annual_salary":150000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.dbs.com.hk/personal-zh/credit-cards/credit-cards/livefresh",
+                
+                "image":"/assets/images/cards/dbs_live.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "DBS COMPASS VISA",
+                "issuer": "dbs",
+                "card_id":"27",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                    
+                },
+                "annual_fee":1800,
+                "can_waive_fee":true,
+                "annual_salary":100000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.dbs.com.hk/personal-zh/credit-cards/credit-cards/compass-visa-platinum",
+                
+                "image":"/assets/images/cards/dbs_compass.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "大新 ANA World 萬事達卡",
+                "issuer": "dsb",
+                "card_id":"28",
+                "earn_miles":true,
+                "earn_cash": false,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                    
+                },
+                "annual_fee":2000,
+                "can_waive_fee":true,
+                "annual_salary":150000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.dahsing.com/html/tc/credit_card/card_products/co_brand/ana_card.html",
+                
+                "image":"/assets/images/cards/dsb_ana.jpeg",
+                "miles_card_currency":"ana"
+            },{
+                "card_name": "大新英國航空白金卡",
+                "issuer": "dsb",
+                "card_id":"29",
+                "earn_miles":true,
+                "earn_cash": false,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                    
+                },
+                "annual_fee":1800,
+                "can_waive_fee":true,
+                "annual_salary":150000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.dahsing.com/html/tc/credit_card/card_products/co_brand/british_airway_card.html",
+                
+                "image":"/assets/images/cards/dsb_ba.png",
+                "miles_card_currency":"avios"
+            },{
+                "card_name": "大新 ONE+ 信用卡",
+                "issuer": "dsb",
+                "card_id":"30",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                    
+                },
+                "annual_fee":1800,
+                "can_waive_fee":true,
+                "annual_salary":150000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.dahsing.com/html/tc/credit_card/card_products/generic/one_credit_card.html",
+                
+                "image":"/assets/images/cards/dsb_one.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "大新聯合航空 World 萬事達卡",
+                "issuer": "dsb",
+                "card_id":"31",
+                "earn_miles":true,
+                "earn_cash": false,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                    
+                },
+                "annual_fee":2000,
+                "can_waive_fee":true,
+                "annual_salary":150000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.dahsing.com/html/tc/credit_card/card_products/co_brand/mileage_plus_card.html",
+                
+                "image":"/assets/images/cards/dsb_united.jpeg",
+                "miles_card_currency":"united"
+            },{
+                "card_name": "恆生 enJoy 卡",
+                "issuer": "hsb",
+                "card_id":"32",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                    
+                },
+                "annual_fee":1500,
+                "can_waive_fee":true,
+                "annual_salary":150000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.hangseng.com/zh-hk/personal/cards/products/co-branded/enjoy-card/",
+                
+                "image":"/assets/images/cards/hsb_enjoy.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "恆生 MPOWER 卡",
+                "issuer": "hsb",
+                "card_id":"33",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                    
+                },
+                "annual_fee":1500,
+                "can_waive_fee":true,
+                "annual_salary":150000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.hangseng.com/zh-hk/personal/cards/products/mpower-card/",
+                
+                "image":"/assets/images/cards/hsb_mpower.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "恒生白金卡",
+                "issuer": "hsb",
+                "card_id":"34",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                    
+                },
+                "annual_fee":1500,
+                "can_waive_fee":true,
+                "annual_salary":150000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.hangseng.com/zh-hk/personal/cards/products/platinum-card/",
+                
+                "image":"/assets/images/cards/hsb_platinum.jpeg",
+                "miles_card_currency":""
+            },{
+                "card_name": "恒生優越理財 World Mastercard®",
+                "issuer": "hsb",
+                "card_id":"35",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                    
+                },
+                "annual_fee":6000,
+                "can_waive_fee":true,
+                "annual_salary":150000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.hangseng.com/zh-hk/personal/cards/products/world-mastercard/",
+                
+                "image":"/assets/images/cards/hsb_prestige.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "滙豐卓越理財信用卡® ",
+                "issuer": "hsbc",
+                "card_id":"36",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": true,
+                
+                
+                "mileage_programme":{
+                    "asiamiles":10,
+                    "avios":15,
+                    "krisflyer":15
+                },
+                "annual_fee":0,
                 "can_waive_fee":true,
                 "annual_salary":600000,
                 "fx_fee":1.95,
-                "reg_link":"https://google.com",
-                "icon":"/assets/images/amex_platcharge.png",
-                "image":"/assets/images/amex_platcharge.png",
-                "miles_card_currency":"asiamiles"
+                "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/products/premier-mastercard/",
+                
+                "image":"/assets/images/cards/hsbc_prem.jpeg",
+                "miles_card_currency":""
+            },{
+                "card_name": "滙豐EveryMile信用卡",
+                "issuer": "hsbc",
+                "card_id":"37",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": true,
+                
+                
+                "mileage_programme":{
+                    
+                },
+                "annual_fee":2000,
+                "can_waive_fee":true,
+                "annual_salary":240000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/products/everymile/",
+                
+                "image":"/assets/images/cards/hsbc_em.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "滙豐Red信用卡",
+                "issuer": "hsbc",
+                "card_id":"38",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": true,
+                
+                
+                "mileage_programme":{
+                    "asiamiles":10,
+                    "avios":15,
+                    "krisflyer":15
+                },
+                "annual_fee":0,
+                "can_waive_fee":true,
+                "annual_salary":120000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/products/red/",
+                
+                "image":"/assets/images/cards/hsbc_red.jpeg",
+                "miles_card_currency":""
+            },{
+                "card_name": "滙豐白金 Visa 卡",
+                "issuer": "hsbc",
+                "card_id":"39",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": true,
+                
+                
+                "mileage_programme":{
+                    "asiamiles":10,
+                    "avios":15,
+                    "krisflyer":15
+                },
+                "annual_fee":1800,
+                "can_waive_fee":true,
+                "annual_salary":150000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/products/visa-platinum/",
+                
+                "image":"/assets/images/cards/hsbc_plat.jpeg",
+                "miles_card_currency":""
+            },{
+                "card_name": "滙豐滙財金卡",
+                "issuer": "hsbc",
+                "card_id":"40",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": true,
+                
+                
+                "mileage_programme":{
+                    "asiamiles":10,
+                    "avios":15,
+                    "krisflyer":15
+                },
+                "annual_fee":600,
+                "can_waive_fee":true,
+                "annual_salary":60000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/products/visa-gold/",
+                
+                "image":"/assets/images/cards/hsbc_gold.jpeg",
+                "miles_card_currency":""
+            },{
+                "card_name": "滙豐Pulse銀聯雙幣鑽石信用卡",
+                "issuer": "hsbc",
+                "card_id":"41",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": true,
+                
+                
+                "mileage_programme":{
+                    "asiamiles":10,
+                    "avios":15,
+                    "krisflyer":15
+                },
+                "annual_fee":1800,
+                "can_waive_fee":true,
+                "annual_salary":150000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/products/unionpay-dual-currency/",
+                
+                "image":"/assets/images/cards/hsbc_upd.jpeg",
+                "miles_card_currency":""
+            },{
+                "card_name": "滙豐銀聯雙幣信用卡",
+                "issuer": "hsbc",
+                "card_id":"42",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": true,
+                
+                
+                "mileage_programme":{
+                    "asiamiles":10,
+                    "avios":15,
+                    "krisflyer":15
+                },
+                "annual_fee":1800,
+                "can_waive_fee":true,
+                "annual_salary":60000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/products/unionpay-dual-currency-classic/",
+                
+                "image":"/assets/images/cards/hsbc_up.jpeg",
+                "miles_card_currency":""
+            },{
+                "card_name": "livi Debit Card",
+                "issuer": "livi",
+                "card_id":"43",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                },
+                "annual_fee":0,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":1.95,
+                "reg_link":"https://www.livibank.com/zh_HK/features/livi-debit-mastercard.html",
+                
+                "image":"/assets/images/cards/livi_debit.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "livi paylater",
+                "issuer": "livi",
+                "card_id":"44",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                },
+                "annual_fee":0,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":1.95,
+                "reg_link":"https://www.livibank.com/zh_HK/features/livi-paylater.html",
+                
+                "image":"/assets/images/cards/livi_paylater.webp",
+                "miles_card_currency":""
+            },{
+                "card_name": "Mox Credit",
+                "issuer": "mox",
+                "card_id":"45",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                },
+                "annual_fee":0,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":1.95,
+                "reg_link":"https://mox.com/zh/features/mox-credit/",
+                
+                "image":"/assets/images/cards/mox.webp",
+                "miles_card_currency":""
+            },{
+                "card_name": "八達通Mastercard®",
+                "issuer": "oepay",
+                "card_id":"46",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                },
+                "annual_fee":0,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":1.95,
+                "reg_link":"https://www.octopus.com.hk/tc/consumer/mobile-payment/mastercard/about/index.html",
+                
+                "image":"/assets/images/cards/oepay.webp",
+                "miles_card_currency":""
+            },{
+                "card_name": "安信 EarnMORE 信用卡",
+                "issuer": "prime",
+                "card_id":"47",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                },
+                "annual_fee":0,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":1.95,
+                "reg_link":"https://www.primecredit.com/credit-card/earnmore/",
+                
+                "image":"/assets/images/cards/prime_earnmore.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "WeWa銀聯信用卡",
+                "issuer": "prime",
+                "card_id":"48",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                },
+                "annual_fee":0,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":1.95,
+                "reg_link":"https://www.wewacard.com/wewa_orientation/",
+                
+                "image":"/assets/images/cards/prime_wewa.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "渣打Smart信用卡",
+                "issuer": "sc",
+                "card_id":"49",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                },
+                "annual_fee":0,
+                "can_waive_fee":true,
+                "annual_salary":96000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.sc.com/hk/zh/credit-cards/smart/",
+                
+                "image":"/assets/images/cards/sc_smart.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "渣打Simply Cash Visa 卡",
+                "issuer": "sc",
+                "card_id":"50",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                },
+                "annual_fee":2000,
+                "can_waive_fee":true,
+                "annual_salary":96000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.sc.com/hk/zh/credit-cards/simplycash/",
+                
+                "image":"/assets/images/cards/sc_simplycash.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "WeLab Debit Card",
+                "issuer": "welab",
+                "card_id":"51",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                },
+                "annual_fee":0,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":1.95,
+                "reg_link":"https://www.welab.bank/zh/feature/debit-card/",
+                
+                "image":"/assets/images/cards/welab.webp",
+                "miles_card_currency":""
+            },{
+                "card_name": "ZA Card",
+                "issuer": "za",
+                "card_id":"52",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                },
+                "annual_fee":0,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":1.95,
+                "reg_link":"https://bank.za.group/hk/za-card",
+                
+                "image":"/assets/images/cards/za.webp",
+                "miles_card_currency":""
+            },{
+                "card_name": "AEON CARD WAKUWAKU",
+                "issuer": "aeon",
+                "card_id":"53",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                },
+                "annual_fee":0,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":1.95,
+                "reg_link":"https://www.aeon.com.hk/tc/credit-card/creditcard-wakuwaku.html",
+                
+                "image":"/assets/images/cards/aeon_waku.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "AEON Visa",
+                "issuer": "aeon",
+                "card_id":"54",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                },
+                "annual_fee":0,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":1.95,
+                "reg_link":"https://www.aeon.com.hk/tc/credit-card/creditcard-jusco-visa.html",
+                
+                "image":"/assets/images/cards/aeon_visa.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "AEON JAL Card",
+                "issuer": "aeon",
+                "card_id":"55",
+                "earn_miles":true,
+                "earn_cash": false,
+                "has_mileage_programme": false,
+                
+                
+                "mileage_programme":{
+                },
+                "annual_fee":480,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":1.95,
+                "reg_link":"https://www.aeon.com.hk/tc/credit-card/creditcard-aeon-card-jal-mastercard.html",
+                
+                "image":"/assets/images/cards/aeon_jal.png",
+                "miles_card_currency":"jal"
             }
         ],
         "keys":[
@@ -76,30 +1113,137 @@
         ]
     },
     "issuers":{
-        "data":[
-            {
+        
+            "hsbc":{
                 "name":"匯豐銀行",
                 "image":"/assets/images/issuer/hsbc.png"
-            } ,{
+            } ,
+            "amex":{
                 "name":"美國運通",
                 "image":"/assets/images/issuer/amex.png"
-            } 
-        ]
+            } ,
+            "aeon":{
+                "name":"AEON",
+                "image":"/assets/images/issuer/aeon.png"
+            } ,
+            "sc":{
+                "name":"渣打銀行",
+                "image":"/assets/images/issuer/sc.png"
+            } ,
+            "ccb":{
+                "name":"建設銀行",
+                "image":"/assets/images/issuer/ccb.png"
+            } ,
+            "bea":{
+                "name":"東亞銀行",
+                "image":"/assets/images/issuer/bea.png"
+            } ,
+            "citi":{
+                "name":"花旗銀行",
+                "image":"/assets/images/issuer/citi.png"
+            } ,
+            "citic":{
+                "name":"中信銀行（國際）",
+                "image":"/assets/images/issuer/citic.png"
+            } ,
+            "dbs":{
+                "name":"星展銀行",
+                "image":"/assets/images/issuer/dbs.png"
+            } ,
+            "livi":{
+                "name":"livi",
+                "image":"/assets/images/issuer/livi.png"
+            } ,
+            "mox":{
+                "name":"Mox",
+                "image":"/assets/images/issuer/mox.png"
+            } ,
+            "za":{
+                "name":"眾安ZA",
+                "image":"/assets/images/issuer/za.png"
+            } ,
+            "dsb":{
+                "name":"大生銀行",
+                "image":"/assets/images/issuer/dsb.png"
+            } ,
+            "hsb":{
+                "name":"恆生銀行",
+                "image":"/assets/images/issuer/hsb.png"
+            } ,
+            "prime":{
+                "name":"安信",
+                "image":"/assets/images/issuer/prime.png"
+            } ,
+            "oepay":{
+                "name":"OePay",
+                "image":"/assets/images/issuer/oepay.png"
+            },
+            "welab":{
+                "name":"WeLab Bank",
+                "image":"/assets/images/issuer/welab.png"
+            }
+        
     },
     "mileages":{
         "avios":{
             "name":"Avios",
-            "abbv":"AV",
             "logo":"/assets/images/mileage/av_logo.png",
             "icon":"/assets/images/mileage/av_icon.png",
             "unit":"av"
         },
         "asiamiles":{
             "name":"Asiamiles",
-            "abbv":"AM",
             "logo":"/assets/images/mileage/am_logo.png",
             "icon":"/assets/images/mileage/am_icon.png",
             "unit":"A"
+        },
+        "phoenix":{
+            "name":"鳳凰知音",
+            "logo":"/assets/images/mileage/am_logo.png",
+            "icon":"/assets/images/mileage/am_icon.png",
+            "unit":"ph"
+        },
+        "krisflyer":{
+            "name":"新航 Krisflyer",
+            "logo":"/assets/images/mileage/am_logo.png",
+            "icon":"/assets/images/mileage/am_icon.png",
+            "unit":"kris"
+        },
+        "united":{
+            "name":"聯合航空MileagePlus",
+            "logo":"/assets/images/mileage/am_logo.png",
+            "icon":"/assets/images/mileage/am_icon.png",
+            "unit":"MP"
+        },
+        "aeroplan":{
+            "name":"加拿大航空 Aeroplan",
+            "logo":"/assets/images/mileage/am_logo.png",
+            "icon":"/assets/images/mileage/am_icon.png",
+            "unit":"Aero"
+        },
+        "marriott":{
+            "name":"萬豪 Marriott Bonvoy Points",
+            "logo":"/assets/images/mileage/am_logo.png",
+            "icon":"/assets/images/mileage/am_icon.png",
+            "unit":"Bonvoy"
+        },
+        "hilton":{
+            "name":"希爾頓 Hilton Honors Points",
+            "logo":"/assets/images/mileage/am_logo.png",
+            "icon":"/assets/images/mileage/am_icon.png",
+            "unit":"HH"
+        },
+        "jal":{
+            "name":"日航 JAL",
+            "logo":"/assets/images/mileage/am_logo.png",
+            "icon":"/assets/images/mileage/am_icon.png",
+            "unit":"jal"
+        },
+        "ana":{
+            "name":"ANA",
+            "logo":"/assets/images/mileage/am_logo.png",
+            "icon":"/assets/images/mileage/am_icon.png",
+            "unit":"ana"
         }
         
     },

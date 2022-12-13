@@ -1,5 +1,5 @@
 import { IonAvatar, IonButton, IonContent, IonHeader, IonIcon, IonItem, IonItemGroup, IonLabel, IonList, IonListHeader, IonPage, IonText, IonTitle, IonToolbar } from '@ionic/react';
-import { cardOutline, cashOutline } from 'ionicons/icons';
+import { cardOutline, cashOutline, gift, giftOutline } from 'ionicons/icons';
 import ExploreContainer from '../components/ExploreContainer';
 
 const AccountPage: React.FC = () => {
@@ -37,9 +37,13 @@ const AccountPage: React.FC = () => {
             <IonIcon icon={cashOutline} slot="start"></IonIcon>
             <IonLabel>調整里數現金價值</IonLabel>
           </IonItem>
+          <IonItem detail={true} routerLink="/settings/custom_reward_list" routerDirection='forward'>
+            <IonIcon icon={giftOutline} slot="start"></IonIcon>
+            <IonLabel>用戶自訂優惠</IonLabel>
+          </IonItem>
         </IonList>
         <br></br>
-        <IonButton expand='full' color="danger" onClick={e=>{localStorage.clear();window.location.href="/"}}>
+        <IonButton expand='full' color="danger" onClick={e=>{if(prompt("Are you sure")){localStorage.clear();window.location.href="/"}}}>
           Reset app data
         </IonButton>
       </IonContent>

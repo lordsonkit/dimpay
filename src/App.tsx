@@ -41,15 +41,12 @@ import UserDataReducerProvider from './reducer/UserDataReducer';
 import merchants_json from './app_data/merchants.json';
 import CardDetailPage from './pages/CardDetail';
 import MilesValueSetting from './pages/MilesValueSetting';
+import CustomRewardList from './pages/CustomRewardList';
+import AddCustomReward from './pages/AddCustomReward';
 
 setupIonicReact();
 
 
-
-//const [userdata,setUserdata]=useState(userdata_template_json)
-
-//setUserdata(JSON.parse(localStorage.getItem("userdata")||'{}'))
-//console.log(userdata)
 
 export const CardContext = React.createContext({
   cardData:cards_json,
@@ -80,13 +77,7 @@ const App: React.FC = () => {
     return ({merchantData,setMerchantData})
   }, [merchantData,setMerchantData])
   
-  /*
-  const [userData,setUserData] = useState(userdata_template_json);
-  const userDataProvider = useMemo( () => {
-    console.log('userdata update')
-    return ({userData, setUserData})
-  }, [userData, setUserData])
-*/
+
 
   
 
@@ -118,6 +109,12 @@ const App: React.FC = () => {
               </Route>
               <Route exact path="/settings/miles_value">
                 <MilesValueSetting />
+              </Route>
+              <Route exact path="/settings/custom_reward_list">
+                <CustomRewardList />
+              </Route>
+              <Route exact path="/settings/add_custom_reward">
+                <AddCustomReward />
               </Route>
               <Route exact path="/cardDetails/:id">
                 <CardDetailPage />

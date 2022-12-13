@@ -1,21 +1,21 @@
 {
     "rewards": {
-        "data": [
-            {
+        "data": {
+            "0":{
                 "reward_name": "Visa Signature自選類別3x獎賞",
                 "reward_description": "asdf\nasdf",
                 "reward_banners":["https://www.flyasia.co/wp-content/uploads/2021/08/hsbc-rewards-of-your-choice-min-800x373.jpeg"],
                 "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
                 "reward_type": "cash", 
-                "reward_id": 0,
+                "reward_id": "0",
                 "target_cards": [0],
                 "reward_ratio": 0.012,
+                "bill_discount": 0,
                 "charge_currency_requirement": [],
                 "payment_method": [],
                 "card_age_bonus": [[0,0]],
                 "day_of_week": [],
                 "day_of_month": [],
-                "online_only": false,
                 "bill_payment": false,
                 "qualify_mcc":[],
                 "qualify_merchant":[],
@@ -26,23 +26,26 @@
                 "minimum_qualification_spend":0,
                 "maximum_qualifacation_spend":0,
                 "client_remarks":[],
-                "admin_remark":""
+                "admin_remark":"",
+                "reset_interval":"",
+                "banking_level":0
             },
-            {
+            
+            "1":{
                 "reward_name": "HSBC Visa Basic Reward",
                 "reward_description": "asdf\nasdf",
                 "reward_banners":[],
                 "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
                 "reward_type": "cash", 
-                "reward_id": 1,
+                "reward_id": "1",
                 "target_cards": [0],
                 "reward_ratio": 0.004,
+                "bill_discount": 0,
                 "charge_currency_requirement": [],
                 "payment_method": [],
                 "card_age_bonus": [],
                 "day_of_week": [],
                 "day_of_month": [],
-                "online_only": false,
                 "bill_payment": true,
                 "qualify_mcc":[],
                 "qualify_merchant":[],
@@ -53,23 +56,25 @@
                 "minimum_qualification_spend":0,
                 "maximum_qualifacation_spend":0,
                 "client_remarks":[],
-                "admin_remark":""
+                "admin_remark":"",
+                "reset_interval":"",
+                "banking_level":0
             },
-            {
+            "2":{
                 "reward_name": "AmEx Platinum Charge Card Basic Reward",
                 "reward_description": "asdf\nasdf",
                 "reward_banners":[],
                 "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
                 "reward_type": "cash", 
-                "reward_id": 2,
+                "reward_id": "2",
                 "target_cards": [1],
                 "reward_ratio": 0.008,
+                "bill_discount": 0,
                 "charge_currency_requirement": [],
                 "payment_method": [],
                 "card_age_bonus": [],
                 "day_of_week": [],
                 "day_of_month": [],
-                "online_only": false,
                 "bill_payment": true,
                 "qualify_mcc":[],
                 "qualify_merchant":[],
@@ -80,23 +85,25 @@
                 "minimum_qualification_spend":0,
                 "maximum_qualifacation_spend":0,
                 "client_remarks":[0],
-                "admin_remark":""
+                "admin_remark":"",
+                "reset_interval":"",
+                "banking_level":0
             },
-            {
+            "3":{
                 "reward_name": "SC_CX Basic Reward",
                 "reward_description": "asdf\nasdf",
                 "reward_banners":[],
                 "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
                 "reward_type": "miles", 
-                "reward_id": 3,
+                "reward_id": "3",
                 "target_cards": [2],
                 "reward_ratio": 6,
+                "bill_discount": 0,
                 "charge_currency_requirement": [],
                 "payment_method": [],
                 "card_age_bonus": [],
                 "day_of_week": [],
                 "day_of_month": [],
-                "online_only": false,
                 "bill_payment": true,
                 "qualify_mcc":[],
                 "qualify_merchant":[],
@@ -107,23 +114,25 @@
                 "minimum_qualification_spend":0,
                 "maximum_qualifacation_spend":0,
                 "client_remarks":[0],
-                "admin_remark":""
+                "admin_remark":"",
+                "reset_interval":"",
+                "banking_level":0
             },
-            {
+            "4":{
                 "reward_name": "HSBC Supermarket Reward Above 500 - 10%",
                 "reward_description": "asdf\nasdf",
                 "reward_banners":[],
                 "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
                 "reward_type": "cash", 
-                "reward_id": 4,
+                "reward_id": "4",
                 "target_cards": [0],
                 "reward_ratio": 0.1,
+                "bill_discount": 0,
                 "charge_currency_requirement": [],
                 "payment_method": [],
                 "card_age_bonus": [],
                 "day_of_week": [],
                 "day_of_month": [],
-                "online_only": false,
                 "bill_payment": true,
                 "qualify_mcc":["5331"],
                 "qualify_merchant":[],
@@ -134,23 +143,25 @@
                 "minimum_qualification_spend":5000,
                 "maximum_qualifacation_spend":10000,
                 "client_remarks":[0],
-                "admin_remark":""
+                "admin_remark":"",
+                "reset_interval":"",
+                "banking_level":0
             },
-            {
+            "string":{
                 "reward_name": "HSBC Paywave",
                 "reward_description": "asdf\nasdf",
                 "reward_banners":[],
                 "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
                 "reward_type": "cash", 
-                "reward_id": 5,
+                "reward_id": "string",
                 "target_cards": [0],
                 "reward_ratio": 0.15,
+                "bill_discount": 0,
                 "charge_currency_requirement": [],
                 "payment_method": ["contactless"],
                 "card_age_bonus": [],
                 "day_of_week": [],
                 "day_of_month": [],
-                "online_only": false,
                 "bill_payment": false,
                 "qualify_mcc":[],
                 "qualify_merchant":[],
@@ -161,8 +172,10 @@
                 "minimum_qualification_spend":500,
                 "maximum_qualifacation_spend":2500,
                 "client_remarks":[0],
-                "admin_remark":""
+                "admin_remark":"",
+                "reset_interval":"",
+                "banking_level":0
             }
-        ]
+        }
     }
 }
