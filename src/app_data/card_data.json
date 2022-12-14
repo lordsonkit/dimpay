@@ -1155,7 +1155,7 @@
                 "annual_salary":0,
                 "fx_fee":1.95,
                 "reg_link":"https://www.bochk.com/tc/creditcard/details/boccreditcard/dd_rmb.html",
-                "image":"/assets/images/cards/boc_dd.png",
+                "image":"/assets/images/cards/boc_dd.jpeg",
                 "miles_card_currency":""
             },{
                 "card_name": "中銀雙幣卡<大灣區一卡通>",
@@ -1174,7 +1174,7 @@
                 "annual_salary":0,
                 "fx_fee":1.95,
                 "reg_link":"https://www.bochk.com/tc/creditcard/details/boccreditcard/gba.html",
-                "image":"/assets/images/cards/boc_gba.png",
+                "image":"/assets/images/cards/boc_gba.webp",
                 "miles_card_currency":""
             },{
                 "card_name": "中銀香港航空Visa白金卡",
@@ -1190,7 +1190,7 @@
                 "annual_salary":0,
                 "fx_fee":1.95,
                 "reg_link":"https://www.bochk.com/tc/creditcard/details/cobrand/cobrand/hka.html",
-                "image":"/assets/images/cards/boc_hx.png",
+                "image":"/assets/images/cards/boc_hx.jpeg",
                 "miles_card_currency":"fwe"
             },{
                 "card_name": "中銀i-card(虛擬卡)",
@@ -1209,7 +1209,7 @@
                 "annual_salary":0,
                 "fx_fee":1.95,
                 "reg_link":"https://www.bochk.com/tc/creditcard/details/boccreditcard/icardvc.html",
-                "image":"/assets/images/cards/boc_ivirtual.png",
+                "image":"/assets/images/cards/boc_ivirtual.webp",
                 "miles_card_currency":""
             },{
                 "card_name": "中銀崇光Visa卡",
@@ -1241,7 +1241,7 @@
                 "annual_salary":0,
                 "fx_fee":1.95,
                 "reg_link":"https://www.bochk.com/tc/creditcard/details/cobrand/cobrand/hka.html",
-                "image":"/assets/images/cards/boc_hx.png",
+                "image":"/assets/images/cards/boc_hx.jpeg",
                 "miles_card_currency":"fwe"
             }
         ],
