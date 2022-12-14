@@ -24,8 +24,8 @@ const CardAddDropList: React.FC<ContainerProps> = ({ userHoldsCard, searchTerm }
     <>
       {cardData.cards.data.map(({ card_name, issuer, card_id, image }) => (
         userOwnsCard(card_id)==userHoldsCard && (cardData.issuers[issuer].name+card_name).toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase())>-1 && <IonItem key={card_id}>
-          <IonThumbnail className='thumbnail card-round-border' slot='start'>
-            <IonImg className='fit-thumbnail ' src={image}></IonImg>
+          <IonThumbnail className='thumbnail' slot='start'>
+            <img className='fit-thumbnail card-round-border' src={image}></img>
           </IonThumbnail>
           <IonLabel>
             <IonBadge color="medium" className='issuer-badge'><IonText>{cardData.issuers[issuer].name}</IonText></IonBadge>
