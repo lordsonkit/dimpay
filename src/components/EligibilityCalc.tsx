@@ -226,19 +226,37 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
         if (calculate_limits) {
 
             let eligible_spent = 0;
+
+            let qualification_ref_reward_id=reward_id;
+            if(rewards[reward_id].qualification_spend_ref){
+                //Qulification requirement is referenced to another reward_id
+                qualification_ref_reward_id=rewards[reward_id].qualification_spend_ref;
+            }
+            
+            //TODO: Quota Translation - 600 * 2% on ref = 300 on 4% this
+
+            //TODO: Shareed quota: reward_a + reward_b => reward_master quota
+
+            //Loop user spending history
             for (var i = 0; i < userData.spending_history.length; i++) {
                 let item: PaymentHistory = userData.spending_history[i]
-                let result = EligibilityCalc(reward_id, item.card_id, item.mcc_query, item.query_id, item.spend_amount, item.spend_currency, item.user_payment_method, item.time, false)
-                if (result) {
-                    if (result.eligible) {
-                        if(result.limits>0){
-                            eligible_spent += result.limits
-                        }else{
-                            eligible_spent += item.spend_amount
+                if(qualification_period[0]<item.time&&item.time<qualification_period[1]){
+                    //Filter out tx that are out of time
+                    let result = EligibilityCalc(qualification_ref_reward_id, item.card_id, item.mcc_query, item.query_id, item.spend_amount, item.spend_currency, item.user_payment_method, item.time, false)
+                    if (result) {
+                        if (result.eligible) {
+                            if(result.limits>0){
+                                eligible_spent += result.limits
+                            }else{
+                                eligible_spent += item.spend_amount
+                            }
                         }
                     }
                 }
+
             }
+
+
             //limit for maximum
             // warn for less than min eligible
             qualification_spend=spend_amount + eligible_spent

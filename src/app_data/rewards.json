@@ -28,7 +28,11 @@
                 "client_remarks":[],
                 "admin_remark":"",
                 "reset_interval":"",
-                "banking_level":0
+                "banking_level":0,
+                "qualification_spend_ref":"",
+                "quota_share":"",
+                "translate_quota_value":false,
+                "aux":false
             },
             
             "1":{
@@ -58,7 +62,11 @@
                 "client_remarks":[],
                 "admin_remark":"",
                 "reset_interval":"",
-                "banking_level":0
+                "banking_level":0,
+                "qualification_spend_ref":"",
+                "quota_share":"",
+                "translate_quota_value":false,
+                "aux":false
             },
             "2":{
                 "reward_name": "AmEx Platinum Charge Card Basic Reward",
@@ -87,7 +95,11 @@
                 "client_remarks":[0],
                 "admin_remark":"",
                 "reset_interval":"",
-                "banking_level":0
+                "banking_level":0,
+                "qualification_spend_ref":"",
+                "quota_share":"",
+                "translate_quota_value":false,
+                "aux":false
             },
             "3":{
                 "reward_name": "SC_CX Basic Reward",
@@ -116,7 +128,11 @@
                 "client_remarks":[0],
                 "admin_remark":"",
                 "reset_interval":"",
-                "banking_level":0
+                "banking_level":0,
+                "qualification_spend_ref":"",
+                "quota_share":"",
+                "translate_quota_value":false,
+                "aux":false
             },
             "4":{
                 "reward_name": "HSBC Supermarket Reward Above 500 - 10%",
@@ -145,7 +161,11 @@
                 "client_remarks":[0],
                 "admin_remark":"",
                 "reset_interval":"",
-                "banking_level":0
+                "banking_level":0,
+                "qualification_spend_ref":"",
+                "quota_share":"",
+                "translate_quota_value":false,
+                "aux":false
             },
             "string":{
                 "reward_name": "HSBC Paywave",
@@ -174,7 +194,11 @@
                 "client_remarks":[0],
                 "admin_remark":"",
                 "reset_interval":"",
-                "banking_level":0
+                "banking_level":0,
+                "qualification_spend_ref":"",
+                "quota_share":"",
+                "translate_quota_value":false,
+                "aux":false
             }
         }
     }

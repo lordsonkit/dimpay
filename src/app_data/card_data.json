@@ -1106,6 +1106,143 @@
                 
                 "image":"/assets/images/cards/aeon_jal.png",
                 "miles_card_currency":"jal"
+            },{
+                "card_name": "中銀淘寶World萬事達卡",
+                "issuer": "boc",
+                "card_id":"56",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                "mileage_programme":{
+                },
+                "annual_fee":0,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":0,
+                "reg_link":"https://www.bochk.com/tc/creditcard/details/cobrand/cobrand/taobao.html",
+                "image":"/assets/images/cards/boc_taobao.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "中銀Chill Card",
+                "issuer": "boc",
+                "card_id":"57",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                "mileage_programme":{
+                },
+                "annual_fee":0,
+                "can_waive_fee":true,
+                "annual_salary":150000,
+                "fx_fee":1.95,
+                "reg_link":"https://www.bochk.com/dam/boccreditcard/chillcard/chi/index.html#section-type",
+                "image":"/assets/images/cards/boc_chill.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "中銀銀聯雙幣鑽石卡",
+                "issuer": "boc",
+                "card_id":"58",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": true,
+                "mileage_programme":{
+                    "ce":20.833,
+                    "phoenix":31.25,
+                    "asiamiles":16.666
+                },
+                "annual_fee":3800,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":1.95,
+                "reg_link":"https://www.bochk.com/tc/creditcard/details/boccreditcard/dd_rmb.html",
+                "image":"/assets/images/cards/boc_dd.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "中銀雙幣卡<大灣區一卡通>",
+                "issuer": "boc",
+                "card_id":"59",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": true,
+                "mileage_programme":{
+                    "ce":20.833,
+                    "phoenix":31.25,
+                    "asiamiles":16.666
+                },
+                "annual_fee":3800,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":1.95,
+                "reg_link":"https://www.bochk.com/tc/creditcard/details/boccreditcard/gba.html",
+                "image":"/assets/images/cards/boc_gba.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "中銀香港航空Visa白金卡",
+                "issuer": "boc",
+                "card_id":"60",
+                "earn_miles":true,
+                "earn_cash": false,
+                "has_mileage_programme": false,
+                "mileage_programme":{
+                },
+                "annual_fee":1600,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":1.95,
+                "reg_link":"https://www.bochk.com/tc/creditcard/details/cobrand/cobrand/hka.html",
+                "image":"/assets/images/cards/boc_hx.png",
+                "miles_card_currency":"fwe"
+            },{
+                "card_name": "中銀i-card(虛擬卡)",
+                "issuer": "boc",
+                "card_id":"61",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": true,
+                "mileage_programme":{
+                    "ce":20.833,
+                    "phoenix":31.25,
+                    "asiamiles":16.666
+                },
+                "annual_fee":0,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":1.95,
+                "reg_link":"https://www.bochk.com/tc/creditcard/details/boccreditcard/icardvc.html",
+                "image":"/assets/images/cards/boc_ivirtual.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "中銀崇光Visa卡",
+                "issuer": "boc",
+                "card_id":"62",
+                "earn_miles":false,
+                "earn_cash": true,
+                "has_mileage_programme": false,
+                "mileage_programme":{
+                },
+                "annual_fee":2000,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":1.95,
+                "reg_link":"https://www.bochk.com/tc/creditcard/details/cobrand/cobrand/sogo.html",
+                "image":"/assets/images/cards/boc_sogo.png",
+                "miles_card_currency":""
+            },{
+                "card_name": "中銀香港航空Visa Signature卡",
+                "issuer": "boc",
+                "card_id":"63",
+                "earn_miles":true,
+                "earn_cash": false,
+                "has_mileage_programme": false,
+                "mileage_programme":{
+                },
+                "annual_fee":2000,
+                "can_waive_fee":true,
+                "annual_salary":0,
+                "fx_fee":1.95,
+                "reg_link":"https://www.bochk.com/tc/creditcard/details/cobrand/cobrand/hka.html",
+                "image":"/assets/images/cards/boc_hx.png",
+                "miles_card_currency":"fwe"
             }
         ],
         "keys":[
@@ -1181,6 +1318,10 @@
             "welab":{
                 "name":"WeLab Bank",
                 "image":"/assets/images/issuer/welab.png"
+            },
+            "boc":{
+                "name":"中銀香港",
+                "image":"/assets/images/issuer/boc.png"
             }
         
     },
@@ -1244,7 +1385,20 @@
             "logo":"/assets/images/mileage/am_logo.png",
             "icon":"/assets/images/mileage/am_icon.png",
             "unit":"ana"
+        },
+        "ce":{
+            "name":"東方萬里行",
+            "logo":"/assets/images/mileage/am_logo.png",
+            "icon":"/assets/images/mileage/am_icon.png",
+            "unit":"ce"
+        },
+        "fwe":{
+            "name":"香港航空 FWE 里數",
+            "logo":"/assets/images/mileage/am_logo.png",
+            "icon":"/assets/images/mileage/am_icon.png",
+            "unit":"FWE"
         }
+        
         
     },
     "adverts":{

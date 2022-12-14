@@ -84,6 +84,12 @@ const AddCustomReward: React.FC = () => {
         data.reset_interval = data.reset_interval?data.reset_interval:"";
         data.banking_level = data.banking_level?parseInt(data.banking_level):0;
         data.payment_method = data.payment_method?data.payment_method.map(String):[];
+        data={...data,
+            "qualification_spend_ref":"",
+            "quota_share":"",
+            "translate_quota_value":false,
+            "aux":false
+        }
         
         if(!data.reward_ratio){
             alert("回贈比例");

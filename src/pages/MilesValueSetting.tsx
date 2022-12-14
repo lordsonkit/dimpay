@@ -39,7 +39,8 @@ const MilesValueSetting: React.FC = () => {
           <IonList>
             {Object.keys(cardData.mileages).map((item)=>(<IonItem key={item}>
                   <IonLabel slot="start">
-                    <h3>{item}</h3>
+                    <h3>{cardData.mileages[item].name}</h3>
+                    <p color="medium">{cardData.mileages[item].unit}</p>
                   </IonLabel>
                     <IonInput className='ion-text-end' type='number' min="0" step="0.001" slot='end' value={( (!userData.miles_value?.[item]&&userData.miles_value?.[item]!==0)?0.1:userData.miles_value?.[item])} onIonBlur={(e)=>setMilesValue(e,item)}></IonInput>
               </IonItem>))}
