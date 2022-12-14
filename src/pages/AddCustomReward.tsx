@@ -63,7 +63,10 @@ const AddCustomReward: React.FC = () => {
         data.reward_id= "custom_"+ String( (Math.random() + 1).toString(36).substring(3) );
         data.target_cards = data.target_cards?data.target_cards.map(Number):[];
         data.reward_ratio = parseFloat(data.reward_ratio)||0;
-        data.bill_discount = parseFloat(data.bill_discount)||0;
+        if(data.reward_type=='cash'){
+            data.reward_ratio = data.reward_ratio/100
+        }
+        data.bill_discount = (parseFloat(data.bill_discount)/100)||0;
         data.card_age_bonus=[];
         data.day_of_week = data.day_of_week?data.day_of_week.map(Number):[];
         data.day_of_month = data.day_of_month?data.day_of_month.map(Number):[];
