@@ -230,7 +230,7 @@ const AddCustomReward: React.FC = () => {
                             </IonLabel>
                             <IonDatetimeButton className='ion-text-end'  slot='end' datetime='fromtime' ></IonDatetimeButton>
                             <IonModal keepContentsMounted={true}>
-                                <IonDatetime id="fromtime" value={offer_time0} onIonChange={e=>setOfferTime0(String(e.detail.value))}></IonDatetime>
+                                <IonDatetime id="fromtime" max='2049-12-31' value={offer_time0} onIonChange={e=>setOfferTime0(String(e.detail.value))}></IonDatetime>
                             </IonModal>
                         </IonItem>
 
@@ -240,7 +240,7 @@ const AddCustomReward: React.FC = () => {
                             </IonLabel>
                             <IonDatetimeButton className='ion-text-end' slot='end' datetime='totime' ></IonDatetimeButton>
                             <IonModal keepContentsMounted={true}>
-                                <IonDatetime id="totime" value={offer_time1} onIonChange={e=>setOfferTime1(String(e.detail.value))}></IonDatetime>
+                                <IonDatetime id="totime" max='2049-12-31'  value={offer_time1} onIonChange={e=>setOfferTime1(String(e.detail.value))}></IonDatetime>
                             </IonModal>
                         </IonItem>
 

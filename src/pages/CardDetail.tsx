@@ -70,7 +70,7 @@ const CardDetailPage: React.FC = () => {
                   </IonLabel>
                   <IonDatetimeButton slot="end" datetime='datetime_cardexp'></IonDatetimeButton>
                   <IonModal keepContentsMounted={true}  trigger='open-modal'>
-                    <IonDatetime id='datetime_cardexp' presentation='date' value={new Date((userData.card_owned[active_card_id]?.expiry||0)*1000).toISOString()}   size="cover"  onIonChange={(e)=>setUserCardExpDate(e)} showDefaultButtons={true} preferWheel={true}></IonDatetime>
+                    <IonDatetime max='2049-12-31' id='datetime_cardexp' presentation='date' value={new Date((userData.card_owned[active_card_id]?.expiry||0)*1000).toISOString()}   size="cover"  onIonChange={(e)=>setUserCardExpDate(e)} showDefaultButtons={true} preferWheel={true}></IonDatetime>
                   </IonModal>
               </IonItem>
               </> }
