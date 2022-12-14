@@ -23,5 +23,5 @@
 }
 .mirrored{transform:scaleX(-1)}
 .fit_wrapper{
-    display:inline-block;
+    width:max-content;
 }

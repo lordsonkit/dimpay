@@ -74,7 +74,7 @@ const AddCustomReward: React.FC = () => {
         data.qualify_mcc= mcclist;
         data.qualify_merchant= merchantlist;
         data.disqualified_merchants= dqmerchantlist;
-        data.offer_time= [(new Date(offer_time0).getTime()+(new Date().getTimezoneOffset()*60000)/1000),(new Date(offer_time1).getTime()+(new Date().getTimezoneOffset()*60000))/1000];
+        data.offer_time= [[Math.round((new Date(offer_time0).getTime())/1000),Math.round((new Date(offer_time1).getTime())/1000)]];
         data.minimum_bill_size=parseFloat(data.minimum_bill_size)||0
         data.maximum_bill_size=parseFloat(data.maximum_bill_size)||0
         data.minimum_qualification_spend=parseFloat(data.minimum_qualification_spend)||0
@@ -105,7 +105,7 @@ const AddCustomReward: React.FC = () => {
         }
         addCustomReward(data)
         
-        history.push('/settings/custom_reward_list')
+        history.goBack()
         return false
     }
 

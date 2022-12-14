@@ -26,19 +26,20 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
 
     let qualification_spend = 0;
 
-    if (rewards[reward_id].target_cards.indexOf(card_id) == -1) {
+    if (rewards[reward_id].target_cards.indexOf(card_id) === -1) {
         return false;
     }
 
     let offer_running = false
     for (var j = 0; j < rewards[reward_id].offer_time.length; j++) {
 
-        if (rewards[reward_id].offer_time[j][0] < time && time < rewards[reward_id].offer_time[j][1]) {
+        if ((rewards[reward_id].offer_time[j][0] < time) && (time < rewards[reward_id].offer_time[j][1])) {
             offer_running = true;
             break;
         }
     }
-    if (offer_running == false) {
+    if (offer_running === false) {
+        //console.error(rewards[reward_id].offer_time,time)
         return false;
     }
 
