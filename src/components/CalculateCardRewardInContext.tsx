@@ -109,13 +109,13 @@ export const CalculateCardRewardInContext = (card_id:number,mcc_query,query_id:s
 
     let manipulation_results={
         "best_return_ratio":best_return_ratio,
-        "best_return_ratio_miles":spend_amount/miles_reward_incontext,
+        "best_return_ratio_miles":(spend_amount/miles_reward_incontext)||0,
         "best_return_choice":best_return_choice,
         "cash_reward_incontext":cash_reward_incontext,
         "miles_reward_incontext":miles_reward_incontext,
         "reward_breakdown":eligible_rewards,
         "payment_method_limit":payment_method,
-        "miles_currency_in_context":miles_currency_incontext,
+        "miles_currency_in_context":miles_currency_incontext||"asiamiles",
         "ineligible_rewards":ineligble_rewards,
         "best_item":false,
         "bill_size":spend_amount,
