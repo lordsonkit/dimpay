@@ -3,7 +3,7 @@ import { IonAvatar, IonBackButton, IonBadge, IonButton, IonButtons, IonCard, Ion
 import { OverlayEventDetail } from '@ionic/react/dist/types/components/react-component-lib/interfaces';
 import { add, pin, pulse, removeCircleOutline, trashBinOutline } from 'ionicons/icons';
 import { useContext, useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { useForm } from 'react-hook-form';
 import { CardContext, MerchantListContext } from '../App';
 import ExploreContainer from '../components/ExploreContainer';
@@ -23,6 +23,7 @@ const banking_level=[
     "私人銀行客戶"
 ]
 const AddCustomReward: React.FC = () => {
+    const history = useHistory();
     const { userData, addCustomReward} = useContext(UserContext);
     const { merchantData } = useContext(MerchantListContext);
     const [cardType, setCardType] = useState('cash');
@@ -100,8 +101,8 @@ const AddCustomReward: React.FC = () => {
             return false
         }
         addCustomReward(data)
-
         
+        history.push('/settings/custom_reward_list')
         return false
     }
 
