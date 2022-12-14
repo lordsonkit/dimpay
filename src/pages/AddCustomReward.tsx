@@ -216,13 +216,13 @@ const AddCustomReward: React.FC = () => {
                             <IonLabel>
                                 <h3>回贈比例 ({cardType=='cash' ? "%" : "每$/里"})</h3>
                             </IonLabel>
-                            <IonInput {...register("reward_ratio")} required={true} className='ion-text-end' type='number' slot='end' {...register("reward_ratio")}></IonInput>
+                            <IonInput {...register("reward_ratio")} required={true} step="0.001" className='ion-text-end' type='number' slot='end' {...register("reward_ratio")}></IonInput>
                         </IonItem>
                         <IonItem>
                             <IonLabel>
                                 <h3>帳單優惠 (%)</h3>
                             </IonLabel>
-                            <IonInput defaultValue={0} className='ion-text-end' type='number' slot='end' {...register("bill_discount")}></IonInput>
+                            <IonInput defaultValue={0} className='ion-text-end' step="0.001" type='number' slot='end' {...register("bill_discount")}></IonInput>
                         </IonItem>
                     </IonList>
 
