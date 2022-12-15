@@ -42,7 +42,11 @@ let disqualification_reason = [
 ]
 
 let reward_remarks_text = [
-    "需登記"
+    "須登記",
+    "特選客戶",
+    "個人化目標",
+    "個人化額度",
+    "基本回贈"
 ]
 
 const RewardBreakdownList: React.FC<ContainerProps> = ({ eligible_list, list_items, context }) => {

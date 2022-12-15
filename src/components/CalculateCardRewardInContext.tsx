@@ -87,13 +87,16 @@ export const CalculateCardRewardInContext = (card_id:number,mcc_query,query_id:s
             }
 
             miles_reward_incontext=cash_reward_incontext * milage[miles_currency_incontext];
-            if((userData.miles_value[miles_currency_incontext]||0.1)*miles_reward_incontext*0.9999999 > cash_reward_incontext || cardData.cards.data[card_id].earn_miles==true){ // *.9999 to prioritize cash over miles
+            if((userData.miles_value[miles_currency_incontext]||0)*miles_reward_incontext*0.9999999 > cash_reward_incontext || cardData.cards.data[card_id].earn_miles==true){ // *.9999 to prioritize cash over miles
                 best_return_choice="miles"
                 best_return_ratio=(userData.miles_value[miles_currency_incontext]||0.1)*miles_reward_incontext/spend_amount*100
             }else{
                 best_return_ratio=cash_reward_incontext/spend_amount*100
             }
             
+        }else{
+            best_return_ratio=cash_reward_incontext/spend_amount*100;
+            best_return_choice="cash"
         }
         
     }
@@ -106,7 +109,7 @@ export const CalculateCardRewardInContext = (card_id:number,mcc_query,query_id:s
         miles_reward_incontext=user_defined_multiplier;
     }
 
-
+    
     let manipulation_results={
         "best_return_ratio":best_return_ratio,
         "best_return_ratio_miles":(spend_amount/miles_reward_incontext)||0,

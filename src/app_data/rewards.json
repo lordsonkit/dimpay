@@ -1,6 +1,646 @@
 {
     "rewards": {
         "data": {
+            
+                "custom_uli3qp1tyk": {
+                    "reward_name": "Explorer® 信用卡本地消費回贈",
+                    "reward_description": "合資格的本地消費每HK$1可獲\n3美國運通積分\n（HK$5 = 1飛行里數）",
+                    "reward_banners": [
+                        "/assets/images/banner/amex_reawrd_banner.webp"
+                    ],
+                    "reg_link": "",
+                    "reward_type": "cash",
+                    "target_cards": [
+                        5
+                    ],
+                    "reward_ratio": 0.01,
+                    "bill_discount": 0,
+                    "charge_currency_requirement": [
+                        "hkd"
+                    ],
+                    "payment_method": [],
+                    "day_of_week": [],
+                    "day_of_month": [],
+                    "mcc_query": "false",
+                    "qualify_merchant": [],
+                    "minimum_bill_size": 0,
+                    "maximum_bill_size": 0,
+                    "minimum_qualification_spend": 0,
+                    "maximum_qualification_spend": 0,
+                    "reset_interval": "",
+                    "banking_level": 0,
+                    "client_remarks": "",
+                    "reward_id": "custom_uli3qp1tyk",
+                    "card_age_bonus": [],
+                    "bill_payment": false,
+                    "qualify_mcc": [],
+                    "disqualified_merchants": [],
+                    "offer_time": [
+                        [
+                            1671031040,
+                            2018157420
+                        ]
+                    ],
+                    "client_remark": [],
+                    "qualification_spend_ref": "",
+                    "quota_share": "",
+                    "translate_quota_value": false,
+                    "aux": false
+                },
+                "custom_om27i1sn6": {
+                    "reward_name": "Explorer® 信用卡外幣基本回贈",
+                    "reward_description": "外幣合資格簽賬等值每HK$1可獲3.75美國運通積分（HK$4 = 1飛行里數）",
+                    "reward_banners": [
+                        "/assets/images/banner/amex_reawrd_banner.webp"
+                    ],
+                    "reg_link": "",
+                    "reward_type": "cash",
+                    "target_cards": [
+                        5
+                    ],
+                    "reward_ratio": 0.0125,
+                    "bill_discount": 0,
+                    "charge_currency_requirement": [
+                        "-hkd"
+                    ],
+                    "payment_method": [],
+                    "day_of_week": [],
+                    "day_of_month": [],
+                    "mcc_query": "false",
+                    "qualify_merchant": [],
+                    "minimum_bill_size": 0,
+                    "maximum_bill_size": 0,
+                    "minimum_qualification_spend": 0,
+                    "maximum_qualification_spend": 0,
+                    "reset_interval": "",
+                    "banking_level": 0,
+                    "client_remarks": [
+                        4
+                    ],
+                    "reward_id": "custom_om27i1sn6",
+                    "card_age_bonus": [],
+                    "bill_payment": false,
+                    "qualify_mcc": [],
+                    "disqualified_merchants": [],
+                    "offer_time": [
+                        [
+                            1671031168,
+                            2018157540
+                        ]
+                    ],
+                    "client_remark": [],
+                    "qualification_spend_ref": "",
+                    "quota_share": "",
+                    "translate_quota_value": false,
+                    "aux": false
+                },
+                "custom_y7h78kxg5i": {
+                    "reward_name": "美國運通「加倍加賞」積分計劃",
+                    "reward_description": "透過參加「加倍加賞」積分計劃，每簽賬HK$1便可獲2美國運通積分，讓您隨時隨地累積更多積分。更可憑卡簽賬所累積之積分換取得心頭好，由美酒佳餚、生活消閒禮品、現金購物券，以至機票及酒店住宿。\n此外，所有積分均不設限期，讓您每次簽賬都以2倍速度累積積分。",
+                    "reward_banners": [
+                        "/assets/images/banner/amex_reawrd_banner.webp"
+                    ],
+                    "reg_link": "https://www.americanexpress.com/zh-hk/rewards/membership-rewards/about-earning",
+                    "reward_type": "cash",
+                    "target_cards": [
+                        1
+                    ],
+                    "reward_ratio": 0.0033333333333333335,
+                    "bill_discount": 0,
+                    "charge_currency_requirement": [],
+                    "payment_method": [],
+                    "day_of_week": [],
+                    "day_of_month": [],
+                    "mcc_query": "false",
+                    "qualify_merchant": [],
+                    "minimum_bill_size": 0,
+                    "maximum_bill_size": 0,
+                    "minimum_qualification_spend": 0,
+                    "maximum_qualification_spend": 160000,
+                    "reset_interval": "billyear",
+                    "banking_level": 0,
+                    "client_remarks": "",
+                    "reward_id": "custom_y7h78kxg5i",
+                    "card_age_bonus": [],
+                    "bill_payment": false,
+                    "qualify_mcc": [],
+                    "disqualified_merchants": [],
+                    "offer_time": [
+                        [
+                            1671034650,
+                            1891930620
+                        ]
+                    ],
+                    "client_remark": [],
+                    "qualification_spend_ref": "",
+                    "quota_share": "",
+                    "translate_quota_value": false,
+                    "aux": false
+                },
+                "custom_3m462uxzc": {
+                    "reward_name": "美國運通白金卡基本簽帳回贈",
+                    "reward_description": "",
+                    "reward_banners": [
+                        "/assets/images/banner/amex_reawrd_banner.webp"
+                    ],
+                    "reg_link": "",
+                    "reward_type": "cash",
+                    "target_cards": [
+                        1
+                    ],
+                    "reward_ratio": 0.003333333,
+                    "bill_discount": 0,
+                    "charge_currency_requirement": [],
+                    "payment_method": [],
+                    "day_of_week": [],
+                    "day_of_month": [],
+                    "mcc_query": "false",
+                    "qualify_merchant": [],
+                    "minimum_bill_size": 0,
+                    "maximum_bill_size": 0,
+                    "minimum_qualification_spend": 0,
+                    "maximum_qualification_spend": 0,
+                    "reset_interval": "",
+                    "banking_level": 0,
+                    "client_remarks": [
+                        4
+                    ],
+                    "reward_id": "custom_3m462uxzc",
+                    "card_age_bonus": [],
+                    "bill_payment": false,
+                    "qualify_mcc": [],
+                    "disqualified_merchants": [],
+                    "offer_time": [
+                        [
+                            1671034785,
+                            2523082740
+                        ]
+                    ],
+                    "client_remark": [],
+                    "qualification_spend_ref": "",
+                    "quota_share": "",
+                    "translate_quota_value": false,
+                    "aux": false
+                },
+                "custom_tm86jrxpn": {
+                    "reward_name": "美國運通白金卡外幣基本簽帳回贈",
+                    "reward_description": "",
+                    "reward_banners": [
+                        "/assets/images/banner/amex_reawrd_banner.webp"
+                    ],
+                    "reg_link": "",
+                    "reward_type": "cash",
+                    "target_cards": [
+                        1
+                    ],
+                    "reward_ratio": 0.00666,
+                    "bill_discount": 0,
+                    "charge_currency_requirement": [
+                        "-hkd"
+                    ],
+                    "payment_method": [],
+                    "day_of_week": [],
+                    "day_of_month": [],
+                    "mcc_query": "false",
+                    "qualify_merchant": [],
+                    "minimum_bill_size": 0,
+                    "maximum_bill_size": 0,
+                    "minimum_qualification_spend": 0,
+                    "maximum_qualification_spend": 0,
+                    "reset_interval": "",
+                    "banking_level": 0,
+                    "client_remarks": [
+                        4
+                    ],
+                    "reward_id": "custom_tm86jrxpn",
+                    "card_age_bonus": [],
+                    "bill_payment": false,
+                    "qualify_mcc": [],
+                    "disqualified_merchants": [],
+                    "offer_time": [
+                        [
+                            1671036199,
+                            2523084180
+                        ]
+                    ],
+                    "client_remark": [],
+                    "qualification_spend_ref": "",
+                    "quota_share": "",
+                    "translate_quota_value": false,
+                    "aux": false
+                },
+                "custom_ukv9lxf9h": {
+                    "reward_name": "美國運通白金信用卡基本回贈",
+                    "reward_description": "",
+                    "reward_banners": [
+                        "/assets/images/banner/amex_reawrd_banner.webp"
+                    ],
+                    "reg_link": "",
+                    "reward_type": "cash",
+                    "target_cards": [
+                        7
+                    ],
+                    "reward_ratio": 0.00333,
+                    "bill_discount": 0,
+                    "charge_currency_requirement": [],
+                    "payment_method": [],
+                    "day_of_week": [],
+                    "day_of_month": [],
+                    "mcc_query": "false",
+                    "qualify_merchant": [],
+                    "minimum_bill_size": 0,
+                    "maximum_bill_size": 0,
+                    "minimum_qualification_spend": 0,
+                    "maximum_qualification_spend": 0,
+                    "reset_interval": "",
+                    "banking_level": 0,
+                    "client_remarks": "",
+                    "reward_id": "custom_ukv9lxf9h",
+                    "card_age_bonus": [],
+                    "bill_payment": false,
+                    "qualify_mcc": [],
+                    "disqualified_merchants": [],
+                    "offer_time": [
+                        [
+                            1671036442,
+                            2523084420
+                        ]
+                    ],
+                    "client_remark": [],
+                    "qualification_spend_ref": "",
+                    "quota_share": "",
+                    "translate_quota_value": false,
+                    "aux": false
+                },
+                "custom_brqbwwvlki": {
+                    "reward_name": "「美國運通白金信用卡」積分計劃",
+                    "reward_description": "『美國運通白金信用卡』積分計劃只適用於美國運通白金信用卡會員，憑卡簽賬每HK$1獲享3美國運通積分。此計劃可換領外遊常客獎賞以及基本積分計劃內之獎賞。每HK$1獲享3美國運通積分適用於每一個優惠期內憑卡簽付之首HK$120,000簽賬；而HK$120,001及其後之簽賬每消費HK$1可獲1分。每一個優惠期為每年之1月1日至12月31日。部分簽賬及收費不會賺取任何積分（例如繳付煤氣及電費之公營機構簽賬、現金透支、年費、財務收費、其他收費及行政費用）。",
+                    "reward_banners": [
+                        "/assets/images/banner/amex_reawrd_banner.webp"
+                    ],
+                    "reg_link": "",
+                    "reward_type": "cash",
+                    "target_cards": [
+                        7
+                    ],
+                    "reward_ratio": 0.00666,
+                    "bill_discount": 0,
+                    "charge_currency_requirement": [],
+                    "payment_method": [],
+                    "day_of_week": [],
+                    "day_of_month": [],
+                    "mcc_query": "false",
+                    "qualify_merchant": [],
+                    "minimum_bill_size": 0,
+                    "maximum_bill_size": 0,
+                    "minimum_qualification_spend": 0,
+                    "maximum_qualification_spend": 120000,
+                    "reset_interval": "year",
+                    "banking_level": 0,
+                    "client_remarks": [
+                        4
+                    ],
+                    "reward_id": "custom_brqbwwvlki",
+                    "card_age_bonus": [],
+                    "bill_payment": false,
+                    "qualify_mcc": [],
+                    "disqualified_merchants": [],
+                    "offer_time": [
+                        [
+                            1671036501,
+                            2523084480
+                        ]
+                    ],
+                    "client_remark": [],
+                    "qualification_spend_ref": "",
+                    "quota_share": "",
+                    "translate_quota_value": false,
+                    "aux": false
+                },
+                "custom_x1zkb5z9ol": {
+                    "reward_name": "本地及海外日常簽賬可享1.2%消費回贈",
+                    "reward_description": "",
+                    "reward_banners": [
+                        "/assets/images/banner/amex_reawrd_banner.webp"
+                    ],
+                    "reg_link": "",
+                    "reward_type": "cash",
+                    "target_cards": [
+                        3,
+                        6
+                    ],
+                    "reward_ratio": 0.012,
+                    "bill_discount": 0,
+                    "charge_currency_requirement": [],
+                    "payment_method": [],
+                    "day_of_week": [],
+                    "day_of_month": [],
+                    "mcc_query": "false",
+                    "qualify_merchant": [],
+                    "minimum_bill_size": 0,
+                    "maximum_bill_size": 0,
+                    "minimum_qualification_spend": 0,
+                    "maximum_qualification_spend": 0,
+                    "reset_interval": "",
+                    "banking_level": 0,
+                    "client_remarks": [
+                        4
+                    ],
+                    "reward_id": "custom_x1zkb5z9ol",
+                    "card_age_bonus": [],
+                    "bill_payment": false,
+                    "qualify_mcc": [],
+                    "disqualified_merchants": [],
+                    "offer_time": [
+                        [
+                            1671036741,
+                            2523084720
+                        ]
+                    ],
+                    "client_remark": [],
+                    "qualification_spend_ref": "",
+                    "quota_share": "",
+                    "translate_quota_value": false,
+                    "aux": false
+                },
+                "custom_7k021aetp": {
+                    "reward_name": "Essential® 信用卡本地簽賬",
+                    "reward_description": "合資格的本地簽賬每HK$1可獲\n2.5美國運通積分\n（HK$6 = 1飛行里數）",
+                    "reward_banners": [
+                        "/assets/images/banner/amex_reawrd_banner.webp"
+                    ],
+                    "reg_link": "",
+                    "reward_type": "cash",
+                    "target_cards": [
+                        4
+                    ],
+                    "reward_ratio": 0.008329999999999999,
+                    "bill_discount": 0,
+                    "charge_currency_requirement": [
+                        "hkd"
+                    ],
+                    "payment_method": [],
+                    "day_of_week": [],
+                    "day_of_month": [],
+                    "mcc_query": "false",
+                    "qualify_merchant": [],
+                    "minimum_bill_size": 0,
+                    "maximum_bill_size": 0,
+                    "minimum_qualification_spend": 0,
+                    "maximum_qualification_spend": 0,
+                    "reset_interval": "",
+                    "banking_level": 0,
+                    "client_remarks": [
+                        4
+                    ],
+                    "reward_id": "custom_7k021aetp",
+                    "card_age_bonus": [],
+                    "bill_payment": false,
+                    "qualify_mcc": [],
+                    "disqualified_merchants": [],
+                    "offer_time": [
+                        [
+                            1671036854,
+                            2523084840
+                        ]
+                    ],
+                    "client_remark": [],
+                    "qualification_spend_ref": "",
+                    "quota_share": "",
+                    "translate_quota_value": false,
+                    "aux": false
+                },
+                "custom_gwim3wzmv": {
+                    "reward_name": "Essential® 信用卡外幣簽賬",
+                    "reward_description": "外幣合資格簽賬等值每HK$1可獲\n3美國運通積分\n（HK$5 = 1飛行里數）",
+                    "reward_banners": [
+                        "/assets/images/banner/amex_reawrd_banner.webp"
+                    ],
+                    "reg_link": "",
+                    "reward_type": "cash",
+                    "target_cards": [
+                        4
+                    ],
+                    "reward_ratio": 0.01,
+                    "bill_discount": 0,
+                    "charge_currency_requirement": [
+                        "-hkd"
+                    ],
+                    "payment_method": [],
+                    "day_of_week": [],
+                    "day_of_month": [],
+                    "mcc_query": "false",
+                    "qualify_merchant": [],
+                    "minimum_bill_size": 0,
+                    "maximum_bill_size": 0,
+                    "minimum_qualification_spend": 0,
+                    "maximum_qualification_spend": 0,
+                    "reset_interval": "",
+                    "banking_level": 0,
+                    "client_remarks": [
+                        4
+                    ],
+                    "reward_id": "custom_gwim3wzmv",
+                    "card_age_bonus": [],
+                    "bill_payment": false,
+                    "qualify_mcc": [],
+                    "disqualified_merchants": [],
+                    "offer_time": [
+                        [
+                            1671037001,
+                            2523084960
+                        ]
+                    ],
+                    "client_remark": [],
+                    "qualification_spend_ref": "",
+                    "quota_share": "",
+                    "translate_quota_value": false,
+                    "aux": false
+                },
+                "custom_2i6o8dpid": {
+                    "reward_name": "基本回贈",
+                    "reward_description": "HK$6 = 1 「亞洲萬里通」里數(適用於其他類別以港幣計算之合資格簽賬)",
+                    "reward_banners": [
+                        ""
+                    ],
+                    "reg_link": "",
+                    "reward_type": "miles",
+                    "target_cards": [
+                        2
+                    ],
+                    "reward_ratio": 6,
+                    "bill_discount": 0,
+                    "charge_currency_requirement": [],
+                    "payment_method": [],
+                    "day_of_week": [],
+                    "day_of_month": [],
+                    "mcc_query": "false",
+                    "qualify_merchant": [],
+                    "minimum_bill_size": 0,
+                    "maximum_bill_size": 0,
+                    "minimum_qualification_spend": 0,
+                    "maximum_qualification_spend": 0,
+                    "reset_interval": "",
+                    "banking_level": 0,
+                    "client_remarks": [
+                        4
+                    ],
+                    "reward_id": "custom_2i6o8dpid",
+                    "card_age_bonus": [],
+                    "bill_payment": false,
+                    "qualify_mcc": [],
+                    "disqualified_merchants": [],
+                    "offer_time": [
+                        [
+                            1671038024,
+                            2523085980
+                        ]
+                    ],
+                    "client_remark": [],
+                    "qualification_spend_ref": "",
+                    "quota_share": "",
+                    "translate_quota_value": false,
+                    "aux": false
+                },
+                "custom_nqlt3dp0q": {
+                    "reward_name": "海外簽賬基本回贈",
+                    "reward_description": "HK$4 = 1 「亞洲萬里通」里數 (開立「渣打紅利出糧戶口」可享HK$3 = 1「亞洲萬里通」里數，高達HK$20,000年度簽賬(即每月HK$1,667) 了解更多 (適用於食肆/外賣平台、網上及海外簽賬類別之合資格簽賬)",
+                    "reward_banners": [
+                        ""
+                    ],
+                    "reg_link": "",
+                    "reward_type": "miles",
+                    "target_cards": [
+                        2
+                    ],
+                    "reward_ratio": 12,
+                    "bill_discount": 0,
+                    "charge_currency_requirement": [
+                        "-hkd"
+                    ],
+                    "payment_method": [],
+                    "day_of_week": [],
+                    "day_of_month": [],
+                    "mcc_query": "false",
+                    "qualify_merchant": [],
+                    "minimum_bill_size": 0,
+                    "maximum_bill_size": 0,
+                    "minimum_qualification_spend": 0,
+                    "maximum_qualification_spend": 0,
+                    "reset_interval": "",
+                    "banking_level": 0,
+                    "client_remarks": [
+                        4
+                    ],
+                    "reward_id": "custom_nqlt3dp0q",
+                    "card_age_bonus": [],
+                    "bill_payment": false,
+                    "qualify_mcc": [],
+                    "disqualified_merchants": [],
+                    "offer_time": [
+                        [
+                            1671038068,
+                            2523086040
+                        ]
+                    ],
+                    "client_remark": [],
+                    "qualification_spend_ref": "",
+                    "quota_share": "",
+                    "translate_quota_value": false,
+                    "aux": false
+                },
+                "custom_0k28o0nfu": {
+                    "reward_name": "網上簽賬基本回贈",
+                    "reward_description": "HK$4 = 1 「亞洲萬里通」里數",
+                    "reward_banners": [
+                        ""
+                    ],
+                    "reg_link": "",
+                    "reward_type": "miles",
+                    "target_cards": [
+                        2
+                    ],
+                    "reward_ratio": 12,
+                    "bill_discount": 0,
+                    "charge_currency_requirement": [],
+                    "payment_method": [
+                        "online"
+                    ],
+                    "day_of_week": [],
+                    "day_of_month": [],
+                    "mcc_query": "false",
+                    "qualify_merchant": [],
+                    "minimum_bill_size": 0,
+                    "maximum_bill_size": 0,
+                    "minimum_qualification_spend": 0,
+                    "maximum_qualification_spend": 0,
+                    "reset_interval": "",
+                    "banking_level": 0,
+                    "client_remarks": [
+                        4
+                    ],
+                    "reward_id": "custom_0k28o0nfu",
+                    "card_age_bonus": [],
+                    "bill_payment": false,
+                    "qualify_mcc": [],
+                    "disqualified_merchants": [],
+                    "offer_time": [
+                        [
+                            1671038390,
+                            2523086340
+                        ]
+                    ],
+                    "client_remark": [],
+                    "qualification_spend_ref": "",
+                    "quota_share": "",
+                    "translate_quota_value": false,
+                    "aux": false
+                },
+                "custom_9czpvhgib": {
+                    "reward_name": "1%無上限CashBack",
+                    "reward_description": "",
+                    "reward_banners": [
+                        ""
+                    ],
+                    "reg_link": "",
+                    "reward_type": "cash",
+                    "target_cards": [
+                        45
+                    ],
+                    "reward_ratio": 0.01,
+                    "bill_discount": 0,
+                    "charge_currency_requirement": [],
+                    "payment_method": [],
+                    "day_of_week": [],
+                    "day_of_month": [],
+                    "mcc_query": "false",
+                    "qualify_merchant": [],
+                    "minimum_bill_size": 0,
+                    "maximum_bill_size": 0,
+                    "minimum_qualification_spend": 0,
+                    "maximum_qualification_spend": 0,
+                    "reset_interval": "",
+                    "banking_level": 0,
+                    "client_remarks": [
+                        4
+                    ],
+                    "reward_id": "custom_9czpvhgib",
+                    "card_age_bonus": [],
+                    "bill_payment": false,
+                    "qualify_mcc": [],
+                    "disqualified_merchants": [],
+                    "offer_time": [
+                        [
+                            1671038591,
+                            1704038340
+                        ]
+                    ],
+                    "client_remark": [],
+                    "qualification_spend_ref": "",
+                    "quota_share": "",
+                    "translate_quota_value": false,
+                    "aux": false
+                },
             "0":{
                 "reward_name": "Visa Signature自選類別3x獎賞",
                 "reward_description": "asdf\nasdf",
@@ -8,7 +648,7 @@
                 "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
                 "reward_type": "cash", 
                 "reward_id": "0",
-                "target_cards": [0],
+                "target_cards": [99],
                 "reward_ratio": 0.012,
                 "bill_discount": 0,
                 "charge_currency_requirement": [],
@@ -42,7 +682,7 @@
                 "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
                 "reward_type": "cash", 
                 "reward_id": "1",
-                "target_cards": [0],
+                "target_cards": [99],
                 "reward_ratio": 0.004,
                 "bill_discount": 0,
                 "charge_currency_requirement": [],
@@ -75,7 +715,7 @@
                 "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
                 "reward_type": "cash", 
                 "reward_id": "2",
-                "target_cards": [1],
+                "target_cards": [99],
                 "reward_ratio": 0.008,
                 "bill_discount": 0,
                 "charge_currency_requirement": [],
@@ -108,7 +748,7 @@
                 "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
                 "reward_type": "miles", 
                 "reward_id": "3",
-                "target_cards": [2],
+                "target_cards": [99],
                 "reward_ratio": 6,
                 "bill_discount": 0,
                 "charge_currency_requirement": [],
@@ -141,7 +781,7 @@
                 "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
                 "reward_type": "cash", 
                 "reward_id": "4",
-                "target_cards": [0],
+                "target_cards": [99],
                 "reward_ratio": 0.1,
                 "bill_discount": 0,
                 "charge_currency_requirement": [],
@@ -174,7 +814,7 @@
                 "reg_link":"https://www.hsbc.com.hk/zh-hk/credit-cards/rewards/your-choice/",
                 "reward_type": "cash", 
                 "reward_id": "string",
-                "target_cards": [0],
+                "target_cards": [99],
                 "reward_ratio": 0.15,
                 "bill_discount": 0,
                 "charge_currency_requirement": [],

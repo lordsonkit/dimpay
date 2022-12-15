@@ -14,7 +14,8 @@ const client_remark=[
     "須登記",
     "特選客戶",
     "個人化目標",
-    "個人化額度"
+    "個人化額度",
+    "基本回贈"
 ]
 const banking_level=[
     "沒有銀行帳戶",
@@ -71,6 +72,7 @@ const AddCustomReward: React.FC = () => {
         data.day_of_week = data.day_of_week?data.day_of_week.map(Number):[];
         data.day_of_month = data.day_of_month?data.day_of_month.map(Number):[];
         data.bill_payment = false;
+        data.charge_currency_requirement = data.charge_currency_requirement || []
         data.qualify_mcc= mcclist;
         data.qualify_merchant= merchantlist;
         data.disqualified_merchants= dqmerchantlist;
@@ -216,13 +218,13 @@ const AddCustomReward: React.FC = () => {
                             <IonLabel>
                                 <h3>回贈比例 ({cardType=='cash' ? "%" : "每$/里"})</h3>
                             </IonLabel>
-                            <IonInput {...register("reward_ratio")} required={true} step="0.001" className='ion-text-end' type='number' slot='end' {...register("reward_ratio")}></IonInput>
+                            <IonInput {...register("reward_ratio")} required={true} step="0.0000001" className='ion-text-end' type='number' slot='end' {...register("reward_ratio")}></IonInput>
                         </IonItem>
                         <IonItem>
                             <IonLabel>
                                 <h3>帳單優惠 (%)</h3>
                             </IonLabel>
-                            <IonInput defaultValue={0} className='ion-text-end' step="0.001" type='number' slot='end' {...register("bill_discount")}></IonInput>
+                            <IonInput defaultValue={0} className='ion-text-end' step="0.0000001" type='number' slot='end' {...register("bill_discount")}></IonInput>
                         </IonItem>
                     </IonList>
 
@@ -278,6 +280,10 @@ const AddCustomReward: React.FC = () => {
                                 {Object.keys(cardData.payment_method).map((item) => (
                                     <IonSelectOption value={item}>{cardData.payment_method[item]}</IonSelectOption>
                                 ))}
+                                {Object.keys(cardData.payment_method).map((item) => (
+                                    <IonSelectOption value={"-"+item}>{cardData.payment_method[item]+"除外"}</IonSelectOption>
+                                ))}
+                                
                             </IonSelect>
 
                         </IonItem>

@@ -101,21 +101,37 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
         })
     }
 
-
-    if (rewards[reward_id].payment_method.length > 0) {
-        //if there are payment method requirement
-        if (rewards[reward_id].payment_method.indexOf(user_payment_method) == -1) {
-            //user payment method not match
-            qualified = false
-            //console.log("Payment method not in list")
-            return ({
-                reward_id: reward_id,
-                reason: INELIGIBLE_REASON.PAYMENT_METHOD,
-                limits: -1,
-                eligible: false,
-                qualification_spend: 0
-            })
+    if (rewards[reward_id].payment_method.length > 0 ) {
+        let only_method_exclusion=true
+        for(var k=0;k<rewards[reward_id].payment_method.length;k++){
+            if(rewards[reward_id].payment_method[k].indexOf('-')===-1){
+                only_method_exclusion=false;
+                break
+            }
         }
+        if(only_method_exclusion){
+            
+            if(rewards[reward_id].payment_method.indexOf("-" + user_payment_method) > -1){
+                qualified=false
+                console.error(reward_id)
+            }
+        }else{
+            if(rewards[reward_id].payment_method.indexOf(user_payment_method) === -1 ||
+            rewards[reward_id].payment_method.indexOf("-" + user_payment_method) > -1){
+                qualified=false
+            }
+        }
+
+        if(!qualified){
+                return ({
+                    reward_id: reward_id,
+                    reason: INELIGIBLE_REASON.PAYMENT_METHOD,
+                    limits: -1,
+                    eligible: false,
+                    qualification_spend: 0
+                })
+        }
+        
     }
 
     if (spend_amount < rewards[reward_id].minimum_bill_size && rewards[reward_id].minimum_bill_size > 0) {
@@ -142,17 +158,37 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
         bill_limit = rewards[reward_id].maximum_bill_size
         //continue;
     }
-    if (rewards[reward_id].charge_currency_requirement.length > 0 && (rewards[reward_id].charge_currency_requirement.indexOf(spend_currency) == -1 || rewards[reward_id].charge_currency_requirement.indexOf("-" + spend_currency) > -1)) {
-        //Currency Requirement
-        // Either currency is not found (eg: jpy) or currency is excluded (-hkd -mop => exclude HKD and MOP)
-        qualified = false;
-        return ({
-            reward_id: reward_id,
-            reason: INELIGIBLE_REASON.BILL_CURRENCY,
-            limits: -1,
-            eligible: false,
-            qualification_spend: 0
-        })
+    if (rewards[reward_id].charge_currency_requirement.length > 0 ) {
+        let only_currency_exclusion=true
+        for(var k=0;k<rewards[reward_id].charge_currency_requirement.length;k++){
+            if(rewards[reward_id].charge_currency_requirement[k].indexOf('-')===-1){
+                only_currency_exclusion=false;
+                break
+            }
+        }
+        if(only_currency_exclusion){
+            
+            if(rewards[reward_id].charge_currency_requirement.indexOf("-" + spend_currency) > -1){
+                qualified=false
+                console.error(reward_id)
+            }
+        }else{
+            if(rewards[reward_id].charge_currency_requirement.indexOf(spend_currency) === -1 ||
+            rewards[reward_id].charge_currency_requirement.indexOf("-" + spend_currency) > -1){
+                qualified=false
+            }
+        }
+
+        if(!qualified){
+                return ({
+                    reward_id: reward_id,
+                    reason: INELIGIBLE_REASON.BILL_CURRENCY,
+                    limits: -1,
+                    eligible: false,
+                    qualification_spend: 0
+                })
+        }
+        
     }
 /*
     if( rewards[reward_id].require_premium && !userData.card_owned[card_id].user_has_premium_banking){

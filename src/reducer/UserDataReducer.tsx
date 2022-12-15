@@ -12,7 +12,8 @@ export const UserContext = React.createContext({
     setUserOptions:null,
     toggleUserRewardExemption:null,
     addTransactionHistory:null,
-    addCustomReward:null
+    addCustomReward:null,
+    removeCustomReward:null
   });
 
   
@@ -130,6 +131,16 @@ const userDataReducer = (state:Userdata, action) => {
           
             break;
         }
+
+        case "REMOVE_CUSTOM_REWARD":{
+          temp= {
+            ...state,
+          }
+          delete temp.custom_rewards[action.payload.reward_id]
+          console.log('Remove user custom reward ')
+          
+            break;
+        }
         case "GET_TRANSACTION_HISTORY":{
           return temp.spending_history
         }
@@ -189,6 +200,9 @@ const UserDataReducerProvider = ({ children }) => {
       },
       addCustomReward: ( payload) => {
         dispatch({type: "ADD_CUSTOM_REWARD",  payload: payload })
+      },
+      removeCustomReward: ( payload) => {
+        dispatch({type: "REMOVE_CUSTOM_REWARD",  payload: payload })
       },
       getSpendingHistory:() => {
         dispatch({type:"GET_SPENDING_HISTORY"})

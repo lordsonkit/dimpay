@@ -11,7 +11,7 @@ import './RewardResults.css';
 
 
 const CustomRewardList: React.FC = () => {
-    const { userData, setUserOptions } = useContext(UserContext);
+    const { userData, setUserOptions , removeCustomReward} = useContext(UserContext);
 
 
     const { cardData, setCardData } = useContext(CardContext)
@@ -38,7 +38,7 @@ const CustomRewardList: React.FC = () => {
                         </IonThumbnail>
                         {userData.custom_rewards[item].reward_name}
                         <IonLabel slot='end' className='ion-text-end'>
-                                <IonButton color="medium" fill="clear" onClick={e => removeCustomReward(item)}><IonIcon icon={trashBin}></IonIcon></IonButton>
+                                <IonButton color="medium" fill="clear" onClick={e => removeCustomReward({reward_id:item})}><IonIcon icon={trashBin}></IonIcon></IonButton>
                         </IonLabel>
 
                     </IonItem>))}
@@ -53,10 +53,7 @@ const CustomRewardList: React.FC = () => {
             </IonContent>
         </IonPage>
     );
-    function removeCustomReward(item_id){
-        //TODO
-        return false
-    }
+
 };
 
 export default CustomRewardList;
