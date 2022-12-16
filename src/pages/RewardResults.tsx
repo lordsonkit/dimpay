@@ -23,7 +23,6 @@ const RewardResultsPage: React.FC = () => {
   const mcc_query=params.id.indexOf('mcc')===0
   const query_id=params.id.replace("mcc","")
   useEffect(() => {
-    //console.log(valueRef.current)
     setTimeout(function(){
       valueRef.current.setFocus()
       valueRef.current.children[0].select()

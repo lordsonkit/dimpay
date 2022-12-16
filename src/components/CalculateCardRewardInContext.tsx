@@ -17,7 +17,7 @@ export const CalculateCardRewardInContext = (card_id:number,mcc_query,query_id:s
     let eligible_rewards=[];
     let ineligble_rewards=[];
     let payment_method=[]
-    if(spend_amount<=0){
+    if(!spend_amount){
         spend_amount=100
     }
 
@@ -31,6 +31,7 @@ export const CalculateCardRewardInContext = (card_id:number,mcc_query,query_id:s
             }
         }
     }
+
 
     
     //Calculate total reward with eligible reward list
@@ -46,6 +47,7 @@ export const CalculateCardRewardInContext = (card_id:number,mcc_query,query_id:s
         for(let i=0;i<eligible_rewards.length;i++){
             let applicable_reward_amount=spend_amount;
             applicable_reward_amount=(rewards[eligible_rewards[i].reward_id].maximum_bill_size>0?Math.min(rewards[eligible_rewards[i].reward_id].maximum_bill_size,spend_amount):spend_amount)
+            applicable_reward_amount=eligible_rewards[i].limits>0?Math.min(applicable_reward_amount,eligible_rewards[i].limits):applicable_reward_amount;
             miles_reward_incontext+=applicable_reward_amount/rewards[eligible_rewards[i].reward_id].reward_ratio
         }
         //Convert miles to cash value
@@ -62,7 +64,9 @@ export const CalculateCardRewardInContext = (card_id:number,mcc_query,query_id:s
         //point or cash based card, derive cash value
         for(let i=0;i<eligible_rewards.length;i++){
             let applicable_reward_amount=spend_amount;
+            //clamp by max bill size
             applicable_reward_amount=(rewards[eligible_rewards[i].reward_id].maximum_bill_size>0?Math.min(rewards[eligible_rewards[i].reward_id].maximum_bill_size,spend_amount):spend_amount)
+            applicable_reward_amount=eligible_rewards[i].limits>0?Math.min(applicable_reward_amount,eligible_rewards[i].limits):applicable_reward_amount;
             cash_reward_incontext+=applicable_reward_amount*rewards[eligible_rewards[i].reward_id].reward_ratio
         }
         
