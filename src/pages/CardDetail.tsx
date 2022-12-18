@@ -3,7 +3,7 @@ import { IonAvatar, IonBackButton, IonBadge, IonButton, IonButtons, IonCard, Ion
 import { add, pin, pulse } from 'ionicons/icons';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router';
-import { CardContext } from '../App';
+import { CardContext, RewardsContext } from '../App';
 import ExploreContainer from '../components/ExploreContainer';
 import UserDataReducerProvider, { UserContext } from '../reducer/UserDataReducer';
 import './RewardResults.css';
@@ -22,10 +22,12 @@ const CardDetailPage: React.FC = () => {
   function spendValueUpdate(newSpendValue:any){
     setSpendAmount(newSpendValue);
   }  
-  const {userData,setUserCardOptions}=useContext(UserContext);
+  const {userData,setUserCardOptions, setUserRewardMultiplier}=useContext(UserContext);
 
 
   const {cardData,setCardData}=useContext(CardContext)
+
+  const {rewardData}=useContext(RewardsContext)
 
   function setUserCardExpDate(e){
     setUserCardOptions(param.id,["expiry"],new Date(e.detail.value).getTime()/1000)
@@ -44,7 +46,16 @@ const CardDetailPage: React.FC = () => {
     setUserCardOptions(param.id,['card_reward_multiplier'],parseFloat(e.target.value))
   }
   let active_card_id=param.id;
-
+  let custom_rewards=[]
+  for (var k in rewardData.rewards.data){
+    //loop through active reward that has user defineable value for the user selected card
+    if(rewardData.rewards.data[k].target_cards.indexOf(parseInt(active_card_id))>-1){
+      if(rewardData.rewards.data[k].default_user_multiplier_value.length>0){
+        custom_rewards.push(k)
+      }
+    }
+  }
+  console.warn(custom_rewards)
   
   return (
     <IonPage>
@@ -140,10 +151,47 @@ const CardDetailPage: React.FC = () => {
             
             </>
           }
-          </IonList>
+                    </IonList>
+                    
+          {
+            true && <>
+            {(custom_rewards).map((master_reward_id)=>(<><br></br><IonList><IonListHeader>
+              <b>{rewardData.rewards.data[master_reward_id].reward_name}</b>
+            </IonListHeader>
+            <IonItem>
+              <IonLabel>
+                <p color='muted' className='ion-text-wrap'>{rewardData.rewards.data[master_reward_id].reward_description}</p>
+              </IonLabel>
+            </IonItem>
+            
+              {
+                (Array.from(Array(rewardData.rewards.data[master_reward_id].eligibility_ref.length).keys())).map((ref_id) => (
+                  <IonItem key={master_reward_id+"ref"+ref_id}>
+                  <IonLabel slot="start">
+                    <h3>{rewardData.rewards.data[rewardData.rewards.data[master_reward_id].eligibility_ref[ref_id]].reward_name}</h3>
+                  </IonLabel>
+                  <IonInput className='ion-text-end' type='number' min="0" step="0.00001" slot='end' 
+                  value={getUserRewardMultiplier(master_reward_id,ref_id)} 
+                  onIonBlur={(e)=>setUserRewardMultiplier(master_reward_id,ref_id,e.target.value)}></IonInput>
+                  </IonItem>
+                ))
+              }
+                  </IonList></>))}
+            </>
+          }
+
       </IonContent>
     </IonPage>
   );
+function getUserRewardMultiplier(reward_id,index){
+  var temp=[]
+    if(!(reward_id in userData.reward_settings)){
+      temp=rewardData.rewards.data[reward_id].default_user_multiplier_value;
+    }else{
+      temp=userData.reward_settings[reward_id]
+    }
+  return temp[index]
+}
 };
 
 export default CardDetailPage;

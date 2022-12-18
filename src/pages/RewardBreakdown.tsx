@@ -75,9 +75,11 @@ const RewardBreakdown: React.FC = () => {
             <IonText className="custom">${spend_amount}</IonText>
             <div className='ion-padding' onClick={e=>setUseNotional(!useNotional)}>
               {useNotional ? <>
-              <IonBadge  color={result.best_return_choice==='cash'?"light":"success"}>${humanize(result.best_return_ratio_miles)} / {cardData.mileages[result.miles_currency_in_context].unit}</IonBadge> {cardData.cards.data[card_id].earn_cash==true && <IonBadge color={result.best_return_choice==='cash'?"success":"light"}>現金回贈 {humanize(result.cash_reward_incontext/spend_amount*100)}%</IonBadge>}
+              {(cardData.cards.data[card_id].has_mileage_programme || cardData.cards.data[card_id].earn_miles ) && <IonBadge  color={result.best_return_choice==='cash'?"light":"success"}>${humanize(result.best_return_ratio_miles)} / {cardData.mileages[result.miles_currency_in_context].unit}</IonBadge> }
+              {cardData.cards.data[card_id].earn_cash==true && <IonBadge color={result.best_return_choice==='cash'?"success":"light"}>現金回贈 {humanize(result.cash_reward_incontext/spend_amount*100)}%</IonBadge>}
               </>:<>
-              <IonBadge  color={result.best_return_choice==='cash'?"light":"success"}>{humanize(result.miles_reward_incontext)} {cardData.mileages[result.miles_currency_in_context].unit}</IonBadge> {cardData.cards.data[card_id].earn_cash==true &&<IonBadge  color={result.best_return_choice==='cash'?"success":"light"}>現金 ${humanize(result.cash_reward_incontext)}</IonBadge>}
+              { (cardData.cards.data[card_id].has_mileage_programme || cardData.cards.data[card_id].earn_miles ) && <IonBadge  color={result.best_return_choice==='cash'?"light":"success"}>{humanize(result.miles_reward_incontext)} {cardData.mileages[result.miles_currency_in_context].unit}</IonBadge> }
+              {cardData.cards.data[card_id].earn_cash==true &&<IonBadge  color={result.best_return_choice==='cash'?"success":"light"}>現金 ${humanize(result.cash_reward_incontext)}</IonBadge>}
               </>}
               
               <br />

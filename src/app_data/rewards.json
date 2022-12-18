@@ -42,9 +42,9 @@
                         ]
                     ],
                     "client_remark": [],
-                    "qualification_spend_ref": "",
                     "eligibility_ref": [],
-                    "translate_quota_value": false,
+                    "default_user_multiplier_value":[],
+                    
                     "aux": false
                 },
                 "custom_om27i1sn6": {
@@ -89,9 +89,9 @@
                         ]
                     ],
                     "client_remark": [],
-                    "qualification_spend_ref": "",
                     "eligibility_ref": [],
-                    "translate_quota_value": false,
+                    "default_user_multiplier_value":[],
+                    
                     "aux": false
                 },
                 "custom_y7h78kxg5i": {
@@ -132,9 +132,9 @@
                         ]
                     ],
                     "client_remark": [],
-                    "qualification_spend_ref": "",
                     "eligibility_ref": [],
-                    "translate_quota_value": false,
+                    "default_user_multiplier_value":[],
+                    
                     "aux": false
                 },
                 "custom_3m462uxzc": {
@@ -177,9 +177,9 @@
                         ]
                     ],
                     "client_remark": [],
-                    "qualification_spend_ref": "",
                     "eligibility_ref": [],
-                    "translate_quota_value": false,
+                    "default_user_multiplier_value":[],
+                    
                     "aux": false
                 },
                 "custom_tm86jrxpn": {
@@ -224,9 +224,9 @@
                         ]
                     ],
                     "client_remark": [],
-                    "qualification_spend_ref": "",
                     "eligibility_ref": [],
-                    "translate_quota_value": false,
+                    "default_user_multiplier_value":[],
+                    
                     "aux": false
                 },
                 "custom_ukv9lxf9h": {
@@ -267,9 +267,9 @@
                         ]
                     ],
                     "client_remark": [],
-                    "qualification_spend_ref": "",
                     "eligibility_ref": [],
-                    "translate_quota_value": false,
+                    "default_user_multiplier_value":[],
+                    
                     "aux": false
                 },
                 "custom_brqbwwvlki": {
@@ -312,9 +312,9 @@
                         ]
                     ],
                     "client_remark": [],
-                    "qualification_spend_ref": "",
                     "eligibility_ref": [],
-                    "translate_quota_value": false,
+                    "default_user_multiplier_value":[],
+                    
                     "aux": false
                 },
                 "custom_x1zkb5z9ol": {
@@ -358,9 +358,9 @@
                         ]
                     ],
                     "client_remark": [],
-                    "qualification_spend_ref": "",
                     "eligibility_ref": [],
-                    "translate_quota_value": false,
+                    "default_user_multiplier_value":[],
+                    
                     "aux": false
                 },
                 "custom_7k021aetp": {
@@ -405,9 +405,9 @@
                         ]
                     ],
                     "client_remark": [],
-                    "qualification_spend_ref": "",
                     "eligibility_ref": [],
-                    "translate_quota_value": false,
+                    "default_user_multiplier_value":[],
+                    
                     "aux": false
                 },
                 "custom_gwim3wzmv": {
@@ -452,9 +452,9 @@
                         ]
                     ],
                     "client_remark": [],
-                    "qualification_spend_ref": "",
                     "eligibility_ref": [],
-                    "translate_quota_value": false,
+                    "default_user_multiplier_value":[],
+                    
                     "aux": false
                 },
                 "custom_2i6o8dpid": {
@@ -497,9 +497,9 @@
                         ]
                     ],
                     "client_remark": [],
-                    "qualification_spend_ref": "",
                     "eligibility_ref": [],
-                    "translate_quota_value": false,
+                    "default_user_multiplier_value":[],
+                    
                     "aux": false
                 },
                 "custom_nqlt3dp0q": {
@@ -544,9 +544,9 @@
                         ]
                     ],
                     "client_remark": [],
-                    "qualification_spend_ref": "",
                     "eligibility_ref": [],
-                    "translate_quota_value": false,
+                    "default_user_multiplier_value":[],
+                    
                     "aux": false
                 },
                 "custom_0k28o0nfu": {
@@ -591,9 +591,9 @@
                         ]
                     ],
                     "client_remark": [],
-                    "qualification_spend_ref": "",
                     "eligibility_ref": [],
-                    "translate_quota_value": false,
+                    "default_user_multiplier_value":[],
+                    
                     "aux": false
                 },
                 "custom_9czpvhgib": {
@@ -636,9 +636,9 @@
                         ]
                     ],
                     "client_remark": [],
-                    "qualification_spend_ref": "",
                     "eligibility_ref": [],
-                    "translate_quota_value": false,
+                    "default_user_multiplier_value":[],
+                    
                     "aux": false
                 },
             "0":{
@@ -670,6 +670,7 @@
                 "reset_interval":"",
                 "banking_level":0,
                 "eligibility_ref":[],
+                "default_user_multiplier_value":[],
                 "aux":false
             },
             
@@ -702,6 +703,7 @@
                 "reset_interval":"",
                 "banking_level":0,
                 "eligibility_ref":[],
+                "default_user_multiplier_value":[],
                 "aux":false
             },
             "2":{
@@ -733,6 +735,7 @@
                 "reset_interval":"",
                 "banking_level":0,
                 "eligibility_ref":[],
+                "default_user_multiplier_value":[],
                 "aux":false
             },
             "3":{
@@ -764,6 +767,7 @@
                 "reset_interval":"",
                 "banking_level":0,
                 "eligibility_ref":[],
+                "default_user_multiplier_value":[],
                 "aux":false
             },
             "4":{
@@ -795,6 +799,7 @@
                 "reset_interval":"",
                 "banking_level":0,
                 "eligibility_ref":[],
+                "default_user_multiplier_value":[],
                 "aux":false
             },
             "string":{
@@ -826,6 +831,7 @@
                 "reset_interval":"",
                 "banking_level":0,
                 "eligibility_ref":[],
+                "default_user_multiplier_value":[],
                 "aux":false
             },
             "master_entry":{
@@ -857,6 +863,7 @@
                 "reset_interval":"",
                 "banking_level":0,
                 "eligibility_ref":["aux_entry2","aux_entry1"],
+                "default_user_multiplier_value":[],
                 "aux":false
             },
             "aux_entry1":{
@@ -888,6 +895,7 @@
                 "reset_interval":"",
                 "banking_level":0,
                 "eligibility_ref":[],
+                "default_user_multiplier_value":[],
                 "aux":true
             },
             "aux_entry2":{
@@ -919,17 +927,18 @@
                 "reset_interval":"",
                 "banking_level":0,
                 "eligibility_ref":[],
+                "default_user_multiplier_value":[],
                 "aux":true
             },
             "user_define_reward_master":{
                 "reward_name": "自選",
-                "reward_description": "5% on food over 500, if spending over 8000, reward up to 500$",
+                "reward_description": "額外高達5x獎賞錢",
                 "reward_banners":[],
                 "reg_link":"",
                 "reward_type": "cash", 
                 "reward_id": "user_define_reward_master",
                 "target_cards": [0],
-                "reward_ratio": 0.01,
+                "reward_ratio": 0.004,
                 "bill_discount": 0,
                 "charge_currency_requirement": [],
                 "payment_method": [],
@@ -943,15 +952,79 @@
                 "offer_time": [[0,20000000000]],
                 "minimum_bill_size":0,
                 "maximum_bill_size":0,
-                "minimum_qualification_spend":8000,
-                "maximum_qualifacation_spend":50000,
+                "minimum_qualification_spend":0,
+                "maximum_qualifacation_spend":100000,
                 "client_remarks":[0],
                 "admin_remark":"",
                 "reset_interval":"",
                 "banking_level":0,
-                "eligibility_ref":["aux_entry2","aux_entry1"],
-                "aux":false,
-                "default_user_multiplier_value":[0,0]
+                "eligibility_ref":["redhot_food","redhot_fx"],
+                "default_user_multiplier_value":[0,0],
+                "aux":false
+            },
+            "redhot_food":{
+                "reward_name": "redhot_food",
+                "reward_description": "food",
+                "reward_banners":[],
+                "reg_link":"",
+                "reward_type": "cash", 
+                "reward_id": "redhot_food",
+                "target_cards": [0],
+                "reward_ratio": 0.004,
+                "bill_discount": 0,
+                "charge_currency_requirement": [],
+                "payment_method": [],
+                "card_age_bonus": [],
+                "day_of_week": [],
+                "day_of_month": [],
+                "bill_payment": false,
+                "qualify_mcc":["5814"],
+                "qualify_merchant":[],
+                "disqualified_merchants":[],
+                "offer_time": [[0,20000000000]],
+                "minimum_bill_size":0,
+                "maximum_bill_size":0,
+                "minimum_qualification_spend":0,
+                "maximum_qualifacation_spend":100000,
+                "client_remarks":[0],
+                "admin_remark":"",
+                "reset_interval":"",
+                "banking_level":0,
+                "eligibility_ref":[],
+                "default_user_multiplier_value":[],
+                "aux":true
+            },
+            "redhot_fx":{
+                "reward_name": "redhot_fx",
+                "reward_description": "fx",
+                "reward_banners":[],
+                "reg_link":"",
+                "reward_type": "cash", 
+                "reward_id": "redhot_fx",
+                "target_cards": [0],
+                "reward_ratio": 0.004,
+                "bill_discount": 0,
+                "charge_currency_requirement": ["-hkd"],
+                "payment_method": [],
+                "card_age_bonus": [],
+                "day_of_week": [],
+                "day_of_month": [],
+                "bill_payment": false,
+                "qualify_mcc":[],
+                "qualify_merchant":[],
+                "disqualified_merchants":[],
+                "offer_time": [[0,20000000000]],
+                "minimum_bill_size":0,
+                "maximum_bill_size":0,
+                "minimum_qualification_spend":0,
+                "maximum_qualifacation_spend":100000,
+                "client_remarks":[0],
+                "admin_remark":"",
+                "reset_interval":"",
+                "banking_level":0,
+                "eligibility_ref":[],
+                "default_user_multiplier_value":[],
+                "aux":true
             }
         }
     }

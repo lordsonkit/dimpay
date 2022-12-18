@@ -13,13 +13,16 @@ export const UserContext = React.createContext({
     toggleUserRewardExemption:null,
     addTransactionHistory:null,
     addCustomReward:null,
-    removeCustomReward:null
+    removeCustomReward:null,
+    setUserRewardMultiplier:null
   });
 
   
 const userDataReducer = (state:Userdata, action) => {
-
-
+  if(state && Object.keys(state).length === 0){
+    return false
+  }
+  
     // 判斷指令
     let temp=null
     switch (action.type) {
@@ -141,6 +144,29 @@ const userDataReducer = (state:Userdata, action) => {
           
             break;
         }
+        case "SET_REWARD_MULTIPLIER":{
+          temp= {
+            ...state,
+          }
+          if(!(action.reward_id in temp.reward_settings)){
+            temp.reward_settings[action.reward_id]=action.default_value;
+          }
+          temp.reward_settings[action.reward_id][action.reward_item]=parseFloat(action.value)||0
+            
+            break;
+        }
+        case "GET_REWARD_MULTIPLIER":{
+          temp= {
+            ...state,
+          }
+          if('reward_settings' in state){
+            if(!(action.reward_id in state.reward_settings)){
+              state.reward_settings[action.reward_id]=action.default_value;
+            }
+          }
+          console.log(state)
+          return temp.reward_settings[action.reward_id][action.reward_item]
+        }
         case "GET_TRANSACTION_HISTORY":{
           return temp.spending_history
         }
@@ -155,7 +181,6 @@ const userDataReducer = (state:Userdata, action) => {
 
 
 const UserDataReducerProvider = ({ children }) => {
-
     const {rewardData,setRewardData} = useContext(RewardsContext);
     const rewardDataMemo = useMemo( () => {
       return ({rewardData})
@@ -167,6 +192,9 @@ const UserDataReducerProvider = ({ children }) => {
         console.log("Initialize local storage")
     }
     const temp =  JSON.parse(localStorage.getItem("userdata")) as Userdata;
+    if(!('reward_settings' in temp)){
+      temp.reward_settings={}
+    }
     let new_rewards=rewardDataMemo.rewardData
 
     new_rewards.rewards.data={...new_rewards.rewards.data,...temp.custom_rewards}
@@ -206,7 +234,11 @@ const UserDataReducerProvider = ({ children }) => {
       },
       getSpendingHistory:() => {
         dispatch({type:"GET_SPENDING_HISTORY"})
+      },
+      setUserRewardMultiplier:(reward_id,reward_item,value:string) => {
+        dispatch({type:"SET_REWARD_MULTIPLIER", reward_id:reward_id, reward_item:reward_item,value:value, default_value:rewardData.rewards.data[reward_id].default_user_multiplier_value})
       }
+
     };
     return (
       <UserContext.Provider value={value}>

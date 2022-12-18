@@ -32,6 +32,9 @@
         has_private_banking: any[][];
         custom_rewards: {
             [key:string] : Reward
+        },
+        reward_settings:{
+            [key:string] : number[]
         };
     }
 

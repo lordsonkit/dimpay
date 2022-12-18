@@ -21,7 +21,8 @@ interface RewardReason {
     eligible: boolean,
     qualification_spend: number,
     reward_quota: number,
-    reward_quota_used: number
+    reward_quota_used: number,
+    user_defined_multiplier: number
 
 }
 
@@ -101,16 +102,17 @@ const RewardBreakdownList: React.FC<ContainerProps> = ({ eligible_list, list_ite
                                 <h3>
                                     <b>{
                                         (rewardData.rewards.data[item.reward_id].reward_type == 'cash') ? (
-                                    context.best_return_choice == "miles" ? "$" + humanize(1 / (context.miles_conversion_ratio * rewardData.rewards.data[item.aux_reward_id].reward_ratio * rewardEligibleRatio(item.limits,context.bill_size))) + "/" + (cardData.mileages[context.miles_currency_in_context].unit) : humanize(rewardData.rewards.data[item.aux_reward_id].reward_ratio  * rewardEligibleRatio(item.limits,context.bill_size) * 100) + "%"
+                                    context.best_return_choice === "miles" ? 
+                                    "$" + humanize(1 / (context.miles_conversion_ratio * rewardData.rewards.data[item.aux_reward_id].reward_ratio* item.user_defined_multiplier * rewardEligibleRatio(item.limits,context.bill_size))) + "/" + (cardData.mileages[context.miles_currency_in_context].unit) : humanize(rewardData.rewards.data[item.aux_reward_id].reward_ratio * item.user_defined_multiplier  * rewardEligibleRatio(item.limits,context.bill_size) * 100) + "%"
                                 ) : (
-                                    "$" + humanize(rewardData.rewards.data[item.aux_reward_id].reward_ratio * rewardEligibleRatio(item.limits,context.bill_size)) + "/" + (cardData.mileages[context.miles_currency_in_context].unit)
+                                    "$" + humanize(rewardData.rewards.data[item.aux_reward_id].reward_ratio* item.user_defined_multiplier * rewardEligibleRatio(item.limits,context.bill_size)) + "/" + (cardData.mileages[context.miles_currency_in_context].unit)
                                 )}
                                     </b>
                                 </h3>
                             </IonBadge>
                             {rewardData.rewards.data[item.reward_id].reward_type == 'cash' && context.best_return_choice == "miles" && <>
                                 <br></br>
-                                <IonBadge color="medium">{humanize(rewardData.rewards.data[item.aux_reward_id].reward_ratio * rewardEligibleRatio(item.limits,context.bill_size) * 100)}%</IonBadge>
+                                <IonBadge color="medium">{humanize(rewardData.rewards.data[item.aux_reward_id].reward_ratio * item.user_defined_multiplier* rewardEligibleRatio(item.limits,context.bill_size) * 100)}%</IonBadge>
                             </>}
                         </IonLabel>
                     </IonItem>

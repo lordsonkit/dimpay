@@ -68,7 +68,8 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
             limits: -1,
             eligible: false,
             aux_reward_id: aux_reward_id,
-            qualification_spend: 0,
+            user_defined_multiplier:1,
+qualification_spend: 0,
             reward_quota: reward_quota, reward_quota_used: reward_quota_used
         })
 
@@ -83,7 +84,8 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
             limits: -1,
             eligible: false,
             aux_reward_id: aux_reward_id,
-            qualification_spend: 0,
+            user_defined_multiplier:1,
+qualification_spend: 0,
             reward_quota: reward_quota, reward_quota_used: reward_quota_used
         })
     }
@@ -96,7 +98,8 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
             limits: -1,
             eligible: false,
             aux_reward_id: aux_reward_id,
-            qualification_spend: 0,
+            user_defined_multiplier:1,
+qualification_spend: 0,
             reward_quota: reward_quota, reward_quota_used: reward_quota_used
         })
     }
@@ -112,7 +115,8 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
             limits: -1,
             eligible: false,
             aux_reward_id: aux_reward_id,
-            qualification_spend: 0,
+            user_defined_multiplier:1,
+qualification_spend: 0,
             reward_quota: reward_quota, reward_quota_used: reward_quota_used
         })
     }
@@ -144,7 +148,8 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
                 limits: -1,
                 eligible: false,
                 aux_reward_id: aux_reward_id,
-                qualification_spend: 0,
+                user_defined_multiplier:1,
+qualification_spend: 0,
             reward_quota: reward_quota, reward_quota_used: reward_quota_used
             })
         }
@@ -161,7 +166,8 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
             limits: -1,
             eligible: false,
             aux_reward_id: aux_reward_id,
-            qualification_spend: 0,
+            user_defined_multiplier:1,
+qualification_spend: 0,
             reward_quota: reward_quota, reward_quota_used: reward_quota_used
         })
     }
@@ -204,7 +210,8 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
                 limits: -1,
                 eligible: false,
                 aux_reward_id: aux_reward_id,
-                qualification_spend: 0,
+                user_defined_multiplier:1,
+qualification_spend: 0,
             reward_quota: reward_quota, reward_quota_used: reward_quota_used
             })
         }
@@ -219,7 +226,8 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
                 limits: -1,
                 eligible: false,
 aux_reward_id:aux_reward_id,
-                qualification_spend: 0,
+                user_defined_multiplier:1,
+qualification_spend: 0,
             reward_quota: reward_quota, reward_quota_used: reward_quota_used
             })
         }
@@ -231,7 +239,8 @@ aux_reward_id:aux_reward_id,
                 limits: -1,
                 eligible: false,
 aux_reward_id:aux_reward_id,
-                qualification_spend: 0,
+                user_defined_multiplier:1,
+qualification_spend: 0,
             reward_quota: reward_quota, reward_quota_used: reward_quota_used
             })
         }
@@ -252,7 +261,8 @@ aux_reward_id:aux_reward_id,
             limits: -1,
             eligible: false,
             aux_reward_id: aux_reward_id,
-            qualification_spend: 0,
+            user_defined_multiplier:1,
+qualification_spend: 0,
             reward_quota: reward_quota, reward_quota_used: reward_quota_used
         })
     }
@@ -266,7 +276,8 @@ aux_reward_id:aux_reward_id,
                 limits: -1,
                 eligible: false,
                 aux_reward_id: aux_reward_id,
-                qualification_spend: 0,
+                user_defined_multiplier:1,
+qualification_spend: 0,
             reward_quota: reward_quota, reward_quota_used: reward_quota_used
             })
         }
@@ -281,7 +292,8 @@ aux_reward_id:aux_reward_id,
                 limits: -1,
                 eligible: false,
                 aux_reward_id: aux_reward_id,
-                qualification_spend: 0,
+                user_defined_multiplier:1,
+qualification_spend: 0,
             reward_quota: reward_quota, reward_quota_used: reward_quota_used
             })
         }
@@ -304,7 +316,10 @@ aux_reward_id:aux_reward_id,
                     qualified = true;
                     eligibility_ref_qualify=true;
                     aux_reward_id = rewards[reward_id].eligibility_ref[i];
-                    user_defined_multiplier=rewards[reward_id].user_defined_ref_multiplier[i]
+                    if(rewards[reward_id].default_user_multiplier_value.length>0&&rewards[reward_id].default_user_multiplier_value.length===rewards[reward_id].eligibility_ref.length){
+                        //user defined multiplier
+                        user_defined_multiplier=getUserRewardMultiplier(reward_id,i)
+                    }
                     break;
                 } else {
                     //return the last item as ineligible reason
@@ -320,7 +335,8 @@ aux_reward_id:aux_reward_id,
                 limits: -1,
                 eligible: false,
                 aux_reward_id: aux_reward_id,
-                qualification_spend: 0,
+                user_defined_multiplier:1,
+qualification_spend: 0,
             reward_quota: reward_quota, reward_quota_used: reward_quota_used
             })
         }
@@ -341,19 +357,22 @@ aux_reward_id:aux_reward_id,
             //Loop user spending history
             for (var i = 0; i < userData.spending_history.length; i++) {
                 let item: PaymentHistory = userData.spending_history[i]
+                
                 if (qualification_period[0] < item.time && item.time < qualification_period[1]) {
                     //Filter out tx that are out of time
                     let result = EligibilityCalc(reward_id, item.card_id, item.mcc_query, item.query_id, item.spend_amount, item.spend_currency, item.user_payment_method, item.time, false, false)
+                    console.error(result)
                     if (result) {
                         if (result.eligible) {
                                 let tx_spend=item.spend_amount
                                 eligible_spent += tx_spend
                                 let reward_history_user_defined_multiplier=1;
                                     //multicategory reward
+                                    /*
                                     if(rewards[reward_id].default_user_multiplier_value.length>0&&rewards[reward_id].default_user_multiplier_value.length===rewards[reward_id].eligibility_ref.length){
                                         //user defined multiplier
-                                        reward_history_user_defined_multiplier=rewards[reward_id].user_defined_ref_multiplier[rewards[reward_id].eligibility_ref.indexOf(result.aux_reward_id)];
-                                    }
+                                        reward_history_user_defined_multiplier=getUserRewardMultiplier(reward_id,rewards[reward_id].eligibility_ref.indexOf(result.aux_reward_id))
+                                    }*/
                                     if(rewards[result.aux_reward_id].earn_miles===true){
                                         eligible_reward_acquired += tx_spend / rewards[result.aux_reward_id].reward_ratio * reward_history_user_defined_multiplier;
                                     }else{
@@ -384,7 +403,7 @@ aux_reward_id:aux_reward_id,
             if(variable_aux_rate_reward){
                 //TODO
                 //aux case, breakup using reward acquired
-
+                console.error(eligible_reward_acquired)
                 let master_reward_quota=rewards[reward_id].maximum_qualifacation_spend*(rewards[reward_id].earn_miles?(1/rewards[reward_id].reward_ratio):(rewards[reward_id].reward_ratio))
                 let quota_remaining = master_reward_quota - eligible_reward_acquired
                 let current_transaction_reward = spend_amount *(rewards[aux_reward_id].earn_miles?(1/rewards[aux_reward_id].reward_ratio):(rewards[aux_reward_id].reward_ratio)) * user_defined_multiplier
@@ -415,7 +434,8 @@ aux_reward_id:aux_reward_id,
                     limits: 0,
                     eligible: false,
                     aux_reward_id: aux_reward_id,
-                    qualification_spend: qualification_spend,
+                    user_defined_multiplier:user_defined_multiplier,
+qualification_spend: qualification_spend,
                     reward_quota: reward_quota, reward_quota_used: reward_quota_used
                 })
             }
@@ -437,7 +457,8 @@ aux_reward_id:aux_reward_id,
             limits: -1,
             eligible: false,
             aux_reward_id: aux_reward_id,
-            qualification_spend: 0,
+            user_defined_multiplier:1,
+qualification_spend: 0,
             reward_quota: reward_quota, reward_quota_used: reward_quota_used
         })
     }
@@ -449,7 +470,8 @@ aux_reward_id:aux_reward_id,
             limits: bill_limit,
             eligible: true,
             aux_reward_id: aux_reward_id,
-            qualification_spend: qualification_spend,
+            user_defined_multiplier:user_defined_multiplier,
+qualification_spend: qualification_spend,
             reward_quota: reward_quota, reward_quota_used: reward_quota_used
         })
     } else {
@@ -461,10 +483,10 @@ aux_reward_id:aux_reward_id,
         let interval_time = [0, 999999999999999999]
         let active_offer_time = [0, 0]
 
-        if (reset_interval = "day") {
+        if (reset_interval == "day") {
             interval_time = [new Date().setUTCHours(0, 0, 0, 0) / 1000, new Date().setUTCHours(23, 59, 59, 0) / 1000,]
         }
-        if (reset_interval = "week") {
+        if (reset_interval == "week") {
             var curr = new Date; // get current date
             var first = curr.getDate() - curr.getDay() + 1; // First day is the day of the month - the day of the week
             var last = first + 6; // last day is the first day + 6
@@ -473,25 +495,25 @@ aux_reward_id:aux_reward_id,
             var lastday = new Date(curr.setDate(last)).getTime() / 1000;
             interval_time = [firstday, lastday]
         }
-        if (reset_interval = "month") {
+        if (reset_interval == "month") {
             const now = new Date();
             const firstDay = new Date(now.getFullYear(), now.getMonth(), 1).getTime() / 1000;
             const lastDay = (new Date(now.getFullYear(), now.getMonth() + 1, 1).getTime() - 1000) / 1000;
             interval_time = [firstday, lastday]
         }
-        if (reset_interval = "year") {
+        if (reset_interval == "year") {
             const now = new Date();
             const firstDay = new Date(now.getFullYear(), 1, 1).getTime() / 1000;
             const lastDay = (new Date(now.getFullYear() + 1, 1, 1).getTime() - 1000) / 1000;
             interval_time = [firstday, lastday]
         }
-        if (reset_interval = "billmonth") {
+        if (reset_interval == "billmonth") {
             const now = new Date();
             const firstDay = new Date(now.getFullYear(), now.getMonth(), new Date(user_billing_date * 1000).getDate()).getTime() / 1000;
             const lastDay = (new Date(now.getFullYear(), now.getMonth() + 1, new Date(user_billing_date * 1000).getDate()).getTime() - 1000) / 1000;
             interval_time = [firstday, lastday]
         }
-        if (reset_interval = "billyear") {
+        if (reset_interval == "billyear") {
             const now = new Date();
             const firstDay = new Date(now.getFullYear(), new Date(user_billing_date * 1000).getMonth(), new Date(user_billing_date * 1000).getDate()).getTime() / 1000;
             const lastDay = (new Date(now.getFullYear() + 1, new Date(user_billing_date * 1000).getMonth(), new Date(user_billing_date * 1000).getDate()).getTime() - 1000) / 1000;
@@ -506,4 +528,14 @@ aux_reward_id:aux_reward_id,
         let result = [Math.max(interval_time[0], active_offer_time[0]), Math.min(interval_time[1], active_offer_time[1])]
         return result
     }
+    function getUserRewardMultiplier(reward_id,index){
+        var temp=[]
+          if(!(reward_id in userData.reward_settings)){
+            temp=rewardData.rewards.data[reward_id].default_user_multiplier_value;
+          }else{
+            temp=userData.reward_settings[reward_id]
+          }
+          console.warn(reward_id,temp,index)
+        return temp[index] || 1
+      }
 }

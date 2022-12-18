@@ -92,7 +92,6 @@ const AddCustomReward: React.FC = () => {
         data.payment_method = data.payment_method?data.payment_method.map(String):[];
         data={...data,
             "eligibility_ref":[],
-            "user_defined_ref_multiplier":false,
             "default_multiplier_value":[],
             "aux":false
         }
