@@ -62,7 +62,7 @@ const Tab2: React.FC = () => {
   function getRewardCurrenctSession(k:string):number[]{
     for (var j = 0; j < rewardData.rewards.data[k].offer_time.length; j++) {
       if ((rewardData.rewards.data[k].offer_time[j][0] < new Date().getTime()/1000) && (new Date().getTime()/1000 < rewardData.rewards.data[k].offer_time[j][1])) {
-        console.log(rewardData.rewards.data[k].offer_time[j])
+       
           return rewardData.rewards.data[k].offer_time[j]
       }
     }

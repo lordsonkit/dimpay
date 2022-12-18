@@ -26,6 +26,8 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
 
     let aux_reward_id = reward_id
     let qualification_spend = 0;
+    let reward_quota=rewards[reward_id].maximum_qualification_spend
+    let reward_quota_used=0;
     
     if (top_level_query && rewards[reward_id].aux){
         //aux not considered on top level query
@@ -55,7 +57,8 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
         target_mcc = merchantData.merchants.data[query_id].mcc;
     }
 
-    if (!mcc_query && rewards[reward_id].qualify_merchant.indexOf(target_merchant_id) == -1 && rewards[reward_id].qualify_merchant.length > 0) {
+    if ((!mcc_query && rewards[reward_id].qualify_merchant.indexOf(target_merchant_id) == -1 && rewards[reward_id].qualify_merchant.length > 0)
+    || (mcc_query&& rewards[reward_id].qualify_merchant.length > 0 )) {
         // For merchant query, if the merchant is not in list of qualifying merchants, and the list is not empty
         qualified = false;
         //console.log("Merchant not in list")
@@ -65,7 +68,8 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
             limits: -1,
             eligible: false,
             aux_reward_id: aux_reward_id,
-            qualification_spend: 0
+            qualification_spend: 0,
+            reward_quota: reward_quota, reward_quota_used: reward_quota_used
         })
 
     }
@@ -79,7 +83,8 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
             limits: -1,
             eligible: false,
             aux_reward_id: aux_reward_id,
-            qualification_spend: 0
+            qualification_spend: 0,
+            reward_quota: reward_quota, reward_quota_used: reward_quota_used
         })
     }
 
@@ -91,7 +96,8 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
             limits: -1,
             eligible: false,
             aux_reward_id: aux_reward_id,
-            qualification_spend: 0
+            qualification_spend: 0,
+            reward_quota: reward_quota, reward_quota_used: reward_quota_used
         })
     }
 
@@ -106,7 +112,8 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
             limits: -1,
             eligible: false,
             aux_reward_id: aux_reward_id,
-            qualification_spend: 0
+            qualification_spend: 0,
+            reward_quota: reward_quota, reward_quota_used: reward_quota_used
         })
     }
 
@@ -137,7 +144,8 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
                 limits: -1,
                 eligible: false,
                 aux_reward_id: aux_reward_id,
-                qualification_spend: 0
+                qualification_spend: 0,
+            reward_quota: reward_quota, reward_quota_used: reward_quota_used
             })
         }
 
@@ -153,7 +161,8 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
             limits: -1,
             eligible: false,
             aux_reward_id: aux_reward_id,
-            qualification_spend: 0
+            qualification_spend: 0,
+            reward_quota: reward_quota, reward_quota_used: reward_quota_used
         })
     }
     let bill_limit = -1;
@@ -195,7 +204,8 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
                 limits: -1,
                 eligible: false,
                 aux_reward_id: aux_reward_id,
-                qualification_spend: 0
+                qualification_spend: 0,
+            reward_quota: reward_quota, reward_quota_used: reward_quota_used
             })
         }
 
@@ -209,7 +219,8 @@ export const EligibilityCalc = (reward_id: string, card_id: number, mcc_query, q
                 limits: -1,
                 eligible: false,
 aux_reward_id:aux_reward_id,
-                qualification_spend: 0
+                qualification_spend: 0,
+            reward_quota: reward_quota, reward_quota_used: reward_quota_used
             })
         }
         if( rewards[reward_id].require_private && !userData.card_owned[card_id].user_has_private_banking){
@@ -220,7 +231,8 @@ aux_reward_id:aux_reward_id,
                 limits: -1,
                 eligible: false,
 aux_reward_id:aux_reward_id,
-                qualification_spend: 0
+                qualification_spend: 0,
+            reward_quota: reward_quota, reward_quota_used: reward_quota_used
             })
         }
         */
@@ -240,7 +252,8 @@ aux_reward_id:aux_reward_id,
             limits: -1,
             eligible: false,
             aux_reward_id: aux_reward_id,
-            qualification_spend: 0
+            qualification_spend: 0,
+            reward_quota: reward_quota, reward_quota_used: reward_quota_used
         })
     }
     if (rewards[reward_id].day_of_week.length) {
@@ -253,7 +266,8 @@ aux_reward_id:aux_reward_id,
                 limits: -1,
                 eligible: false,
                 aux_reward_id: aux_reward_id,
-                qualification_spend: 0
+                qualification_spend: 0,
+            reward_quota: reward_quota, reward_quota_used: reward_quota_used
             })
         }
     }
@@ -267,16 +281,19 @@ aux_reward_id:aux_reward_id,
                 limits: -1,
                 eligible: false,
                 aux_reward_id: aux_reward_id,
-                qualification_spend: 0
+                qualification_spend: 0,
+            reward_quota: reward_quota, reward_quota_used: reward_quota_used
             })
         }
     }
+    let user_defined_multiplier=1;
     if (rewards[reward_id].eligibility_ref.length > 0) {
         //find eligibility from aux reward entry
         // Qualifcation logic: this.qualification && (aux1.qualification || aux2.qualification || ...)
         // Quota logic: this.quota (mark untrackable if reward_ratio is variable)
         // Reward logic: this.reward_ratio 
         let ineligible_reason: INELIGIBLE_REASON;
+        var eligibility_ref_qualify=false;
         for (var i = 0; i < rewards[reward_id].eligibility_ref.length; i++) {
             let result = EligibilityCalc(
                 rewards[reward_id].eligibility_ref[i], card_id, mcc_query, query_id, spend_amount, spend_currency, user_payment_method, time, calculate_limits, false
@@ -285,7 +302,9 @@ aux_reward_id:aux_reward_id,
                 if (result.eligible) {
                     //One of the refernece item is eligible
                     qualified = true;
-                    aux_reward_id = rewards[reward_id].eligibility_ref[i]
+                    eligibility_ref_qualify=true;
+                    aux_reward_id = rewards[reward_id].eligibility_ref[i];
+                    user_defined_multiplier=rewards[reward_id].user_defined_ref_multiplier[i]
                     break;
                 } else {
                     //return the last item as ineligible reason
@@ -294,15 +313,15 @@ aux_reward_id:aux_reward_id,
             }
 
         }
-        if (!qualified) {
+        if (!eligibility_ref_qualify) {
             return ({
                 reward_id: reward_id,
                 reason: ineligible_reason,
                 limits: -1,
-
                 eligible: false,
                 aux_reward_id: aux_reward_id,
-                qualification_spend: 0
+                qualification_spend: 0,
+            reward_quota: reward_quota, reward_quota_used: reward_quota_used
             })
         }
     }
@@ -313,12 +332,7 @@ aux_reward_id:aux_reward_id,
         if (calculate_limits) {
 
             let eligible_spent = 0;
-
-            let qualification_ref_reward_id = reward_id;
-            if (rewards[reward_id].qualification_spend_ref) {
-                //Qulification requirement is referenced to another reward_id
-                qualification_ref_reward_id = rewards[reward_id].qualification_spend_ref;
-            }
+            let eligible_reward_acquired=0;
 
             //TODO: Quota Translation - 600 * 2% on ref = 300 on 4% this
 
@@ -329,41 +343,83 @@ aux_reward_id:aux_reward_id,
                 let item: PaymentHistory = userData.spending_history[i]
                 if (qualification_period[0] < item.time && item.time < qualification_period[1]) {
                     //Filter out tx that are out of time
-                    let result = EligibilityCalc(qualification_ref_reward_id, item.card_id, item.mcc_query, item.query_id, item.spend_amount, item.spend_currency, item.user_payment_method, item.time, false, false)
+                    let result = EligibilityCalc(reward_id, item.card_id, item.mcc_query, item.query_id, item.spend_amount, item.spend_currency, item.user_payment_method, item.time, false, false)
                     if (result) {
                         if (result.eligible) {
-                            if (result.limits > 0) {
-                                eligible_spent += result.limits
-                            } else {
-                                eligible_spent += item.spend_amount
-                            }
-                        }
+                                let tx_spend=item.spend_amount
+                                eligible_spent += tx_spend
+                                let reward_history_user_defined_multiplier=1;
+                                    //multicategory reward
+                                    if(rewards[reward_id].default_user_multiplier_value.length>0&&rewards[reward_id].default_user_multiplier_value.length===rewards[reward_id].eligibility_ref.length){
+                                        //user defined multiplier
+                                        reward_history_user_defined_multiplier=rewards[reward_id].user_defined_ref_multiplier[rewards[reward_id].eligibility_ref.indexOf(result.aux_reward_id)];
+                                    }
+                                    if(rewards[result.aux_reward_id].earn_miles===true){
+                                        eligible_reward_acquired += tx_spend / rewards[result.aux_reward_id].reward_ratio * reward_history_user_defined_multiplier;
+                                    }else{
+                                        eligible_reward_acquired += tx_spend * rewards[result.aux_reward_id].reward_ratio * reward_history_user_defined_multiplier;
+                                    }
+                                
                     }
                 }
-
+                }
             }
-
 
             //limit for maximum
             // warn for less than min eligible
+            // all spending including this transaction
             qualification_spend = spend_amount + eligible_spent
 
-            if (spend_amount + eligible_spent > rewards[reward_id].maximum_qualifacation_spend) {
-                //Can only earn partial
-                bill_limit = Math.max(0, rewards[reward_id].maximum_qualifacation_spend - (eligible_spent))
-
-                if (bill_limit == 0) {
-                    qualified = false;
-                    return ({
-                        reward_id: reward_id,
-                        reason: INELIGIBLE_REASON.USED_UP_QUOTA,
-                        limits: 0,
-                        eligible: false,
-                        aux_reward_id: aux_reward_id,
-                        qualification_spend: qualification_spend
-                    })
+            let variable_aux_rate_reward=false;
+            if(rewards[reward_id].eligibility_ref.length>0){
+                for(var j=0;j<rewards[reward_id].eligibility_ref.length;j++){
+                    if(rewards[reward_id].reward_ratio!=rewards[rewards[reward_id].eligibility_ref[j]].reward_ratio){
+                        variable_aux_rate_reward=true
+                        //console.error('variable rate reward')
+                    }
                 }
             }
+
+
+            if(variable_aux_rate_reward){
+                //TODO
+                //aux case, breakup using reward acquired
+
+                let master_reward_quota=rewards[reward_id].maximum_qualifacation_spend*(rewards[reward_id].earn_miles?(1/rewards[reward_id].reward_ratio):(rewards[reward_id].reward_ratio))
+                let quota_remaining = master_reward_quota - eligible_reward_acquired
+                let current_transaction_reward = spend_amount *(rewards[aux_reward_id].earn_miles?(1/rewards[aux_reward_id].reward_ratio):(rewards[aux_reward_id].reward_ratio)) * user_defined_multiplier
+                bill_limit=spend_amount * Math.max(0,quota_remaining/current_transaction_reward)
+                //console.warn("Special Qualification")
+                //console.warn(current_transaction_reward,quota_remaining,master_reward_quota)
+                reward_quota=rewards[reward_id].maximum_qualifacation_spend*(rewards[reward_id].earn_miles?(rewards[aux_reward_id].reward_ratio/rewards[reward_id].reward_ratio):(rewards[reward_id].reward_ratio/rewards[aux_reward_id].reward_ratio))
+                
+                reward_quota_used=(reward_quota-bill_limit)
+            }else{
+                if (qualification_spend > rewards[reward_id].maximum_qualifacation_spend) {
+                    //Can only earn partial
+                    bill_limit = Math.max(0, rewards[reward_id].maximum_qualifacation_spend - (eligible_spent))
+                }
+                if(bill_limit>0){
+                    reward_quota=Math.min(bill_limit,rewards[reward_id].maximum_bill_size)
+                }
+                reward_quota=rewards[reward_id].maximum_qualifacation_spend;
+                reward_quota_used=qualification_spend
+            }
+
+            
+            if (bill_limit === 0) {
+                qualified = false;
+                return ({
+                    reward_id: reward_id,
+                    reason: INELIGIBLE_REASON.USED_UP_QUOTA,
+                    limits: 0,
+                    eligible: false,
+                    aux_reward_id: aux_reward_id,
+                    qualification_spend: qualification_spend,
+                    reward_quota: reward_quota, reward_quota_used: reward_quota_used
+                })
+            }
+
 
         }
 
@@ -381,17 +437,20 @@ aux_reward_id:aux_reward_id,
             limits: -1,
             eligible: false,
             aux_reward_id: aux_reward_id,
-            qualification_spend: 0
+            qualification_spend: 0,
+            reward_quota: reward_quota, reward_quota_used: reward_quota_used
         })
     }
     if (qualified) {
+
         return ({
             reward_id: reward_id,
             reason: -1,
             limits: bill_limit,
             eligible: true,
             aux_reward_id: aux_reward_id,
-            qualification_spend: qualification_spend
+            qualification_spend: qualification_spend,
+            reward_quota: reward_quota, reward_quota_used: reward_quota_used
         })
     } else {
         console.error("UNCAUGHT CASE FOR ELIGIBILITY");

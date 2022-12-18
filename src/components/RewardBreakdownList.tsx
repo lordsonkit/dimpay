@@ -15,10 +15,13 @@ interface ContainerProps {
 }
 interface RewardReason {
     reward_id: string,
+    aux_reward_id: string,
     reason: INELIGIBLE_REASON,
     limits: number,
     eligible: boolean,
-    qualification_spend: number
+    qualification_spend: number,
+    reward_quota: number,
+    reward_quota_used: number
 
 }
 
@@ -73,22 +76,22 @@ const RewardBreakdownList: React.FC<ContainerProps> = ({ eligible_list, list_ite
                             <h2>{rewardData.rewards.data[item.reward_id].reward_name}</h2>
                             <div style={{ wordWrap: "break-word", wordBreak: "break-all" }} className="ion-text-wrap">
                                 {item.reason > -1 && <IonBadge color="medium" className='condition-badge'><IonText><IonIcon icon={warning}></IonIcon> {disqualification_reason[item.reason]}</IonText></IonBadge>}
-                                {item.limits > 0 && <IonBadge color={context.bill_size > item.limits ? "warning" : "medium"} className='condition-badge'><IonText>帳單限額 {humanize(item.limits || 0)}</IonText></IonBadge>}
-                                {item.qualification_spend<rewardData.rewards.data[item.reward_id].minimum_qualification_spend && <IonBadge color={"warning"} className='condition-badge'><IonText>未達成簽帳要求</IonText></IonBadge>}
+                                {item.limits > 0 && item.limits!==Infinity && <IonBadge color={context.bill_size > item.limits ? "warning" : "medium"} className='condition-badge'><IonText>帳單限額 {humanize(item.limits || 0)}</IonText></IonBadge>}
+                                {eligible_list&&item.qualification_spend<rewardData.rewards.data[item.reward_id].minimum_qualification_spend && <IonBadge color={"warning"} className='condition-badge'><IonText>未達成簽帳要求</IonText></IonBadge>}
                                 
                                 {rewardData.rewards.data[0].client_remarks.map((remark_id) => (
                                     <IonBadge color="medium" className='condition-badge'><IonText>{reward_remarks_text[remark_id]}</IonText></IonBadge>
                                 ))
                                 }
                             </div>
-                            {item.qualification_spend<rewardData.rewards.data[item.reward_id].minimum_qualification_spend && <><br></br><h3>簽帳進度（最低簽帳要求)</h3>
+                            {eligible_list && item.qualification_spend<rewardData.rewards.data[item.reward_id].minimum_qualification_spend && <><br></br><h3>簽帳進度（最低簽帳要求)</h3>
                                 <IonProgressBar value={item.qualification_spend/rewardData.rewards.data[item.reward_id].minimum_qualification_spend} color="warning"></IonProgressBar>
                                 <div className="ion-text-right"><IonText color={"medium"}><sup>${rewardData.rewards.data[item.reward_id].minimum_qualification_spend }</sup></IonText></div>
                                 </>}
-                                {rewardData.rewards.data[item.reward_id].maximum_qualifacation_spend > 0 && item.qualification_spend>=rewardData.rewards.data[item.reward_id].minimum_qualification_spend && <>
+                                {item.reward_quota > 0 && item.limits!==Infinity && item.qualification_spend>=rewardData.rewards.data[item.reward_id].minimum_qualification_spend && <>
                                 <h3>簽帳進度（回贈簽帳限額）</h3>
-                                <IonProgressBar value={item.qualification_spend/rewardData.rewards.data[item.reward_id].maximum_qualifacation_spend}></IonProgressBar>
-                                <div className="ion-text-right"><IonText color={"medium"}><sup>${rewardData.rewards.data[item.reward_id].maximum_qualifacation_spend}</sup></IonText></div></>}
+                                <IonProgressBar value={item.reward_quota_used/item.reward_quota}></IonProgressBar>
+                                <div className="ion-text-right"><IonText color={"medium"}><sup>${item.reward_quota}</sup></IonText></div></>}
 
                                 {rewardEligibleRatio(item.limits,context.bill_size)!=1 && <IonText color={"medium"} ><sup>* 因優惠受帳單限額限制只獲得部分回贈</sup></IonText>}
 
@@ -98,16 +101,16 @@ const RewardBreakdownList: React.FC<ContainerProps> = ({ eligible_list, list_ite
                                 <h3>
                                     <b>{
                                         (rewardData.rewards.data[item.reward_id].reward_type == 'cash') ? (
-                                    context.best_return_choice == "miles" ? "$" + humanize(1 / (context.miles_conversion_ratio * rewardData.rewards.data[item.reward_id].reward_ratio * rewardEligibleRatio(item.limits,context.bill_size))) + "/" + (cardData.mileages[context.miles_currency_in_context].unit) : humanize(rewardData.rewards.data[item.reward_id].reward_ratio  * rewardEligibleRatio(item.limits,context.bill_size) * 100) + "%"
+                                    context.best_return_choice == "miles" ? "$" + humanize(1 / (context.miles_conversion_ratio * rewardData.rewards.data[item.aux_reward_id].reward_ratio * rewardEligibleRatio(item.limits,context.bill_size))) + "/" + (cardData.mileages[context.miles_currency_in_context].unit) : humanize(rewardData.rewards.data[item.aux_reward_id].reward_ratio  * rewardEligibleRatio(item.limits,context.bill_size) * 100) + "%"
                                 ) : (
-                                    "$" + humanize(rewardData.rewards.data[item.reward_id].reward_ratio * rewardEligibleRatio(item.limits,context.bill_size)) + "/" + (cardData.mileages[context.miles_currency_in_context].unit)
+                                    "$" + humanize(rewardData.rewards.data[item.aux_reward_id].reward_ratio * rewardEligibleRatio(item.limits,context.bill_size)) + "/" + (cardData.mileages[context.miles_currency_in_context].unit)
                                 )}
                                     </b>
                                 </h3>
                             </IonBadge>
                             {rewardData.rewards.data[item.reward_id].reward_type == 'cash' && context.best_return_choice == "miles" && <>
                                 <br></br>
-                                <IonBadge color="medium">{humanize(rewardData.rewards.data[item.reward_id].reward_ratio * rewardEligibleRatio(item.limits,context.bill_size) * 100)}%</IonBadge>
+                                <IonBadge color="medium">{humanize(rewardData.rewards.data[item.aux_reward_id].reward_ratio * rewardEligibleRatio(item.limits,context.bill_size) * 100)}%</IonBadge>
                             </>}
                         </IonLabel>
                     </IonItem>
@@ -124,7 +127,7 @@ const RewardBreakdownList: React.FC<ContainerProps> = ({ eligible_list, list_ite
 
 function rewardEligibleRatio(limit,spend){
     if(limit>0){
-        return limit/spend
+        return Math.min(limit/spend,1)
     }else{
         return 1
     }

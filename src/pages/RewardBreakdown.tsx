@@ -103,7 +103,7 @@ const RewardBreakdown: React.FC = () => {
             spend_amount,
             spend_currency,
             user_payment_method
-            })} routerLink={"/tabs/tab3"} routerDirection="root"><IonIcon icon={addCircleOutline} slot="start"></IonIcon>紀錄消費</IonButton>
+            })} routerDirection="root"><IonIcon icon={addCircleOutline} slot="start"></IonIcon>紀錄消費</IonButton>
         </div>
       </IonContent>
     </IonPage>

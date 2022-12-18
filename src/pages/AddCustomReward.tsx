@@ -91,9 +91,9 @@ const AddCustomReward: React.FC = () => {
         data.banking_level = data.banking_level?parseInt(data.banking_level):0;
         data.payment_method = data.payment_method?data.payment_method.map(String):[];
         data={...data,
-            "qualification_spend_ref":"",
-            "quota_share":"",
-            "translate_quota_value":false,
+            "eligibility_ref":[],
+            "user_defined_ref_multiplier":false,
+            "default_multiplier_value":[],
             "aux":false
         }
         
