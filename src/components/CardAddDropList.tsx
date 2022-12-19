@@ -22,7 +22,7 @@ const CardAddDropList: React.FC<ContainerProps> = ({ userHoldsCard, searchTerm }
   const { userData, removeCard, addCard } = useContext(UserContext);
   return (
     <>
-      {cardData.cards.data.map(({ card_name, issuer, card_id, image }) => (
+      {cardData.cards.data.map(({ card_name, issuer, card_id, image, annual_salary }) => (
         userOwnsCard(card_id)==userHoldsCard && (cardData.issuers[issuer].name+card_name).toLocaleLowerCase().indexOf(searchTerm.toLocaleLowerCase())>-1 && <IonItem key={card_id}>
           <IonThumbnail className='thumbnail' slot='start'>
             <img className='fit-thumbnail card-round-border' src={image}></img>
@@ -30,6 +30,7 @@ const CardAddDropList: React.FC<ContainerProps> = ({ userHoldsCard, searchTerm }
           <IonLabel>
             <IonBadge color="medium" className='issuer-badge'><IonText>{cardData.issuers[issuer].name}</IonText></IonBadge>
             <h3>{card_name}</h3>
+            <p><IonText color="muted">月薪要求：{annual_salary/12}</IonText></p>
           </IonLabel>
           <IonLabel slot='end' className='ion-text-end'>
             {userOwnsCard(card_id) ? <>
