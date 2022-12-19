@@ -343,7 +343,11 @@ qualification_spend: 0,
     }
     if (rewards[reward_id].maximum_qualifacation_spend > 0 || rewards[reward_id].minimum_qualification_spend > 0) {
         //Qualification requirement applies, loop through
-        let qualification_period = getQualificationPeriod(rewards[reward_id].reset_interval, rewards[reward_id].offer_time, userData.card_owned[card_id].billing_date)
+        let qualification_period = getQualificationPeriod(
+            rewards[reward_id].reset_interval,
+            rewards[reward_id].offer_time, 
+            userData.card_owned?.[card_id]?.billing_date || 0
+        )
 
         if (calculate_limits) {
 
