@@ -25,6 +25,7 @@
     }
 
     export interface Userdata {
+        custom_merchants: {};
         username: string;
         card_owned: UserCardOptions;
         milelage_value: number[][];

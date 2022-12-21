@@ -43,6 +43,7 @@ import CardDetailPage from './pages/CardDetail';
 import MilesValueSetting from './pages/MilesValueSetting';
 import CustomRewardList from './pages/CustomRewardList';
 import AddCustomReward from './pages/AddCustomReward';
+import AddMerchant from './pages/AddMerchant';
 
 setupIonicReact();
 
@@ -115,6 +116,9 @@ const App: React.FC = () => {
               </Route>
               <Route exact path="/settings/add_custom_reward">
                 <AddCustomReward />
+              </Route>
+              <Route exact path="/settings/add_merchant">
+                <AddMerchant />
               </Route>
               <Route exact path="/cardDetails/:id">
                 <CardDetailPage />

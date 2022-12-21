@@ -1,5 +1,5 @@
 import React, { useContext, useMemo, useState }  from "react";
-import { CardContext, RewardsContext } from "../App";
+import { CardContext, MerchantListContext, RewardsContext } from "../App";
 import userdata_template_json from '../app_data/user_data.json';
 import { Userdata } from "../interface/UserdataInterface";
 
@@ -13,6 +13,7 @@ export const UserContext = React.createContext({
     toggleUserRewardExemption:null,
     addTransactionHistory:null,
     addCustomReward:null,
+    addCustomMerchant:null,
     removeCustomReward:null,
     setUserRewardMultiplier:null
   });
@@ -134,6 +135,15 @@ const userDataReducer = (state:Userdata, action) => {
           
             break;
         }
+        case "ADD_CUSTOM_MERCHANT":{
+          temp= {
+            ...state,
+          }
+          temp.custom_merchants[action.payload.id]=(action.payload);
+          console.log('Add user custom merchant ')
+          
+            break;
+        }
 
         case "REMOVE_CUSTOM_REWARD":{
           temp= {
@@ -181,10 +191,16 @@ const userDataReducer = (state:Userdata, action) => {
 
 
 const UserDataReducerProvider = ({ children }) => {
-    const {rewardData,setRewardData} = useContext(RewardsContext);
-    const rewardDataMemo = useMemo( () => {
-      return ({rewardData})
-    }, [rewardData])
+  const {rewardData,setRewardData} = useContext(RewardsContext);
+  const rewardDataMemo = useMemo( () => {
+    return ({rewardData})
+  }, [rewardData])
+
+  const {merchantData,setMerchantData} = useContext(MerchantListContext);
+  const merchantDataMemo = useMemo( () => {
+    return ({merchantData})
+  }, [merchantData])
+
     //Detect Userdata, setup user if first time
     if(!localStorage.getItem("userdata")){
         //User data not set, user is here for the first time
@@ -195,11 +211,17 @@ const UserDataReducerProvider = ({ children }) => {
     if(!('reward_settings' in temp)){
       temp.reward_settings={}
     }
+    if(!('custom_merchants' in temp)){
+      temp.custom_merchants={}
+    }
     let new_rewards=rewardDataMemo.rewardData
-
     new_rewards.rewards.data={...new_rewards.rewards.data,...temp.custom_rewards}
-
     setRewardData(new_rewards)
+
+
+    let new_merchants=merchantDataMemo.merchantData
+    new_merchants.merchants.data={...new_merchants.merchants.data,...temp.custom_merchants}
+    setMerchantData(new_merchants)
 
 
     const [state, dispatch] = React.useReducer(userDataReducer, temp||userdata_template_json);
@@ -228,6 +250,9 @@ const UserDataReducerProvider = ({ children }) => {
       },
       addCustomReward: ( payload) => {
         dispatch({type: "ADD_CUSTOM_REWARD",  payload: payload })
+      },
+      addCustomMerchant: ( payload) => {
+        dispatch({type: "ADD_CUSTOM_MERCHANT",  payload: payload })
       },
       removeCustomReward: ( payload) => {
         dispatch({type: "REMOVE_CUSTOM_REWARD",  payload: payload })

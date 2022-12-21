@@ -1,5 +1,5 @@
 import { IonAvatar, IonButton, IonContent, IonHeader, IonIcon, IonItem, IonItemGroup, IonLabel, IonList, IonListHeader, IonPage, IonText, IonTitle, IonToolbar } from '@ionic/react';
-import { cardOutline, cashOutline, gift, giftOutline } from 'ionicons/icons';
+import { cafeOutline, cardOutline, cashOutline, gift, giftOutline, libraryOutline, schoolOutline } from 'ionicons/icons';
 import ExploreContainer from '../components/ExploreContainer';
 
 const AccountPage: React.FC = () => {
@@ -40,6 +40,10 @@ const AccountPage: React.FC = () => {
           <IonItem detail={true} routerLink="/settings/custom_reward_list" routerDirection='forward'>
             <IonIcon icon={giftOutline} slot="start"></IonIcon>
             <IonLabel>用戶自訂優惠</IonLabel>
+          </IonItem>
+          <IonItem detail={true} routerLink="/settings/add_merchant" routerDirection='forward'>
+            <IonIcon icon={cafeOutline} slot="start"></IonIcon>
+            <IonLabel>添加商戶</IonLabel>
           </IonItem>
         </IonList>
         <br></br>

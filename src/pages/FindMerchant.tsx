@@ -146,8 +146,8 @@ const FindMerchantPage: React.FC = () => {
           })
         }
     }
-    tempSearchResult.slice(0, 30);
-    setMerchantTypeResults([...tempSearchResult]);
+    ;
+    setMerchantTypeResults([...tempSearchResult.slice(0, 30)]);
   }, [searchTerm, merchantData]);
 
 
@@ -187,7 +187,7 @@ const FindMerchantPage: React.FC = () => {
           <IonButtons slot="start">
             <IonBackButton />
           </IonButtons>
-          <IonTitle>Select Merchant</IonTitle>
+          <IonTitle>選擇商戶</IonTitle>
 
           <IonButtons slot="end">
             <IonButton onClick={findByGPS}>
